@@ -22,8 +22,8 @@ class CreateMembersTable extends Migration
             $table->date('date_joined_youth_union');
             $table->date('date_joined_trade_union')->nullable();
             $table->date('date_joined_political_party')->nullable();
-            $table->integer('place_of_birth');
-            $table->integer('living_place');
+            $table->integer('place_of_birth_id');
+            $table->integer('living_place_id');
             $table->integer('tribe_id');
             $table->integer('religious_id');
             $table->integer('marjor_id');

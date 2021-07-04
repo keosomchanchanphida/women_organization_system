@@ -15,7 +15,7 @@ class CreateEducationalTable extends Migration
     {
         Schema::create('graduated_places', function (Blueprint $table) {
             $table->id();
-            $table->string('place');
+            $table->string('name');
         });
         Schema::create('educations', function (Blueprint $table) {
             $table->id();

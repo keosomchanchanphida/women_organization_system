@@ -28,8 +28,8 @@
         </div>
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                <a class="nav-link btn btn-secondary mr-2 text-white py-6px" href="{{ url('/') }}">
+                    ໜ້າຫຼັກ
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -38,9 +38,48 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <a class="nav-link">
-                            ການເຄື່ອນໄຫວ
+                        <div class="dropdown mt-1 mt-md-0">
+                            <button class="btn btn-secondary dropdown-toggle w-100"
+                                id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                ການເຄື່ອນໄຫວ
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">ການເຄືອນໄຫວພາຍໃນ</a>
+                                <a class="dropdown-item" href="#">ການເຄື່ອນໄຫວພາຍນອກ</a>
+                            </div>
+                        </div>
+                        @guest
+                        <div class="dropdown ml-2 mt-1 mt-md-0">
+                            <button class="btn btn-secondary dropdown-toggle w-100"
+                                id="showDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                ສະຖິຕິ
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="showDropdown">
+                                <a class="dropdown-item" href="#">ສະແດງສະມາຊິກ</a>
+                                <a class="dropdown-item" href="#">ຄວາມເປັນມາ</a>
+                            </div>
+                        </div>
+                        <a href="#" class="nav-link btn btn-secondary ml-md-2 text-white py-5px mt-1 mt-md-0">ຕິດຕໍ່ສອບຖາມ</a>
+                        @else
+                        <a class="nav-link btn btn-secondary ml-md-2 text-white py-5px mt-1 mt-md-0">
+                            ສະແດງສະມາຊິກ
                         </a>
+                        @endguest
+                        @auth
+                            <a class="nav-link btn btn-secondary ml-md-2 text-white py-5px mt-1 mt-md-0" href="/add-member">
+                                ເພີ່ມສະມາຊິກ
+                            </a>
+                            <div class="dropdown mt-1 mt-md-0">
+                                <button class="ml-md-2 btn btn-secondary dropdown-toggle w-100"
+                                    id="addActivitiesDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    ເພີ່ມການເຄື່ອນໄຫວ
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="addActivitiesDropdown">
+                                    <a class="dropdown-item" href="#">ເພີ່ມການເຄືອນໄຫວພາຍໃນ</a>
+                                    <a class="dropdown-item" href="#">ເພີ່ມການເຄື່ອນໄຫວພາຍນອກ</a>
+                                </div>
+                            </div>
+                        @endauth
                     </ul>
 
                     <!-- Right Side Of Navbar -->

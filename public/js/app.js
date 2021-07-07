@@ -1903,6 +1903,7 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 var app = new Vue({
   el: '#app'
 });
+$('.alert').delay(5000).slideUp();
 
 /***/ }),
 

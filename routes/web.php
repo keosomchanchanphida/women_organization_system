@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\MemberController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,5 +20,8 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/add-member', [MemberController::class, 'create'])->name('add-member');
+    Route::post('/store-member', [MemberController::class, 'store'])->name('store-member');
+});

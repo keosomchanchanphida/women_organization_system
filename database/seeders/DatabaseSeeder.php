@@ -66,7 +66,7 @@ class DatabaseSeeder extends Seeder
             'living_place_id' => $village->id,
             'tribe_id' => $tribe->id,
             'religious_id' => $religious->id,
-            'marjor_id' => $major->id,
+            'major_id' => $major->id,
             'education_id' => $education->id,
             'career_id' => $career->id,
             'state_position_id' => $statePosition->id,

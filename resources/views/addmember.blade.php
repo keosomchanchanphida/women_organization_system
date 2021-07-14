@@ -157,14 +157,14 @@
                             <div class="col-md-2 mt-1 mt-md-0 p-md-0"><button class="btn btn-primary">ເພີ່ມ</button></div>
                         </div>
                         <div class="form-group row">
-                            <label for="major" class="col-md-4 col-form-label text-md-right">ພາກວິຊາ:</label>
+                            <label for="major_id" class="col-md-4 col-form-label text-md-right">ພາກວິຊາ:</label>
                             <div class="col-md-6">
-                                <select name="major_id" id="major" class="form-control @error('major') is-invalid @enderror">
+                                <select name="major_id" id="major_id" class="form-control @error('major_id') is-invalid @enderror">
                                     @foreach ($majors as $major)
                                         <option value="{{ $major->id }}">{{ $major->name }}</option>
                                     @endforeach
                                 </select>
-                                @error('major')
+                                @error('major_id')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -229,6 +229,22 @@
                                     @endforeach
                                 </select>
                                 @error('political_position_id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="col-md-2 mt-1 mt-md-0 p-md-0"><button class="btn btn-primary">ເພີ່ມ</button></div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="graduated_place_id" class="col-md-4 col-form-label text-md-right">ສະຖານທີ່ຈົບການສຶກສາ:</label>
+                            <div class="col-md-6">
+                                <select name="graduated_place_id" id="graduated_place_id" class="form-control @error('graduated_place_id') is-invalid @enderror">
+                                    @foreach (App\Models\GraduatedPlace::all() as $place)
+                                        <option value="{{ $place->id }}">{{ $place->name }}</option>
+                                    @endforeach
+                                </select>
+                                @error('graduated_place_id')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

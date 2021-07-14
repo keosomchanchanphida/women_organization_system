@@ -44,7 +44,7 @@ class MemberController extends Controller
             'living_place_id' => ['required'],
             'tribe_id' => ['required'],
             'religious_id' => ['required'],
-            'marjor_id' => ['required'],
+            'major_id' => ['required'],
             'education_id' => ['required'],
             'career_id' => ['required'],
             'state_position_id' => ['required'],
@@ -64,7 +64,7 @@ class MemberController extends Controller
             'living_place_id.required' => 'ທ່ານຈະຕ້ອງປ້ອນສະຖານທີ່ປັດຈຸບັນໃຫ້ຄົບກ່ອນ',
             'tribe_id.required' => 'ທ່ານຈະຕ້ອງປ້ອນຊົນເຜົ່າກ່ອນ',
             'religious_id.required' => 'ທ່ານຈະຕ້ອງປ້ອນສາສະໜາກ່ອນ',
-            'marjor_id.required' => 'ທ່ານຈະຕ້ອງປ້ອນພາກວິຊາກ່ອນ',
+            'major_id.required' => 'ທ່ານຈະຕ້ອງປ້ອນພາກວິຊາກ່ອນ',
             'education_id.required' => 'ທ່ານຈະຕ້ອງປ້ອນລະດັບການສຶກສາກ່ອນ',
             'career_id.required' => 'ທ່ານຈະຕ້ອງປ້ອນອາຊີບກ່ອນ',
             'state_position_id.required' => 'ທ່ານຈະຕ້ອງປ້ອນຕໍາແໜ່ງທາງລັດກ່ອນ',
@@ -74,7 +74,7 @@ class MemberController extends Controller
             'phone_number.numeric' => 'ເບີໂທແມ່ນຕ້ອງເປັນຕົວເລກ',
             'duty_id.required' => 'ທ່ານຈະຕ້ອງປ້ອນໜ້າທີ່ກ່ອນ'
         ]);
-        if(Member::create([
+        if($member = Member::create([
             'name' => $request->name,
             'lastname' => $request->lastname,
             'date_of_birth' => $request->date_of_birth,
@@ -86,7 +86,7 @@ class MemberController extends Controller
             'living_place_id' => $request->living_place_id,
             'tribe_id' => $request->tribe_id,
             'religious_id' => $request->religious_id,
-            'marjor_id' => $request->marjor_id,
+            'major_id' => $request->major_id,
             'education_id' => $request->education_id,
             'career_id' => $request->career_id,
             'state_position_id' => $request->state_position_id,
@@ -95,8 +95,12 @@ class MemberController extends Controller
             'status_id' => $request->status_id,
             'phone_number' => $request->phone_number,
             'duty_id' => $request->duty_id
-        ])) return redirect("/add-member?add=success");
-        else return redirect("/add-member?add=fail");
+        ])) {
+            return redirect("/add-member?add=success");
+        }
+        else {
+            return redirect("/add-member?add=fail");
+        }
     }
 
     /**

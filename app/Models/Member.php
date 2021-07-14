@@ -22,7 +22,7 @@ class Member extends Model
         'living_place_id',
         'tribe_id',
         'religious_id',
-        'marjor_id',
+        'major_id',
         'education_id',
         'career_id',
         'state_position_id',

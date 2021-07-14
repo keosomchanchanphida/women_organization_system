@@ -26,7 +26,7 @@ class CreateMembersTable extends Migration
             $table->integer('living_place_id');
             $table->integer('tribe_id');
             $table->integer('religious_id');
-            $table->integer('marjor_id');
+            $table->integer('major_id');
             $table->integer('education_id')->nullable();
             $table->integer('career_id');
             $table->integer('state_position_id')->nullable();

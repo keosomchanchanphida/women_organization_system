@@ -24,4 +24,5 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/add-member', [MemberController::class, 'create'])->name('add-member');
     Route::post('/store-member', [MemberController::class, 'store'])->name('store-member');
+    Route::get('/show-members', [MemberController::class, 'index'])->name('show-members');
 });

@@ -58,7 +58,7 @@
                         </div>
                         <a href="#" class="nav-link btn btn-secondary ml-md-2 text-white py-5px mt-1 mt-md-0">ຕິດຕໍ່ສອບຖາມ</a>
                         @else
-                        <a class="nav-link btn btn-secondary ml-md-2 text-white py-5px mt-1 mt-md-0">
+                        <a href="{{ route('show-members') }}" class="nav-link btn btn-secondary ml-md-2 text-white py-5px mt-1 mt-md-0">
                             ສະແດງສະມາຊິກ
                         </a>
                         @endguest

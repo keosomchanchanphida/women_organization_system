@@ -41,8 +41,8 @@
                                 ການເຄື່ອນໄຫວ
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#">ການເຄືອນໄຫວພາຍໃນ</a>
-                                <a class="dropdown-item" href="#">ການເຄື່ອນໄຫວພາຍນອກ</a>
+                                <a class="dropdown-item" href="{{ route('inside-activities') }}">ການເຄືອນໄຫວພາຍໃນ</a>
+                                <a class="dropdown-item" href="{{ route('outside-activities') }}">ການເຄື່ອນໄຫວພາຍນອກ</a>
                             </div>
                         </div>
                         @guest
@@ -52,7 +52,7 @@
                                 ສະຖິຕິ
                             </button>
                             <div class="dropdown-menu" aria-labelledby="showDropdown">
-                                <a class="dropdown-item" href="#">ສະແດງສະມາຊິກ</a>
+                                <a class="dropdown-item" href="{{ route('show-members') }}">ສະແດງສະມາຊິກ</a>
                                 <a class="dropdown-item" href="#">ຄວາມເປັນມາ</a>
                             </div>
                         </div>
@@ -111,7 +111,11 @@
                 </div>
             </div>
         </nav>
-
+        @if (session()->has('alert-message'))
+            <div class="alert position-absolute w-100 text-center {{ session()->get('alert-class') ?? 'alert-danger' }}" style="z-index: 1;">
+                {{ session()->get('alert-message') }}
+            </div>
+        @endif
         <main class="py-4">
             @yield('content')
         </main>

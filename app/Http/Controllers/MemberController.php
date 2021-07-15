@@ -21,12 +21,6 @@ class MemberController extends Controller
 
     public function create(Request $request)
     {
-        if($request->add)
-            return view('addmember', [
-                'alert' => $request->add == 'success' ? 'ເພີ່ມສາມາຊິກສໍາເລັດແລ້ວ' : 'ເພິ່ມສະມາຊິກບໍ່ສໍາເລັດ',
-                'alertClass' => $request->add == 'success' ? 'alert-success' : 'alert-danger',
-                'majors' => Major::all()
-            ]);
         return view('addmember', [ 'majors' => Major::all()]);
     }
 
@@ -95,12 +89,8 @@ class MemberController extends Controller
             'status_id' => $request->status_id,
             'phone_number' => $request->phone_number,
             'duty_id' => $request->duty_id
-        ])) {
-            return redirect("/add-member?add=success");
-        }
-        else {
-            return redirect("/add-member?add=fail");
-        }
+        ])) return back()->with(['alert-message' => 'ເພີ່ມສາມາຊິກສໍາເລັດແລ້ວ', 'alert-class' => 'alert-success']);
+        else return back()->with(['alert-message' => 'ເພິ່ມສະມາຊິກບໍ່ສໍາເລັດ', 'alert-class' => 'alert-danger']);
     }
 
     /**

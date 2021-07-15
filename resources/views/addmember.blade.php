@@ -4,11 +4,6 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            @if (isset($alert))
-                <div class="alert {{ $alertClass }}">
-                    {{ $alert }}
-                </div>
-            @endif
             <div class="card">
                 <div class="card-header">ເພີ່ມສະມາຊິກ</div>
 
@@ -93,36 +88,10 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="place_of_birth_id" class="col-md-4 col-form-label text-md-right">ບ້ານເກີດ:</label>
-                            <div class="col-md-6">
-                                <select name="place_of_birth_id" id="place_of_birth_id" class="form-control @error('place_of_birth_id') is-invalid @enderror">
-                                    @foreach (App\Models\Village::all() as $village)
-                                        <option value="{{ $village->id }}">{{ $village->name }}</option>
-                                    @endforeach
-                                </select>
-                                @error('place_of_birth_id')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="col-md-2 mt-1 mt-md-0 p-md-0"><button class="btn btn-primary">ເພີ່ມ</button></div>
+                            <select-village label="ບ້ານເກີດ" name="place_of_birth_id" @error('place_of_birth_id') error="{{ $message }}" @enderror/>
                         </div>
                         <div class="form-group row">
-                            <label for="living_place_id" class="col-md-4 col-form-label text-md-right">ບ້ານຢູ່ປັດຈຸບັນ:</label>
-                            <div class="col-md-6">
-                                <select name="living_place_id" id="living_place_id" class="form-control @error('living_place_id') is-invalid @enderror">
-                                    @foreach (App\Models\Village::all() as $village)
-                                        <option value="{{ $village->id }}">{{ $village->name }}</option>
-                                    @endforeach
-                                </select>
-                                @error('living_place_id')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="col-md-2 mt-1 mt-md-0 p-md-0"><button class="btn btn-primary">ເພີ່ມ</button></div>
+                            <select-village label="ບ້ານຢູ່ປັດຈຸບັນ" name="living_place_id" @error('living_place_id') error="{{ $message }}" @enderror/>
                         </div>
                         <div class="form-group row">
                             <label for="tribe_id" class="col-md-4 col-form-label text-md-right">ຊົນເຜົ່າ:</label>

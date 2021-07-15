@@ -23,8 +23,9 @@ class DataController extends Controller
     public function addProvince(Request $request)
     {
         $request->validate(
-            ['name' => ['required']],
-            ['name.required' => 'ທ່ານຕ້ອງປ້ອນຊື່ແຂວງກ່ອນ']
+            ['name' => ['required', 'unique:provinces,name']],
+            ['name.required' => 'ທ່ານຕ້ອງປ້ອນຊື່ແຂວງກ່ອນ',
+            'name.unique' => 'ຊື່ແຂວງຕ້ອງບໍ່ຊໍ້າກັນ']
         );
         if(Province::create(['name' => $request->name]))
             return back()->with(['alert-message' => 'ເພີ່ມແຂວງສໍາເລັດແລ້ວ', 'alert-class' => 'alert-success']);
@@ -45,11 +46,12 @@ class DataController extends Controller
     public function addDistrict(Request $request)
     {
         $request->validate([
-            'name' => ['required'],
+            'name' => ['required', 'unique:districts,name'],
             'province_id' => ['required']
         ],[
             'name.required' => 'ທ່ານຕ້ອງປ້ອນຊື່ເມືອງກ່ອນ',
-            'province_id.required' => 'ທ່ານຕ້ອງເລືອກແຂວງກ່ອນ'
+            'province_id.required' => 'ທ່ານຕ້ອງເລືອກແຂວງກ່ອນ',
+            'name.unique' => 'ຊື່ເມືອງຕ້ອງບໍ່ຊໍ້າກັນ'
         ]);
         if(District::create(['name' => $request->name, 'province_id' => $request->province_id]))
             return back()->with(['alert-message' => 'ເພີ່ມເມືອງສໍາເລັດແລ້ວ', 'alert-class' => 'alert-success']);
@@ -62,7 +64,7 @@ class DataController extends Controller
             'title' => 'ເພີ່ມບ້ານ',
             'action' => route('add-village'),
             'fields' => [
-                'ຊື່ເມືອງ' => 'name'
+                'ຊື່ບ້ານ' => 'name'
             ],
             'submit' => 'ເພີ່ມ'
         ]);
@@ -70,11 +72,12 @@ class DataController extends Controller
     public function addVillage(Request $request)
     {
         $request->validate([
-            'name' => ['required'],
+            'name' => ['required', 'unique:villages,name'],
             'district_id' => ['required']
         ],[
             'name.required' => 'ທ່ານຕ້ອງປ້ອນຊື່ບ້ານກ່ອນ',
-            'district_id.required' => 'ທ່ານຕ້ອງເລືອກເມືອງກ່ອນ'
+            'district_id.required' => 'ທ່ານຕ້ອງເລືອກເມືອງກ່ອນ',
+            'name.unique' => 'ຊື່ບ້ານຕ້ອງບໍ່ຊໍ້າກັນ'
         ]);
         if(Village::create(['name' => $request->name, 'district_id' => $request->district_id]))
             return back()->with(['alert-message' => 'ເພີ່ມບ້ານສໍາເລັດແລ້ວ', 'alert-class' => 'alert-success']);

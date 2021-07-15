@@ -1,11 +1,11 @@
 @extends('layouts.app')
-
+@section('title', 'ສະມາຊິກ')
 @section('content')
 <div class="pt-md-2 pl-md-2 pr-md-3">
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('ສະແດງສະມາຊິກ') }}</div>
+                <div class="card-header">{{ __('ສະມາຊິກ') }}</div>
 
                 <div class="card-body overflow-scroll p-0">
                     <table class="table table-bordered">

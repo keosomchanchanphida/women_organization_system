@@ -37,7 +37,7 @@
                             @endforeach
                         </tr>
                         @foreach (App\Models\Member::all() as $member)
-                            <tr>
+                            <tr onclick="window.open('/edit-member/{{ $member->id }}', '_self')"  class="cursor-pointer">
                                 <td>{{ $member->id }}</td>
                                 <td>{{ $member->name }}</td>
                                 <td>{{ $member->lastname }}</td>

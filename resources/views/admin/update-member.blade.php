@@ -89,10 +89,10 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <select-village label="ບ້ານເກີດ" name="place_of_birth_id" @error('place_of_birth_id') error="{{ $message }}" @enderror/>
+                            <select-village selected-village-id="{{ $member->place_of_birth_id }}" label="ບ້ານເກີດ" name="place_of_birth_id" @error('place_of_birth_id') error="{{ $message }}" @enderror/>
                         </div>
                         <div class="form-group row">
-                            <select-village label="ບ້ານຢູ່ປັດຈຸບັນ" name="living_place_id" @error('living_place_id') error="{{ $message }}" @enderror/>
+                            <select-village selected-village-id="{{ $member->living_place_id }}" label="ບ້ານຢູ່ປັດຈຸບັນ" name="living_place_id" @error('living_place_id') error="{{ $message }}" @enderror/>
                         </div>
                         <div class="form-group row">
                             <label for="tribe_id" class="col-md-4 col-form-label text-md-right">ຊົນເຜົ່າ:</label>
@@ -268,7 +268,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-success">
-                                    ເພີ່ມສະມາຊິກ
+                                    ບັນທຶກການແກ້ໄຂ
                                 </button>
                             </div>
                         </div>

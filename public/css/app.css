@@ -10020,3 +10020,7 @@ h3 {
 .overflow-scroll {
   overflow: scroll;
 }
+
+.cursor-pointer {
+  cursor: pointer;
+}

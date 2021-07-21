@@ -22,4 +22,9 @@ class ActivityController extends Controller
     {
         return view('admin.addactivity', ['spacific' => 'ພາຍນອກ']);
     }
+
+    public function store(Request $request)
+    {
+        
+    }
 }

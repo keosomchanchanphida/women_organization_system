@@ -38,7 +38,8 @@
         props: [
             'label',
             'name',
-            'error'
+            'error',
+            'selectedVillageId'
         ],
         data(){
             return {
@@ -51,7 +52,7 @@
             }
         },
         methods:{
-            getDistricts: function(province_id){
+            getDistricts: function(province_id, district_id = null){
                 axios.get('/api/districts/'+province_id)
                     .then( res => {
                         this.districts = res.data
@@ -59,8 +60,13 @@
                             this.district_id = ''
                             this.resetVillage()
                         }else{
-                            this.district_id = this.districts[0].id
-                            this.getVillages(this.district_id)
+                            if(district_id !== null){
+                                this.district_id = district_id
+                                this.getVillages(this.district_id, Number(this.selectedVillageId))
+                            }else{
+                                this.district_id = this.districts[0].id
+                                this.getVillages(this.district_id)
+                            }
                         }
                     })
                     .catch( () => {
@@ -69,32 +75,71 @@
                         this.resetVillage()
                     })
             },
-            getVillages: function(district_id){
+            getVillages: function(district_id, village_id = null){
                 axios.get('/api/villages/'+district_id)
                     .then( res => {
                         this.villages = res.data
                         if(this.villages.lenght === 0)
                             this.village_id = ''
-                        else
-                            this.village_id = this.villages[0].id
+                        else{
+                            if(village_id !== null){
+                                this.village_id = village_id
+                            }else
+                                this.village_id = this.villages[0].id
+                        }
                     })
                     .catch( () => {
                         this.resetVillage()
                     })
             },
+            setSelectedVillage: function(village_id){
+                var district;
+                var province;
+                axios.get('/api/district/'+village_id)
+                    .then( res => {
+                        district = res.data
+                        axios.get('/api/province/'+district.id)
+                            .then( resp => {
+                                province = resp.data
+                                this.getProvinces(province.id, district.id)
+                            })
+                    })
+            },
             resetVillage: function(){
                 this.villages = []
                 this.village_id = ''
+            },
+            convertToArray(data){
+                var array = []
+                for(const i in data){
+                    array.push(data[i])
+                }
+                return array
+            },
+            getProvinces: function(province_id = null, district_id = null){
+                axios.get('/api/provinces')
+                    .then( res => {
+                        this.provinces = res.data
+                        if(province_id !== null){
+                            if(typeof(this.provinces == 'object'))
+                                this.provinces = this.convertToArray(this.provinces)
+                            this.province_id = this.provinces.filter( i => province_id === i.id)[0].id
+                            if(district_id !== null)
+                                this.getDistricts(province_id, district_id)
+                            else
+                                this.getDistricts(this.province_id)
+                        }else{
+                            this.province_id = this.provinces[0].id
+                            this.getDistricts(this.province_id)
+                        }
+                    })
             }
         },
         mounted(){
-            axios.get('/api/provinces')
-                .then( res => {
-                    this.provinces = res.data
-                    this.province_id = this.provinces[0].id
-                    this.getDistricts(this.province_id)
-                })
-
+            if(this.selectedVillageId)
+                this.setSelectedVillage(this.selectedVillageId)
+            else
+                this.getProvinces()
         }
     }
 </script>

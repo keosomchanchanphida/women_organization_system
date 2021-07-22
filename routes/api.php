@@ -2,6 +2,7 @@
 
 use App\Models\District;
 use App\Models\Province;
+use App\Models\Village;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,6 +20,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/provinces', function(){ return Province::all(); });
 Route::get('/districts/{province}', function(Province $province){ return $province->district; });
 Route::get('/villages/{district}', function(District $district){ return $district->villages; });
+
+Route::get('/province/{district}', function(District $district){ return $district->province; });
+Route::get('/district/{village}', function(Village $village){ return $village->district; });
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

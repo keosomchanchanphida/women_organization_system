@@ -107,7 +107,7 @@
                                     </span>
                                 @enderror
                             </div>
-                            <div class="col-md-2 mt-1 mt-md-0 p-md-0"><button class="btn btn-primary">ເພີ່ມ</button></div>
+                            <div class="col-md-2 mt-1 mt-md-0 p-md-0"><a href="{{ route('add-tribe-form') }}" class="btn btn-primary">ເພີ່ມ</a></div>
                         </div>
                         <div class="form-group row">
                             <label for="religious_id" class="col-md-4 col-form-label text-md-right">ສາສະໜາ:</label>
@@ -123,13 +123,13 @@
                                     </span>
                                 @enderror
                             </div>
-                            <div class="col-md-2 mt-1 mt-md-0 p-md-0"><button class="btn btn-primary">ເພີ່ມ</button></div>
+                            <div class="col-md-2 mt-1 mt-md-0 p-md-0"><a href="{{ route('add-religious-form') }}" class="btn btn-primary">ເພີ່ມ</a></div>
                         </div>
                         <div class="form-group row">
                             <label for="major_id" class="col-md-4 col-form-label text-md-right">ພາກວິຊາ:</label>
                             <div class="col-md-6">
                                 <select name="major_id" id="major_id" class="form-control @error('major_id') is-invalid @enderror">
-                                    @foreach ($majors as $major)
+                                    @foreach (App\Models\Major::all() as $major)
                                         <option value="{{ $major->id }}">{{ $major->name }}</option>
                                     @endforeach
                                 </select>
@@ -139,7 +139,7 @@
                                     </span>
                                 @enderror
                             </div>
-                            <div class="col-md-2 mt-1 mt-md-0 p-md-0"><button class="btn btn-primary">ເພີ່ມ</button></div>
+                            <div class="col-md-2 mt-1 mt-md-0 p-md-0"><a href="{{ route('add-major-form') }}" class="btn btn-primary">ເພີ່ມ</a></div>
                         </div>
                         <div class="form-group row">
                             <label for="education_id" class="col-md-4 col-form-label text-md-right">ລະດັບການສຶກສາ:</label>
@@ -155,7 +155,7 @@
                                     </span>
                                 @enderror
                             </div>
-                            <div class="col-md-2 mt-1 mt-md-0 p-md-0"><button class="btn btn-primary">ເພີ່ມ</button></div>
+                            <div class="col-md-2 mt-1 mt-md-0 p-md-0"><a href="{{ route('add-education-form') }}" class="btn btn-primary">ເພີ່ມ</a href="{{ route('add-education-form') }}"></div>
                         </div>
                         <div class="form-group row">
                             <label for="career_id" class="col-md-4 col-form-label text-md-right">ອາຊີບ:</label>
@@ -171,7 +171,7 @@
                                     </span>
                                 @enderror
                             </div>
-                            <div class="col-md-2 mt-1 mt-md-0 p-md-0"><button class="btn btn-primary">ເພີ່ມ</button></div>
+                            <div class="col-md-2 mt-1 mt-md-0 p-md-0"><a href="{{ route('add-career-form') }}" class="btn btn-primary">ເພີ່ມ</a></div>
                         </div>
                         <div class="form-group row">
                             <label for="state_position_id" class="col-md-4 col-form-label text-md-right">ຕໍາແໜ່ງທາງລັດ:</label>
@@ -187,7 +187,7 @@
                                     </span>
                                 @enderror
                             </div>
-                            <div class="col-md-2 mt-1 mt-md-0 p-md-0"><button class="btn btn-primary">ເພີ່ມ</button></div>
+                            <div class="col-md-2 mt-1 mt-md-0 p-md-0"><a href="{{ route('add-state-position-form') }}" class="btn btn-primary">ເພີ່ມ</a></div>
                         </div>
                         <div class="form-group row">
                             <label for="political_position_id" class="col-md-4 col-form-label text-md-right">ຕໍາແໜ່ງທາງພັກ:</label>
@@ -203,7 +203,7 @@
                                     </span>
                                 @enderror
                             </div>
-                            <div class="col-md-2 mt-1 mt-md-0 p-md-0"><button class="btn btn-primary">ເພີ່ມ</button></div>
+                            <div class="col-md-2 mt-1 mt-md-0 p-md-0"><a href="{{ route('add-political-position-form') }}" class="btn btn-primary">ເພີ່ມ</a></div>
                         </div>
                         <div class="form-group row">
                             <label for="graduated_place_id" class="col-md-4 col-form-label text-md-right">ສະຖານທີ່ຈົບການສຶກສາ:</label>
@@ -219,7 +219,7 @@
                                     </span>
                                 @enderror
                             </div>
-                            <div class="col-md-2 mt-1 mt-md-0 p-md-0"><button class="btn btn-primary">ເພີ່ມ</button></div>
+                            <div class="col-md-2 mt-1 mt-md-0 p-md-0"><a href="{{ route('add-graduated-place-form') }}" class="btn btn-primary">ເພີ່ມ</a></div>
                         </div>
                         <div class="form-group row">
                             <label for="status_id" class="col-md-4 col-form-label text-md-right">ສະຖານະ:</label>
@@ -235,7 +235,7 @@
                                     </span>
                                 @enderror
                             </div>
-                            <div class="col-md-2 mt-1 mt-md-0 p-md-0"><button class="btn btn-primary">ເພີ່ມ</button></div>
+                            <div class="col-md-2 mt-1 mt-md-0 p-md-0"><a href="{{ route('add-status-form') }}" class="btn btn-primary">ເພີ່ມ</a></div>
                         </div>
                         <div class="form-group row">
                             <label for="phone_number" class="col-md-4 col-form-label text-md-right">ເບີໂທ:</label>
@@ -262,7 +262,7 @@
                                     </span>
                                 @enderror
                             </div>
-                            <div class="col-md-2 mt-1 mt-md-0 p-md-0"><button class="btn btn-primary">ເພີ່ມ</button></div>
+                            <div class="col-md-2 mt-1 mt-md-0 p-md-0"><a href="{{ route('add-duty-form') }}" class="btn btn-primary">ເພີ່ມ</a></div>
                         </div>
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">

@@ -1972,6 +1972,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 //
 //
 //
@@ -2008,7 +2010,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['label', 'name', 'error'],
+  props: ['label', 'name', 'error', 'selectedVillageId'],
   data: function data() {
     return {
       villages: [],
@@ -2023,6 +2025,7 @@ __webpack_require__.r(__webpack_exports__);
     getDistricts: function getDistricts(province_id) {
       var _this = this;
 
+      var district_id = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
       axios.get('/api/districts/' + province_id).then(function (res) {
         _this.districts = res.data;
 
@@ -2031,9 +2034,15 @@ __webpack_require__.r(__webpack_exports__);
 
           _this.resetVillage();
         } else {
-          _this.district_id = _this.districts[0].id;
+          if (district_id !== null) {
+            _this.district_id = district_id;
 
-          _this.getVillages(_this.district_id);
+            _this.getVillages(_this.district_id, Number(_this.selectedVillageId));
+          } else {
+            _this.district_id = _this.districts[0].id;
+
+            _this.getVillages(_this.district_id);
+          }
         }
       })["catch"](function () {
         _this.districts = [];
@@ -2045,27 +2054,69 @@ __webpack_require__.r(__webpack_exports__);
     getVillages: function getVillages(district_id) {
       var _this2 = this;
 
+      var village_id = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
       axios.get('/api/villages/' + district_id).then(function (res) {
         _this2.villages = res.data;
-        if (_this2.villages.lenght === 0) _this2.village_id = '';else _this2.village_id = _this2.villages[0].id;
+        if (_this2.villages.lenght === 0) _this2.village_id = '';else {
+          if (village_id !== null) {
+            _this2.village_id = village_id;
+          } else _this2.village_id = _this2.villages[0].id;
+        }
       })["catch"](function () {
         _this2.resetVillage();
+      });
+    },
+    setSelectedVillage: function setSelectedVillage(village_id) {
+      var _this3 = this;
+
+      var district;
+      var province;
+      axios.get('/api/district/' + village_id).then(function (res) {
+        district = res.data;
+        axios.get('/api/province/' + district.id).then(function (resp) {
+          province = resp.data;
+
+          _this3.getProvinces(province.id, district.id);
+        });
       });
     },
     resetVillage: function resetVillage() {
       this.villages = [];
       this.village_id = '';
+    },
+    convertToArray: function convertToArray(data) {
+      var array = [];
+
+      for (var i in data) {
+        array.push(data[i]);
+      }
+
+      return array;
+    },
+    getProvinces: function getProvinces() {
+      var _this4 = this;
+
+      var province_id = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+      var district_id = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+      axios.get('/api/provinces').then(function (res) {
+        _this4.provinces = res.data;
+
+        if (province_id !== null) {
+          if (_typeof(_this4.provinces == 'object')) _this4.provinces = _this4.convertToArray(_this4.provinces);
+          _this4.province_id = _this4.provinces.filter(function (i) {
+            return province_id === i.id;
+          })[0].id;
+          if (district_id !== null) _this4.getDistricts(province_id, district_id);else _this4.getDistricts(_this4.province_id);
+        } else {
+          _this4.province_id = _this4.provinces[0].id;
+
+          _this4.getDistricts(_this4.province_id);
+        }
+      });
     }
   },
   mounted: function mounted() {
-    var _this3 = this;
-
-    axios.get('/api/provinces').then(function (res) {
-      _this3.provinces = res.data;
-      _this3.province_id = _this3.provinces[0].id;
-
-      _this3.getDistricts(_this3.province_id);
-    });
+    if (this.selectedVillageId) this.setSelectedVillage(this.selectedVillageId);else this.getProvinces();
   }
 });
 

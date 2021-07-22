@@ -5,19 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Activity extends Model
+class ActivityImage extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'title',
-        'content_path',
-        'type',
-        'major_id'
+        'image_path',
+        'image_description_path',
+        'activity_id'
     ];
 
-    public function images()
+    public function activity()
     {
-        return $this->hasMany(ActivityImage::class);
+        return $this->belongsTo(Activity::class);
     }
 }

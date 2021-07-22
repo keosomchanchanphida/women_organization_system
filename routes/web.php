@@ -30,6 +30,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/edit-member/{member}', [MemberController::class, 'edit'])->name('edit-member');
     Route::patch('/update-member/{member}', [MemberController::class, 'update'])->name('update-member');
 
+    Route::get('/add-inside-activity', [ActivityController::class, 'createInsideActivity'])->name('add-inside-activity');
+    Route::get('/add-outside-activity', [ActivityController::class, 'createOutsideActivity'])->name('add-outside-activity');
+    Route::post('/store-activity', [ActivityController::class, 'storeActivity'])->name('store-activity');
+
+    //routes related to data for member
     Route::get('/add-province', [DataController::class, 'addProvinceForm'])->name('add-province-form');
     Route::post('/add-province', [DataController::class, 'addProvince'])->name('add-province');
     Route::get('/add-district', [DataController::class, 'addDistrictForm'])->name('add-district-form');

@@ -61,10 +61,8 @@
                             this.resetVillage()
                         }else{
                             if(district_id !== null){
-                                if(typeof(this.districts) == 'object')
-                                    this.districts == this.convertToArray(this.districts)
-                                this.district_id = this.districts.filter( i => district_id === i.id)[0].id
-                                this.getVillages(this.district_id, this.selectedVillageId)
+                                this.district_id = district_id
+                                this.getVillages(this.district_id, Number(this.selectedVillageId))
                             }else{
                                 this.district_id = this.districts[0].id
                                 this.getVillages(this.district_id)
@@ -85,13 +83,7 @@
                             this.village_id = ''
                         else{
                             if(village_id !== null){
-                                if(typeof(this.villages) == 'object'){}
-                                    this.villages = this.convertToArray(this.villages)
-
-                                //somehow this filter doesn't work I don't know why
-                                this.village_id = this.villages.filter( i => village_id === i.id)[0].id
-                                //and also seems like the execute doesn't reach here
-                                console.log('villages are:  '+this.villages)
+                                this.village_id = village_id
                             }else
                                 this.village_id = this.villages[0].id
                         }

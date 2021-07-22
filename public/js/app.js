@@ -2035,12 +2035,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
           _this.resetVillage();
         } else {
           if (district_id !== null) {
-            if (_typeof(_this.districts) == 'object') _this.districts == _this.convertToArray(_this.districts);
-            _this.district_id = _this.districts.filter(function (i) {
-              return district_id === i.id;
-            })[0].id;
+            _this.district_id = district_id;
 
-            _this.getVillages(_this.district_id, _this.selectedVillageId);
+            _this.getVillages(_this.district_id, Number(_this.selectedVillageId));
           } else {
             _this.district_id = _this.districts[0].id;
 
@@ -2062,15 +2059,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         _this2.villages = res.data;
         if (_this2.villages.lenght === 0) _this2.village_id = '';else {
           if (village_id !== null) {
-            if (_typeof(_this2.villages) == 'object') {}
-
-            _this2.villages = _this2.convertToArray(_this2.villages); //somehow this filter doesn't work I don't know why
-
-            _this2.village_id = _this2.villages.filter(function (i) {
-              return village_id === i.id;
-            })[0].id; //and also seems like the execute doesn't reach here
-
-            console.log('villages are:  ' + _this2.villages);
+            _this2.village_id = village_id;
           } else _this2.village_id = _this2.villages[0].id;
         }
       })["catch"](function () {

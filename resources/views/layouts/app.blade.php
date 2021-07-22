@@ -72,8 +72,8 @@
                                     ເພີ່ມການເຄື່ອນໄຫວ
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="addActivitiesDropdown">
-                                    <a class="dropdown-item" href="#">ເພີ່ມການເຄືອນໄຫວພາຍໃນ</a>
-                                    <a class="dropdown-item" href="#">ເພີ່ມການເຄື່ອນໄຫວພາຍນອກ</a>
+                                    <a class="dropdown-item" href="{{ route('add-inside-activity') }}">ເພີ່ມການເຄືອນໄຫວພາຍໃນ</a>
+                                    <a class="dropdown-item" href="{{ route('add-outside-activity') }}">ເພີ່ມການເຄື່ອນໄຫວພາຍນອກ</a>
                                 </div>
                             </div>
                         @endauth

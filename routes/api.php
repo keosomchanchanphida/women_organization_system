@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\MemberController;
 use App\Models\District;
+use App\Models\Member;
 use App\Models\Province;
 use App\Models\Village;
 use Illuminate\Http\Request;
@@ -23,6 +25,9 @@ Route::get('/villages/{district}', function(District $district){ return $distric
 
 Route::get('/province/{district}', function(District $district){ return $district->province; });
 Route::get('/district/{village}', function(Village $village){ return $village->district; });
+
+Route::get('/all-members', [MemberController::class, 'apiGetAllMembers']);
+Route::get('/members', [MemberController::class, 'searchMembers']);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

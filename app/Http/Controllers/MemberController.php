@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Major;
 use App\Models\Member;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 
@@ -16,7 +17,7 @@ class MemberController extends Controller
      */
     public function index()
     {
-        return view('showmembers');
+        return view('showmembers', ['members' => Member::all()]);
     }
 
     public function create(Request $request)
@@ -176,5 +177,50 @@ class MemberController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function apiGetAllMembers()
+    {
+        $members = Member::all();
+        $members = $this->reformat($members);
+
+        return $members;
+    }
+
+    public function searchMembers(Request $request)
+    {
+        $search = $request->search;
+        $members = Member::all()->filter(function($member) use($search){
+            $string = $member->name.$member->lastname;
+            return preg_match("/.*$search.*/i", $string);
+        });
+        $members = $this->reformat($members);
+
+        return $members;
+    }
+
+    private function reformat(Collection $members)
+    {
+        foreach($members as $member){
+            $member->date_of_birth = date('d/m/Y', strtotime($member->date_of_birth));
+            $member->date_joined_women_union = date('d/m/Y', strtotime($member->date_joined_women_union));
+            $member->date_joined_youth_union = date('d/m/Y', strtotime($member->date_joined_youth_union));
+            $member->date_joined_trade_union = date('d/m/Y', strtotime($member->date_joined_trade_union));
+            $member->date_joined_political_party = date('d/m/Y', strtotime($member->date_joined_political_party));
+            $member->placeOfBirth = $member->placeOfBirth->name;
+            $member->livingPlace = $member->livingPlace->name;
+            $member->tribe = $member->tribe->name;
+            $member->religious = $member->religious->name;
+            $member->major = $member->major->name;
+            $member->education = $member->education->level;
+            $member->career = $member->career->career;
+            $member->statePosition = $member->statePosition? $member->statePosition->position:'';
+            $member->politicalPosition = $member->politicalPosition? $member->politicalPosition->position:'';
+            $member->graduatedPlace = $member->graduatedPlace->name;
+            $member->status = $member->status->status;
+            $member->duty = $member->duty->duty;
+        }
+
+        return $members;
     }
 }

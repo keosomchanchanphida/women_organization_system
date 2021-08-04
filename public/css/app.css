@@ -10024,3 +10024,13 @@ h3 {
 .cursor-pointer {
   cursor: pointer;
 }
+
+.limit-lines {
+  display: block;
+  /* or inline-block */
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow: hidden;
+  max-height: 9em;
+  line-height: 1.8em;
+}

@@ -10,12 +10,12 @@
                 <div class="row justify-content-center">
                     @foreach ($activities as $activity)
                         <div class="col-12 col-md-6 p-1">
-                            <a href="#">
+                            <a href="{{ route('show-activity', ['activity' => $activity->id]) }}">
                                 <div class="card border">
                                     <div class="card-body text-center p-0">
                                         <div class="px-2 my-1 px-md-3 my-md-2">{{ $activity->title }}</div>
                                         <hr class="m-0">
-                                        <div class="px-2 my-1 px-md-3 my-md-2">{{ $contents[$activity->id] }}</div>
+                                        <div class="px-2 my-1 px-md-3 my-md-2">{{ $activity->content }}</div>
                                     </div>
                                 </div>
                             </a>

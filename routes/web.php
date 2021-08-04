@@ -65,3 +65,4 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('/inside-activities', [ActivityController::class, 'insideActivities'])->name('inside-activities');
 Route::get('/outside-activities', [ActivityController::class, 'outsideActivities'])->name('outside-activities');
+Route::get('/activity/{activity}', [ActivityController::class, 'show'])->name('show-activity');

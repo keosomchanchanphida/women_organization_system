@@ -16,7 +16,7 @@
                     <form action="/store-member" method="POST">
                         @csrf
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">ຊື່:</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">ຫົວຂໍ້:</label>
                             <div class="col-md-6">
                                 <input name="name" id="name" class="form-control @error('name') is-invalid @enderror"/>
                                 @error('name')

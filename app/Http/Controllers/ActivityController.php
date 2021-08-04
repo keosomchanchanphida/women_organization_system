@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Activity;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
@@ -13,21 +14,27 @@ class ActivityController extends Controller
     public function insideActivities(Request $request)
     {
         $activities = Activity::where('type', 'inside')->get();
-        $contents = [];
         foreach($activities as $activity){
-            $contents[$activity->id] = file_get_contents(public_path().$activity->content_path);
+            try{
+                $activity->content = file_get_contents(public_path().$activity->content_path);
+            }catch(Exception $e){
+                $activity->content = '';
+            }
         }
-        return view('activities', ['spacific' => 'ພາຍໃນ', 'activities' => $activities, 'contents' => $contents]);
+        return view('activities', ['spacific' => 'ພາຍໃນ', 'activities' => $activities]);
     }
 
     public function outsideActivities(Request $request)
     {
         $activities = Activity::where('type', 'outside')->get();
-        $contents = [];
         foreach($activities as $activity){
-            $contents[$activity->id] = file_get_contents(public_path().$activity->content_path);
+            try{
+                $activity->content = file_get_contents(public_path().$activity->content_path);
+            }catch(Exception $e){
+                $activity->content = '';
+            }
         }
-        return view('activities', ['spacific' => 'ພາຍນອກ', 'activities' => $activities, 'contents' => $contents]);
+        return view('activities', ['spacific' => 'ພາຍນອກ', 'activities' => $activities]);
     }
 
     public function createInsideActivity()
@@ -59,8 +66,13 @@ class ActivityController extends Controller
         else return back()->with(['alert-message' => 'ເພີ່ມການເຄື່ອນໄຫວບໍ່ສໍາເລັດ', 'alert-class' => 'alert-danger']);
     }
 
-    public function store(Request $request)
+    public function show(Activity $activity)
     {
-
+        try{
+            $activity->content = file_get_contents(public_path().$activity->content_path);
+        }catch(Exception $e){
+            $activity->content = '';
+        }
+        return view('activity', compact('activity'));
     }
 }

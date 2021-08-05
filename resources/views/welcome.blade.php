@@ -12,20 +12,30 @@
             <div class="card col-md-12">
                 <div class="card-body">
                     <div class="row justify-content-center">
-                        @for ($i=0; $i<30; $i++)
+                        @if (count($activities) > 0)
+                        @foreach($activities as $activity)
                             <div class="col-sm-6 col-md-3 p-1">
-                                <a href="#">
+                                <a href="#" class="text-decoration-none text-dark">
                                     <div class="card border-0">
-                                        <div class="card-body text-center">
+                                        <div class="card-body">
                                             <div class="w-100 bg-dark" style="height: 70px;"></div>
-                                            ຫົວຂໍ້
-                                            <br>
-                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi enim quo aperiam neque mollitia veniam nesciunt nam, cum repellat itaque!
+                                            <div class="text-center">
+                                                {{ $activity->title }}
+                                            </div>
+                                            <hr class="my-1">
+                                            <div class="limit-lines">
+                                                {{ $activity->content }}
+                                            </div>
                                         </div>
                                     </div>
                                 </a>
                             </div>
-                        @endfor
+                        @endforeach
+                        @else
+                        <h3 class="text-center my-3">
+                            ຂະນະນີ້ຍັງບໍ່ມີການເຄື່ອນໄຫວໃດໆໃນລະບົບ
+                        </h3>
+                        @endif
                     </div>
 
                 </div>

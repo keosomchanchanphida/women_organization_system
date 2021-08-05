@@ -20,7 +20,7 @@ class ExportPDFController extends Controller
     public function download(String $filename)
     {
         try{
-            return response()->download(public_path().'/storage/'.$filename);
+            return response()->download(public_path().'/storage/'.$filename)->deleteFileAfterSend(true);
         }catch(Exception $e){
             return abort(404);
         }

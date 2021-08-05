@@ -3,6 +3,7 @@
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\DataController;
 use App\Http\Controllers\ExportPDFController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MemberController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -18,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () { return view('welcome'); });
+Route::get('/', [HomeController::class, 'index']);
 Route::get('/contacts', function() { return view('contacts'); })->name('contacts');
 
 Auth::routes();

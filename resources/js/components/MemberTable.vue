@@ -5,11 +5,12 @@
         </h3>
         <div v-else class="w-100">
             <div class="row form-group mt-2">
-                <label for="searchbar" class="col-md-4 col-form-label text-md-right">ຄົ້ນຫາ:</label>
+                <label for="searchbar" class="col-md-3 col-form-label text-md-right">ຄົ້ນຫາ:</label>
                 <div class="col-md-6">
                     <input v-model="keyword" @keydown.enter="search()" type="text" class="form-control">
                 </div>
                 <button @click="search()" class="btn btn-primary mt-2 ml-3 m-md-0">ຄົ້ນຫາ</button>
+                <button data-toggle="modal" data-target="#export-pdf-modal" class="btn btn-primary mt-2 ml-2 mt-md-0">ສ້າງ PDF</button>
             </div>
             <div class="w-100 overflow-scroll">
                 <table class="table table-bordered">
@@ -25,24 +26,24 @@
                         <td>{{ member.date_joined_youth_union }}</td>
                         <td>{{ member.date_joined_trade_union }}</td>
                         <td>{{ member.date_joined_political_party }}</td>
-                        <td>{{ member.placeOfBirth.name }}</td>
-                        <td>{{ member.livingPlace.name }}</td>
+                        <td>{{ member.placeOfBirth }}</td>
+                        <td>{{ member.livingPlace }}</td>
                         <td>{{ member.tribe.name }}</td>
                         <td>{{ member.religious.name }}</td>
                         <td>{{ member.major.name }}</td>
                         <td>{{ member.education.level }}</td>
                         <td>{{ member.career.career }}</td>
-                        <td>{{ member.statePosition? member.statePosition.position:'' }}</td>
-                        <td>{{ member.politicalPosition? member.politicalPosition.position:'' }}</td>
-                        <td>{{ member.graduatedPlace.name }}</td>
+                        <td>{{ member.statePosition}}</td>
+                        <td>{{ member.politicalPosition}}</td>
+                        <td>{{ member.graduatedPlace }}</td>
                         <td>{{ member.status.status }}</td>
                         <td>{{ member.phone_number }}</td>
                         <td>{{ member.duty.duty }}</td>
                     </tr>
                 </table>
             </div>
+            <export-pdf :members="members" />
         </div>
-
     </div>
 </template>
 
@@ -70,6 +71,9 @@
             },
             editMember: function(id){
                 window.open(`/edit-member/${id}`, '_self')
+            },
+            exportPDF: function(){
+
             }
         },
         mounted(){

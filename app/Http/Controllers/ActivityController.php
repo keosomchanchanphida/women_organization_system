@@ -13,7 +13,7 @@ class ActivityController extends Controller
 {
     public function insideActivities(Request $request)
     {
-        $activities = Activity::where('type', 'inside')->get();
+        $activities = Activity::where('type', 'inside')->orderBy('created_at', 'desc')->get();
         foreach($activities as $activity){
             try{
                 $activity->content = file_get_contents(public_path().$activity->content_path);
@@ -26,7 +26,7 @@ class ActivityController extends Controller
 
     public function outsideActivities(Request $request)
     {
-        $activities = Activity::where('type', 'outside')->get();
+        $activities = Activity::where('type', 'outside')->orderBy('created_at', 'desc')->get();
         foreach($activities as $activity){
             try{
                 $activity->content = file_get_contents(public_path().$activity->content_path);

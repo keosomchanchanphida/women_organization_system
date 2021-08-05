@@ -1834,6 +1834,206 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ExportPdf.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ExportPdf.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: {
+    members: Array | Object
+  },
+  data: function data() {
+    return {
+      selected: [],
+      id: true,
+      name: true,
+      lastname: true,
+      date_of_birth: true,
+      date_joined_women_union: true,
+      date_joined_youth_union: true,
+      date_joined_trade_union: true,
+      date_joined_political_party: true,
+      village_of_birth: true,
+      living_village: true,
+      tribe: true,
+      religious: true,
+      major: true,
+      education: true,
+      career: true,
+      state_position: true,
+      political_position: true,
+      graduatedPlace: true,
+      status: true,
+      phone_number: true,
+      duty: true
+    };
+  },
+  computed: {
+    list: function list() {
+      var _this = this;
+
+      var list = [];
+      this.selected.forEach(function (value, index) {
+        if (value && _this.members[index]) list.push(_this.members[index]);
+      });
+      return list;
+    }
+  },
+  methods: {
+    exportpdf: function exportpdf() {
+      if (this.list.length > 0) axios.post('/export', {
+        members: this.list
+      }).then(function (res) {
+        window.open(res.data);
+      });
+    },
+    selectAll: function selectAll() {
+      var length = this.members.length;
+      var checkboxes = document.getElementsByClassName('checkable-list');
+      var temp = [];
+
+      for (var i = 0; i < length; i++) {
+        temp[i] = true;
+        checkboxes[i].checked = true;
+      }
+
+      this.selected = temp;
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/MemberTable.vue?vue&type=script&lang=js&":
 /*!******************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/MemberTable.vue?vue&type=script&lang=js& ***!
@@ -1845,6 +2045,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
 //
 //
 //
@@ -1913,7 +2114,8 @@ __webpack_require__.r(__webpack_exports__);
     },
     editMember: function editMember(id) {
       window.open("/edit-member/".concat(id), '_self');
-    }
+    },
+    exportPDF: function exportPDF() {}
   },
   mounted: function mounted() {
     var _this2 = this;
@@ -37681,6 +37883,45 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
+/***/ "./resources/js/components/ExportPdf.vue":
+/*!***********************************************!*\
+  !*** ./resources/js/components/ExportPdf.vue ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _ExportPdf_vue_vue_type_template_id_437643c3___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ExportPdf.vue?vue&type=template&id=437643c3& */ "./resources/js/components/ExportPdf.vue?vue&type=template&id=437643c3&");
+/* harmony import */ var _ExportPdf_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ExportPdf.vue?vue&type=script&lang=js& */ "./resources/js/components/ExportPdf.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _ExportPdf_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _ExportPdf_vue_vue_type_template_id_437643c3___WEBPACK_IMPORTED_MODULE_0__.render,
+  _ExportPdf_vue_vue_type_template_id_437643c3___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/ExportPdf.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/MemberTable.vue":
 /*!*************************************************!*\
   !*** ./resources/js/components/MemberTable.vue ***!
@@ -37837,6 +38078,22 @@ component.options.__file = "resources/js/components/SelectVillage.vue"
 
 /***/ }),
 
+/***/ "./resources/js/components/ExportPdf.vue?vue&type=script&lang=js&":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/ExportPdf.vue?vue&type=script&lang=js& ***!
+  \************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ExportPdf_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ExportPdf.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ExportPdf.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ExportPdf_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
 /***/ "./resources/js/components/MemberTable.vue?vue&type=script&lang=js&":
 /*!**************************************************************************!*\
   !*** ./resources/js/components/MemberTable.vue?vue&type=script&lang=js& ***!
@@ -37898,6 +38155,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectVillage_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./SelectVillage.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/SelectVillage.vue?vue&type=script&lang=js&");
  /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SelectVillage_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
+/***/ "./resources/js/components/ExportPdf.vue?vue&type=template&id=437643c3&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/ExportPdf.vue?vue&type=template&id=437643c3& ***!
+  \******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExportPdf_vue_vue_type_template_id_437643c3___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExportPdf_vue_vue_type_template_id_437643c3___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExportPdf_vue_vue_type_template_id_437643c3___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ExportPdf.vue?vue&type=template&id=437643c3& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ExportPdf.vue?vue&type=template&id=437643c3&");
+
 
 /***/ }),
 
@@ -37969,6 +38243,1219 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ExportPdf.vue?vue&type=template&id=437643c3&":
+/*!*********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ExportPdf.vue?vue&type=template&id=437643c3& ***!
+  \*********************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "modal fade", attrs: { id: "export-pdf-modal" } },
+    [
+      _c("div", { staticClass: "modal-dialog modal-xl" }, [
+        _c("div", { staticClass: "modal-content pl-1 pr-1 pl-md-2 pr-md-2" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "modal-body" }, [
+            _c("div", { staticClass: "row" }, [_vm._v("ຂໍ້ມູນທີ່ປິນ:")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-6 col-sm-4 col-md-3" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.id,
+                      expression: "id"
+                    }
+                  ],
+                  attrs: { type: "checkbox", id: "id", value: "1" },
+                  domProps: {
+                    checked: Array.isArray(_vm.id)
+                      ? _vm._i(_vm.id, "1") > -1
+                      : _vm.id
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.id,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = "1",
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 && (_vm.id = $$a.concat([$$v]))
+                        } else {
+                          $$i > -1 &&
+                            (_vm.id = $$a
+                              .slice(0, $$i)
+                              .concat($$a.slice($$i + 1)))
+                        }
+                      } else {
+                        _vm.id = $$c
+                      }
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  { staticClass: "col-form-label", attrs: { for: "id" } },
+                  [_vm._v("ລະຫັດ")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-6 col-sm-4 col-md-3" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.name,
+                      expression: "name"
+                    }
+                  ],
+                  attrs: { type: "checkbox", id: "name", value: "1" },
+                  domProps: {
+                    checked: Array.isArray(_vm.name)
+                      ? _vm._i(_vm.name, "1") > -1
+                      : _vm.name
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.name,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = "1",
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 && (_vm.name = $$a.concat([$$v]))
+                        } else {
+                          $$i > -1 &&
+                            (_vm.name = $$a
+                              .slice(0, $$i)
+                              .concat($$a.slice($$i + 1)))
+                        }
+                      } else {
+                        _vm.name = $$c
+                      }
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  { staticClass: "col-form-label", attrs: { for: "name" } },
+                  [_vm._v("ຊື່")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-6 col-sm-4 col-md-3" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.lastname,
+                      expression: "lastname"
+                    }
+                  ],
+                  attrs: { type: "checkbox", id: "lastname", value: "1" },
+                  domProps: {
+                    checked: Array.isArray(_vm.lastname)
+                      ? _vm._i(_vm.lastname, "1") > -1
+                      : _vm.lastname
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.lastname,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = "1",
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 && (_vm.lastname = $$a.concat([$$v]))
+                        } else {
+                          $$i > -1 &&
+                            (_vm.lastname = $$a
+                              .slice(0, $$i)
+                              .concat($$a.slice($$i + 1)))
+                        }
+                      } else {
+                        _vm.lastname = $$c
+                      }
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  { staticClass: "col-form-label", attrs: { for: "lastname" } },
+                  [_vm._v("ນາມສະກຸນ")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-6 col-sm-4 col-md-3" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.date_of_birth,
+                      expression: "date_of_birth"
+                    }
+                  ],
+                  attrs: { type: "checkbox", id: "date_of_birth", value: "1" },
+                  domProps: {
+                    checked: Array.isArray(_vm.date_of_birth)
+                      ? _vm._i(_vm.date_of_birth, "1") > -1
+                      : _vm.date_of_birth
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.date_of_birth,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = "1",
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 && (_vm.date_of_birth = $$a.concat([$$v]))
+                        } else {
+                          $$i > -1 &&
+                            (_vm.date_of_birth = $$a
+                              .slice(0, $$i)
+                              .concat($$a.slice($$i + 1)))
+                        }
+                      } else {
+                        _vm.date_of_birth = $$c
+                      }
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-form-label",
+                    attrs: { for: "date_of_birth" }
+                  },
+                  [_vm._v("ວັນເດືອນປີເກີດ")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-6 col-sm-4 col-md-3" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.date_joined_women_union,
+                      expression: "date_joined_women_union"
+                    }
+                  ],
+                  attrs: {
+                    type: "checkbox",
+                    id: "date_joined_women_union",
+                    value: "1"
+                  },
+                  domProps: {
+                    checked: Array.isArray(_vm.date_joined_women_union)
+                      ? _vm._i(_vm.date_joined_women_union, "1") > -1
+                      : _vm.date_joined_women_union
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.date_joined_women_union,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = "1",
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            (_vm.date_joined_women_union = $$a.concat([$$v]))
+                        } else {
+                          $$i > -1 &&
+                            (_vm.date_joined_women_union = $$a
+                              .slice(0, $$i)
+                              .concat($$a.slice($$i + 1)))
+                        }
+                      } else {
+                        _vm.date_joined_women_union = $$c
+                      }
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-form-label",
+                    attrs: { for: "date_joined_women_union" }
+                  },
+                  [_vm._v("ວດປ ເຂົ້າເພດຍິງ")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-6 col-sm-4 col-md-3" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.date_joined_youth_union,
+                      expression: "date_joined_youth_union"
+                    }
+                  ],
+                  attrs: {
+                    type: "checkbox",
+                    id: "date_joined_youth_union",
+                    value: "1"
+                  },
+                  domProps: {
+                    checked: Array.isArray(_vm.date_joined_youth_union)
+                      ? _vm._i(_vm.date_joined_youth_union, "1") > -1
+                      : _vm.date_joined_youth_union
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.date_joined_youth_union,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = "1",
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            (_vm.date_joined_youth_union = $$a.concat([$$v]))
+                        } else {
+                          $$i > -1 &&
+                            (_vm.date_joined_youth_union = $$a
+                              .slice(0, $$i)
+                              .concat($$a.slice($$i + 1)))
+                        }
+                      } else {
+                        _vm.date_joined_youth_union = $$c
+                      }
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-form-label",
+                    attrs: { for: "date_joined_youth_union" }
+                  },
+                  [_vm._v("ວດປ ເຂົ້າຊາວໜຸ່ມ")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-6 col-sm-4 col-md-3" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.date_joined_trade_union,
+                      expression: "date_joined_trade_union"
+                    }
+                  ],
+                  attrs: {
+                    type: "checkbox",
+                    id: "date_joined_trade_union",
+                    value: "1"
+                  },
+                  domProps: {
+                    checked: Array.isArray(_vm.date_joined_trade_union)
+                      ? _vm._i(_vm.date_joined_trade_union, "1") > -1
+                      : _vm.date_joined_trade_union
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.date_joined_trade_union,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = "1",
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            (_vm.date_joined_trade_union = $$a.concat([$$v]))
+                        } else {
+                          $$i > -1 &&
+                            (_vm.date_joined_trade_union = $$a
+                              .slice(0, $$i)
+                              .concat($$a.slice($$i + 1)))
+                        }
+                      } else {
+                        _vm.date_joined_trade_union = $$c
+                      }
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-form-label",
+                    attrs: { for: "date_joined_trade_union" }
+                  },
+                  [_vm._v("ວດປ ເຂົ້າກໍາມະບານ")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-6 col-sm-4 col-md-3" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.date_joined_political_party,
+                      expression: "date_joined_political_party"
+                    }
+                  ],
+                  attrs: {
+                    type: "checkbox",
+                    id: "date_joined_political_party",
+                    value: "1"
+                  },
+                  domProps: {
+                    checked: Array.isArray(_vm.date_joined_political_party)
+                      ? _vm._i(_vm.date_joined_political_party, "1") > -1
+                      : _vm.date_joined_political_party
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.date_joined_political_party,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = "1",
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            (_vm.date_joined_political_party = $$a.concat([
+                              $$v
+                            ]))
+                        } else {
+                          $$i > -1 &&
+                            (_vm.date_joined_political_party = $$a
+                              .slice(0, $$i)
+                              .concat($$a.slice($$i + 1)))
+                        }
+                      } else {
+                        _vm.date_joined_political_party = $$c
+                      }
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-form-label",
+                    attrs: { for: "date_joined_political_party" }
+                  },
+                  [_vm._v("ວດປ ເຂົ້າສະມາຊິກພັກ")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-6 col-sm-4 col-md-3" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.village_of_birth,
+                      expression: "village_of_birth"
+                    }
+                  ],
+                  attrs: {
+                    type: "checkbox",
+                    id: "village_of_birth",
+                    value: "1"
+                  },
+                  domProps: {
+                    checked: Array.isArray(_vm.village_of_birth)
+                      ? _vm._i(_vm.village_of_birth, "1") > -1
+                      : _vm.village_of_birth
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.village_of_birth,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = "1",
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 && (_vm.village_of_birth = $$a.concat([$$v]))
+                        } else {
+                          $$i > -1 &&
+                            (_vm.village_of_birth = $$a
+                              .slice(0, $$i)
+                              .concat($$a.slice($$i + 1)))
+                        }
+                      } else {
+                        _vm.village_of_birth = $$c
+                      }
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-form-label",
+                    attrs: { for: "village_of_birth" }
+                  },
+                  [_vm._v("ບ້ານເກີດ")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-6 col-sm-4 col-md-3" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.living_village,
+                      expression: "living_village"
+                    }
+                  ],
+                  attrs: { type: "checkbox", id: "living_village", value: "1" },
+                  domProps: {
+                    checked: Array.isArray(_vm.living_village)
+                      ? _vm._i(_vm.living_village, "1") > -1
+                      : _vm.living_village
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.living_village,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = "1",
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 && (_vm.living_village = $$a.concat([$$v]))
+                        } else {
+                          $$i > -1 &&
+                            (_vm.living_village = $$a
+                              .slice(0, $$i)
+                              .concat($$a.slice($$i + 1)))
+                        }
+                      } else {
+                        _vm.living_village = $$c
+                      }
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-form-label",
+                    attrs: { for: "living_village" }
+                  },
+                  [_vm._v("ບ້ານຢູ່")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-6 col-sm-4 col-md-3" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.tribe,
+                      expression: "tribe"
+                    }
+                  ],
+                  attrs: { type: "checkbox", id: "tribe", value: "1" },
+                  domProps: {
+                    checked: Array.isArray(_vm.tribe)
+                      ? _vm._i(_vm.tribe, "1") > -1
+                      : _vm.tribe
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.tribe,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = "1",
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 && (_vm.tribe = $$a.concat([$$v]))
+                        } else {
+                          $$i > -1 &&
+                            (_vm.tribe = $$a
+                              .slice(0, $$i)
+                              .concat($$a.slice($$i + 1)))
+                        }
+                      } else {
+                        _vm.tribe = $$c
+                      }
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  { staticClass: "col-form-label", attrs: { for: "tribe" } },
+                  [_vm._v("ຊົນເຜົ່າ")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-6 col-sm-4 col-md-3" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.religious,
+                      expression: "religious"
+                    }
+                  ],
+                  attrs: { type: "checkbox", id: "religious", value: "1" },
+                  domProps: {
+                    checked: Array.isArray(_vm.religious)
+                      ? _vm._i(_vm.religious, "1") > -1
+                      : _vm.religious
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.religious,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = "1",
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 && (_vm.religious = $$a.concat([$$v]))
+                        } else {
+                          $$i > -1 &&
+                            (_vm.religious = $$a
+                              .slice(0, $$i)
+                              .concat($$a.slice($$i + 1)))
+                        }
+                      } else {
+                        _vm.religious = $$c
+                      }
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-form-label",
+                    attrs: { for: "religious" }
+                  },
+                  [_vm._v("ສາສະໜາ")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-6 col-sm-4 col-md-3" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.major,
+                      expression: "major"
+                    }
+                  ],
+                  attrs: { type: "checkbox", id: "major", value: "1" },
+                  domProps: {
+                    checked: Array.isArray(_vm.major)
+                      ? _vm._i(_vm.major, "1") > -1
+                      : _vm.major
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.major,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = "1",
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 && (_vm.major = $$a.concat([$$v]))
+                        } else {
+                          $$i > -1 &&
+                            (_vm.major = $$a
+                              .slice(0, $$i)
+                              .concat($$a.slice($$i + 1)))
+                        }
+                      } else {
+                        _vm.major = $$c
+                      }
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  { staticClass: "col-form-label", attrs: { for: "major" } },
+                  [_vm._v("ພາກວິຊາ")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-6 col-sm-4 col-md-3" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.education,
+                      expression: "education"
+                    }
+                  ],
+                  attrs: { type: "checkbox", id: "education", value: "1" },
+                  domProps: {
+                    checked: Array.isArray(_vm.education)
+                      ? _vm._i(_vm.education, "1") > -1
+                      : _vm.education
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.education,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = "1",
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 && (_vm.education = $$a.concat([$$v]))
+                        } else {
+                          $$i > -1 &&
+                            (_vm.education = $$a
+                              .slice(0, $$i)
+                              .concat($$a.slice($$i + 1)))
+                        }
+                      } else {
+                        _vm.education = $$c
+                      }
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-form-label",
+                    attrs: { for: "education" }
+                  },
+                  [_vm._v("ລະດັບການສຶກສາ")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-6 col-sm-4 col-md-3" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.career,
+                      expression: "career"
+                    }
+                  ],
+                  attrs: { type: "checkbox", id: "career", value: "1" },
+                  domProps: {
+                    checked: Array.isArray(_vm.career)
+                      ? _vm._i(_vm.career, "1") > -1
+                      : _vm.career
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.career,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = "1",
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 && (_vm.career = $$a.concat([$$v]))
+                        } else {
+                          $$i > -1 &&
+                            (_vm.career = $$a
+                              .slice(0, $$i)
+                              .concat($$a.slice($$i + 1)))
+                        }
+                      } else {
+                        _vm.career = $$c
+                      }
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  { staticClass: "col-form-label", attrs: { for: "career" } },
+                  [_vm._v("ອາຊີບ")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-6 col-sm-4 col-md-3" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.state_position,
+                      expression: "state_position"
+                    }
+                  ],
+                  attrs: { type: "checkbox", id: "state_position", value: "1" },
+                  domProps: {
+                    checked: Array.isArray(_vm.state_position)
+                      ? _vm._i(_vm.state_position, "1") > -1
+                      : _vm.state_position
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.state_position,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = "1",
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 && (_vm.state_position = $$a.concat([$$v]))
+                        } else {
+                          $$i > -1 &&
+                            (_vm.state_position = $$a
+                              .slice(0, $$i)
+                              .concat($$a.slice($$i + 1)))
+                        }
+                      } else {
+                        _vm.state_position = $$c
+                      }
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-form-label",
+                    attrs: { for: "state_position" }
+                  },
+                  [_vm._v("ຕໍາແໜ່ງທາງລັດ")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-6 col-sm-4 col-md-3" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.political_position,
+                      expression: "political_position"
+                    }
+                  ],
+                  attrs: {
+                    type: "checkbox",
+                    id: "political_position",
+                    value: "1"
+                  },
+                  domProps: {
+                    checked: Array.isArray(_vm.political_position)
+                      ? _vm._i(_vm.political_position, "1") > -1
+                      : _vm.political_position
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.political_position,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = "1",
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            (_vm.political_position = $$a.concat([$$v]))
+                        } else {
+                          $$i > -1 &&
+                            (_vm.political_position = $$a
+                              .slice(0, $$i)
+                              .concat($$a.slice($$i + 1)))
+                        }
+                      } else {
+                        _vm.political_position = $$c
+                      }
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-form-label",
+                    attrs: { for: "political_position" }
+                  },
+                  [_vm._v("ຕໍາແໜ່ງທາງພັກ")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-6 col-sm-4 col-md-3" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.graduatedPlace,
+                      expression: "graduatedPlace"
+                    }
+                  ],
+                  attrs: { type: "checkbox", id: "graduatedPlace", value: "1" },
+                  domProps: {
+                    checked: Array.isArray(_vm.graduatedPlace)
+                      ? _vm._i(_vm.graduatedPlace, "1") > -1
+                      : _vm.graduatedPlace
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.graduatedPlace,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = "1",
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 && (_vm.graduatedPlace = $$a.concat([$$v]))
+                        } else {
+                          $$i > -1 &&
+                            (_vm.graduatedPlace = $$a
+                              .slice(0, $$i)
+                              .concat($$a.slice($$i + 1)))
+                        }
+                      } else {
+                        _vm.graduatedPlace = $$c
+                      }
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-form-label",
+                    attrs: { for: "graduatedPlace" }
+                  },
+                  [_vm._v("ຈົບຈາກ")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-6 col-sm-4 col-md-3" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.status,
+                      expression: "status"
+                    }
+                  ],
+                  attrs: { type: "checkbox", id: "status", value: "1" },
+                  domProps: {
+                    checked: Array.isArray(_vm.status)
+                      ? _vm._i(_vm.status, "1") > -1
+                      : _vm.status
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.status,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = "1",
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 && (_vm.status = $$a.concat([$$v]))
+                        } else {
+                          $$i > -1 &&
+                            (_vm.status = $$a
+                              .slice(0, $$i)
+                              .concat($$a.slice($$i + 1)))
+                        }
+                      } else {
+                        _vm.status = $$c
+                      }
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  { staticClass: "col-form-label", attrs: { for: "status" } },
+                  [_vm._v("ສະຖານະ")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-6 col-sm-4 col-md-3" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.phone_number,
+                      expression: "phone_number"
+                    }
+                  ],
+                  attrs: { type: "checkbox", id: "phone_number", value: "1" },
+                  domProps: {
+                    checked: Array.isArray(_vm.phone_number)
+                      ? _vm._i(_vm.phone_number, "1") > -1
+                      : _vm.phone_number
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.phone_number,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = "1",
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 && (_vm.phone_number = $$a.concat([$$v]))
+                        } else {
+                          $$i > -1 &&
+                            (_vm.phone_number = $$a
+                              .slice(0, $$i)
+                              .concat($$a.slice($$i + 1)))
+                        }
+                      } else {
+                        _vm.phone_number = $$c
+                      }
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-form-label",
+                    attrs: { for: "phone_number" }
+                  },
+                  [_vm._v("ເບີໂທ")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-6 col-sm-4 col-md-3" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.duty,
+                      expression: "duty"
+                    }
+                  ],
+                  attrs: { type: "checkbox", id: "duty", value: "1" },
+                  domProps: {
+                    checked: Array.isArray(_vm.duty)
+                      ? _vm._i(_vm.duty, "1") > -1
+                      : _vm.duty
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.duty,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = "1",
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 && (_vm.duty = $$a.concat([$$v]))
+                        } else {
+                          $$i > -1 &&
+                            (_vm.duty = $$a
+                              .slice(0, $$i)
+                              .concat($$a.slice($$i + 1)))
+                        }
+                      } else {
+                        _vm.duty = $$c
+                      }
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  { staticClass: "col-form-label", attrs: { for: "duty" } },
+                  [_vm._v("ໜ້າທີ່")]
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "row" }, [_vm._v("ລາຍຊື່ທີ່ປິນ:")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "row" }, [
+              _c(
+                "table",
+                { staticClass: "table table-bordered" },
+                [
+                  _c("tr", [
+                    _c(
+                      "th",
+                      {
+                        staticClass: "cursor-pointer",
+                        on: {
+                          click: function($event) {
+                            return _vm.selectAll()
+                          }
+                        }
+                      },
+                      [_vm._v("ເລືອກທັງໝົດ")]
+                    ),
+                    _vm._v(" "),
+                    _c("th", [_vm._v("ລະຫັດ")]),
+                    _vm._v(" "),
+                    _c("th", { staticClass: "col-4" }, [_vm._v("ຊື່")]),
+                    _vm._v(" "),
+                    _c("th", { staticClass: "col-4" }, [_vm._v("ນາມສະກຸນ")])
+                  ]),
+                  _vm._v(" "),
+                  _vm._l(_vm.members, function(member, index) {
+                    return _c("tr", { key: member.id }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "d-block w-100 h-100 m-0",
+                          attrs: { for: "list" + index }
+                        },
+                        [
+                          _c("td", { staticClass: "d-block w-100 h-100" }, [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.selected[index],
+                                  expression: "selected[index]"
+                                }
+                              ],
+                              staticClass: "mr-1 checkable-list",
+                              attrs: {
+                                id: "list" + index,
+                                type: "checkbox",
+                                value: "1"
+                              },
+                              domProps: {
+                                checked: Array.isArray(_vm.selected[index])
+                                  ? _vm._i(_vm.selected[index], "1") > -1
+                                  : _vm.selected[index]
+                              },
+                              on: {
+                                change: function($event) {
+                                  var $$a = _vm.selected[index],
+                                    $$el = $event.target,
+                                    $$c = $$el.checked ? true : false
+                                  if (Array.isArray($$a)) {
+                                    var $$v = "1",
+                                      $$i = _vm._i($$a, $$v)
+                                    if ($$el.checked) {
+                                      $$i < 0 &&
+                                        _vm.$set(
+                                          _vm.selected,
+                                          index,
+                                          $$a.concat([$$v])
+                                        )
+                                    } else {
+                                      $$i > -1 &&
+                                        _vm.$set(
+                                          _vm.selected,
+                                          index,
+                                          $$a
+                                            .slice(0, $$i)
+                                            .concat($$a.slice($$i + 1))
+                                        )
+                                    }
+                                  } else {
+                                    _vm.$set(_vm.selected, index, $$c)
+                                  }
+                                }
+                              }
+                            }),
+                            _vm._v("ເລືອກ")
+                          ])
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(member.id))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(member.name))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(member.lastname))])
+                    ])
+                  })
+                ],
+                2
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group row" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "offset-md-4 btn btn-primary",
+                  on: {
+                    click: function($event) {
+                      return _vm.exportpdf()
+                    }
+                  }
+                },
+                [_vm._v("ສ້າງ")]
+              )
+            ])
+          ])
+        ])
+      ])
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("div", { staticClass: "modal-title" }, [_vm._v("ສ້າງ PDF")]),
+      _vm._v(" "),
+      _c(
+        "button",
+        { staticClass: "close", attrs: { "data-dismiss": "modal" } },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/MemberTable.vue?vue&type=template&id=512d8239&":
 /*!***********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/MemberTable.vue?vue&type=template&id=512d8239& ***!
@@ -37990,167 +39477,170 @@ var render = function() {
       ? _c("h3", { staticClass: "text-center w-100 mt-3 mb-3" }, [
           _vm._v("\n        ກໍາລັງໂຫຼດ...\n    ")
         ])
-      : _c("div", { staticClass: "w-100" }, [
-          _c("div", { staticClass: "row form-group mt-2" }, [
-            _c(
-              "label",
-              {
-                staticClass: "col-md-4 col-form-label text-md-right",
-                attrs: { for: "searchbar" }
-              },
-              [_vm._v("ຄົ້ນຫາ:")]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-md-6" }, [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.keyword,
-                    expression: "keyword"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: { type: "text" },
-                domProps: { value: _vm.keyword },
-                on: {
-                  keydown: function($event) {
-                    if (
-                      !$event.type.indexOf("key") &&
-                      _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-                    ) {
-                      return null
+      : _c(
+          "div",
+          { staticClass: "w-100" },
+          [
+            _c("div", { staticClass: "row form-group mt-2" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "col-md-3 col-form-label text-md-right",
+                  attrs: { for: "searchbar" }
+                },
+                [_vm._v("ຄົ້ນຫາ:")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-6" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.keyword,
+                      expression: "keyword"
                     }
-                    return _vm.search()
-                  },
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text" },
+                  domProps: { value: _vm.keyword },
+                  on: {
+                    keydown: function($event) {
+                      if (
+                        !$event.type.indexOf("key") &&
+                        _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                      ) {
+                        return null
+                      }
+                      return _vm.search()
+                    },
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.keyword = $event.target.value
                     }
-                    _vm.keyword = $event.target.value
                   }
-                }
-              })
+                })
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary mt-2 ml-3 m-md-0",
+                  on: {
+                    click: function($event) {
+                      return _vm.search()
+                    }
+                  }
+                },
+                [_vm._v("ຄົ້ນຫາ")]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary mt-2 ml-2 mt-md-0",
+                  attrs: {
+                    "data-toggle": "modal",
+                    "data-target": "#export-pdf-modal"
+                  }
+                },
+                [_vm._v("ສ້າງ PDF")]
+              )
             ]),
             _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-primary mt-2 ml-3 m-md-0",
-                on: {
-                  click: function($event) {
-                    return _vm.search()
-                  }
-                }
-              },
-              [_vm._v("ຄົ້ນຫາ")]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "w-100 overflow-scroll" }, [
-            _c(
-              "table",
-              { staticClass: "table table-bordered" },
-              [
-                _c(
-                  "tr",
-                  _vm._l(_vm.fields, function(field) {
-                    return _c(
-                      "th",
-                      { key: field, staticClass: "text-center" },
-                      [_vm._v(_vm._s(field))]
-                    )
-                  }),
-                  0
-                ),
-                _vm._v(" "),
-                _vm._l(_vm.members, function(member) {
-                  return _c(
+            _c("div", { staticClass: "w-100 overflow-scroll" }, [
+              _c(
+                "table",
+                { staticClass: "table table-bordered" },
+                [
+                  _c(
                     "tr",
-                    {
-                      key: member.id,
-                      staticClass: "cursor-pointer",
-                      on: {
-                        click: function($event) {
-                          return _vm.editMember(member.id)
+                    _vm._l(_vm.fields, function(field) {
+                      return _c(
+                        "th",
+                        { key: field, staticClass: "text-center" },
+                        [_vm._v(_vm._s(field))]
+                      )
+                    }),
+                    0
+                  ),
+                  _vm._v(" "),
+                  _vm._l(_vm.members, function(member) {
+                    return _c(
+                      "tr",
+                      {
+                        key: member.id,
+                        staticClass: "cursor-pointer",
+                        on: {
+                          click: function($event) {
+                            return _vm.editMember(member.id)
+                          }
                         }
-                      }
-                    },
-                    [
-                      _c("td", [_vm._v(_vm._s(member.id))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(member.name))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(member.lastname))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(member.date_of_birth))]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _vm._v(_vm._s(member.date_joined_women_union))
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _vm._v(_vm._s(member.date_joined_youth_union))
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _vm._v(_vm._s(member.date_joined_trade_union))
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _vm._v(_vm._s(member.date_joined_political_party))
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(member.placeOfBirth.name))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(member.livingPlace.name))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(member.tribe.name))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(member.religious.name))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(member.major.name))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(member.education.level))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(member.career.career))]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _vm._v(
-                          _vm._s(
-                            member.statePosition
-                              ? member.statePosition.position
-                              : ""
-                          )
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _vm._v(
-                          _vm._s(
-                            member.politicalPosition
-                              ? member.politicalPosition.position
-                              : ""
-                          )
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(member.graduatedPlace.name))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(member.status.status))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(member.phone_number))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(member.duty.duty))])
-                    ]
-                  )
-                })
-              ],
-              2
-            )
-          ])
-        ])
+                      },
+                      [
+                        _c("td", [_vm._v(_vm._s(member.id))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(member.name))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(member.lastname))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(member.date_of_birth))]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(_vm._s(member.date_joined_women_union))
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(_vm._s(member.date_joined_youth_union))
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(_vm._s(member.date_joined_trade_union))
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(_vm._s(member.date_joined_political_party))
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(member.placeOfBirth))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(member.livingPlace))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(member.tribe.name))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(member.religious.name))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(member.major.name))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(member.education.level))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(member.career.career))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(member.statePosition))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(member.politicalPosition))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(member.graduatedPlace))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(member.status.status))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(member.phone_number))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(member.duty.duty))])
+                      ]
+                    )
+                  })
+                ],
+                2
+              )
+            ]),
+            _vm._v(" "),
+            _c("export-pdf", { attrs: { members: _vm.members } })
+          ],
+          1
+        )
   ])
 }
 var staticRenderFns = []
@@ -50838,6 +52328,7 @@ Vue.compile = compileToFunctions;
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var map = {
+	"./components/ExportPdf.vue": "./resources/js/components/ExportPdf.vue",
 	"./components/MemberTable.vue": "./resources/js/components/MemberTable.vue",
 	"./components/SelectDistrict.vue": "./resources/js/components/SelectDistrict.vue",
 	"./components/SelectProvince.vue": "./resources/js/components/SelectProvince.vue",

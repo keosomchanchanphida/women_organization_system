@@ -25,14 +25,9 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="content" class="col-md-4 col-form-label text-md-right">ເນື້ອໃນ:</label>
+                            <label for="content" class="col-md-4 col-form-label text-md-right">ເນື້ອໃນຫຼັກ:</label>
                             <div class="col-md-6">
-                                <textarea name="content" id="content" cols="30" rows="10" class="form-control @error('content') is-invalid @enderror"></textarea>
-                                @error('content')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <textarea name="content" id="content" cols="30" rows="10" class="form-control"></textarea>
                             </div>
                         </div>
                         <div class="form-group row">

@@ -4,11 +4,6 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            @if (isset($alert))
-                <div class="alert {{ $alertClass }}">
-                    {{ $alert }}
-                </div>
-            @endif
             <div class="card">
                 <div class="card-header">ເພີ່ມກິດຈະກໍາ</div>
 

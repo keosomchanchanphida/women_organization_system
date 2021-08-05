@@ -56,7 +56,7 @@
                                 <a class="dropdown-item" href="#">ຄວາມເປັນມາ</a>
                             </div>
                         </div>
-                        <a href="#" class="nav-link btn btn-secondary ml-md-2 text-white py-5px mt-1 mt-md-0">ຕິດຕໍ່ສອບຖາມ</a>
+                        <a href="{{ route('contacts') }}" class="nav-link btn btn-secondary ml-md-2 text-white py-5px mt-1 mt-md-0">ຕິດຕໍ່ສອບຖາມ</a>
                         @else
                         <a href="{{ route('show-members') }}" class="nav-link btn btn-secondary ml-md-2 text-white py-5px mt-1 mt-md-0">
                             ສະແດງສະມາຊິກ

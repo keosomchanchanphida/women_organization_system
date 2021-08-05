@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\DataController;
+use App\Http\Controllers\ExportPDFController;
 use App\Http\Controllers\MemberController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -17,9 +18,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', function () { return view('welcome'); });
+Route::get('/contacts', function() { return view('contacts'); })->name('contacts');
 
 Auth::routes();
 Route::middleware(['auth'])->group(function () {
@@ -61,6 +61,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/add-status', [DataController::class, 'addStatus'])->name('add-status');
     Route::get('/add-duty', [DataController::class, 'addDutyForm'])->name('add-duty-form');
     Route::post('/add-duty', [DataController::class, 'addDuty'])->name('add-duty');
+
+    Route::post('/export', [ExportPDFController::class, 'export']);
+    Route::get('/download/{filename}', [ExportPDFController::class, 'download']);
 });
 
 Route::get('/inside-activities', [ActivityController::class, 'insideActivities'])->name('inside-activities');

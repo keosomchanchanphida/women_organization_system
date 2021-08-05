@@ -170,7 +170,7 @@ class MemberController extends Controller
             'phone_number' => $request->phone_number,
             'duty_id' => $request->duty_id
         ]);
-        if($member->save()) return back()->with(['alert-message' => 'ບັນທຶກຂໍ້ມູນສໍາເລັດແລ້ວ', 'alert-class' => 'alert-success']);
+        if($member->save()) return redirect(route('show-members'))->with(['alert-message' => 'ບັນທຶກຂໍ້ມູນສໍາເລັດແລ້ວ', 'alert-class' => 'alert-success']);
         else return back()->with(['alert-message' => 'ບັນທຶກຂໍ້ມູນບໍ່ສໍາເລັດ', 'alert-class' => 'alert-danger']);
     }
 

@@ -1992,7 +1992,7 @@ __webpack_require__.r(__webpack_exports__);
       career: true,
       state_position: true,
       political_position: true,
-      graduatedPlace: true,
+      graduated_place: true,
       status: true,
       phone_number: true,
       duty: true
@@ -2004,7 +2004,7 @@ __webpack_require__.r(__webpack_exports__);
 
       var list = [];
       this.selected.forEach(function (value, index) {
-        if (value && _this.members[index]) list.push(_this.members[index]);
+        if (value && _this.members[index]) list.push(_this.members[index].id);
       });
       return list;
     }
@@ -2012,7 +2012,28 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     exportpdf: function exportpdf() {
       if (this.list.length > 0) axios.post('/export', {
-        members: this.list
+        members: this.list,
+        id: this.id,
+        name: this.name,
+        lastname: this.lastname,
+        date_of_birth: this.date_of_birth,
+        date_joined_women_union: this.date_joined_women_union,
+        date_joined_youth_union: this.date_joined_youth_union,
+        date_joined_trade_union: this.date_joined_trade_union,
+        date_joined_political_party: this.date_joined_political_party,
+        village_of_birth: this.village_of_birth,
+        living_village: this.living_village,
+        tribe: this.tribe,
+        religious: this.religious,
+        major: this.major,
+        education: this.education,
+        career: this.career,
+        state_position: this.state_position,
+        political_position: this.political_position,
+        graduated_place: this.graduated_place,
+        status: this.status,
+        phone_number: this.phone_number,
+        duty: this.duty
       }).then(function (res) {
         window.open(res.data);
       });
@@ -39123,34 +39144,38 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.graduatedPlace,
-                      expression: "graduatedPlace"
+                      value: _vm.graduated_place,
+                      expression: "graduated_place"
                     }
                   ],
-                  attrs: { type: "checkbox", id: "graduatedPlace", value: "1" },
+                  attrs: {
+                    type: "checkbox",
+                    id: "graduated_place",
+                    value: "1"
+                  },
                   domProps: {
-                    checked: Array.isArray(_vm.graduatedPlace)
-                      ? _vm._i(_vm.graduatedPlace, "1") > -1
-                      : _vm.graduatedPlace
+                    checked: Array.isArray(_vm.graduated_place)
+                      ? _vm._i(_vm.graduated_place, "1") > -1
+                      : _vm.graduated_place
                   },
                   on: {
                     change: function($event) {
-                      var $$a = _vm.graduatedPlace,
+                      var $$a = _vm.graduated_place,
                         $$el = $event.target,
                         $$c = $$el.checked ? true : false
                       if (Array.isArray($$a)) {
                         var $$v = "1",
                           $$i = _vm._i($$a, $$v)
                         if ($$el.checked) {
-                          $$i < 0 && (_vm.graduatedPlace = $$a.concat([$$v]))
+                          $$i < 0 && (_vm.graduated_place = $$a.concat([$$v]))
                         } else {
                           $$i > -1 &&
-                            (_vm.graduatedPlace = $$a
+                            (_vm.graduated_place = $$a
                               .slice(0, $$i)
                               .concat($$a.slice($$i + 1)))
                         }
                       } else {
-                        _vm.graduatedPlace = $$c
+                        _vm.graduated_place = $$c
                       }
                     }
                   }
@@ -39160,7 +39185,7 @@ var render = function() {
                   "label",
                   {
                     staticClass: "col-form-label",
-                    attrs: { for: "graduatedPlace" }
+                    attrs: { for: "graduated_place" }
                   },
                   [_vm._v("ຈົບຈາກ")]
                 )
@@ -39341,7 +39366,7 @@ var render = function() {
                       _c(
                         "label",
                         {
-                          staticClass: "d-block w-100 h-100 m-0",
+                          staticClass: "d-block w-100 h-100 m-0 cursor-pointer",
                           attrs: { for: "list" + index }
                         },
                         [

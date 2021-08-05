@@ -80,8 +80,8 @@
                         <label for="political_position" class="col-form-label">ຕໍາແໜ່ງທາງພັກ</label>
                     </div>
                     <div class="col-6 col-sm-4 col-md-3">
-                        <input type="checkbox" v-model="graduatedPlace" id="graduatedPlace" value="1">
-                        <label for="graduatedPlace" class="col-form-label">ຈົບຈາກ</label>
+                        <input type="checkbox" v-model="graduated_place" id="graduated_place" value="1">
+                        <label for="graduated_place" class="col-form-label">ຈົບຈາກ</label>
                     </div>
                     <div class="col-6 col-sm-4 col-md-3">
                         <input type="checkbox" v-model="status" id="status" value="1">
@@ -106,7 +106,7 @@
                             <th class="col-4">ນາມສະກຸນ</th>
                         </tr>
                         <tr v-for="(member, index) in members" :key="member.id">
-                            <label :for="'list'+index" class="d-block w-100 h-100 m-0"><td class="d-block w-100 h-100"><input :id="'list'+index" v-model="selected[index]" type="checkbox" value="1" class="mr-1 checkable-list">ເລືອກ</td></label>
+                            <label :for="'list'+index" class="d-block w-100 h-100 m-0 cursor-pointer"><td class="d-block w-100 h-100"><input :id="'list'+index" v-model="selected[index]" type="checkbox" value="1" class="mr-1 checkable-list">ເລືອກ</td></label>
                             <td>{{ member.id }}</td>
                             <td>{{ member.name }}</td>
                             <td>{{ member.lastname }}</td>
@@ -146,7 +146,7 @@ export default {
             career: true,
             state_position: true,
             political_position: true,
-            graduatedPlace: true,
+            graduated_place: true,
             status: true,
             phone_number: true,
             duty: true,
@@ -156,7 +156,7 @@ export default {
         list: function(){
             let list = []
             this.selected.forEach((value, index) => {
-                if(value && this.members[index]) list.push(this.members[index])
+                if(value && this.members[index]) list.push(this.members[index].id)
             })
             return list
         }
@@ -166,6 +166,27 @@ export default {
             if(this.list.length > 0)
                 axios.post('/export', {
                     members: this.list,
+                    id: this.id,
+                    name: this.name,
+                    lastname: this.lastname,
+                    date_of_birth: this.date_of_birth,
+                    date_joined_women_union: this.date_joined_women_union,
+                    date_joined_youth_union: this.date_joined_youth_union,
+                    date_joined_trade_union: this.date_joined_trade_union,
+                    date_joined_political_party: this.date_joined_political_party,
+                    village_of_birth: this.village_of_birth,
+                    living_village: this.living_village,
+                    tribe: this.tribe,
+                    religious: this.religious,
+                    major: this.major,
+                    education: this.education,
+                    career: this.career,
+                    state_position: this.state_position,
+                    political_position: this.political_position,
+                    graduated_place: this.graduated_place,
+                    status: this.status,
+                    phone_number: this.phone_number,
+                    duty: this.duty,
                 }).then( res => {
                     window.open(res.data)
                 })

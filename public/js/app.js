@@ -2115,34 +2115,66 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: {},
+  props: {
+    isadmin: Boolean
+  },
   data: function data() {
     return {
       fields: ['ລະຫັດ', 'ຊື່', 'ນາມສະກຸນ', 'ວັນເດືອນປີ ເກີດ', 'ວັນເດືອນປີ ເຂົ້າເປັນສະມາຊິກ', 'ວັນເດືອນປີ ເຂົ້າເປັນສະມາຊິກຊາວໜຸ່ມ', 'ວັນເດືອນປີ ເຂົ້າເປັນສະມາຊິກກໍາມະບານ', 'ວັນເດືອນປີ ເຂົ້າເປັນສະມາຊິກພັກ', 'ບ້ານເກີດ', 'ບ້ານຢູ່', 'ຊົນເຜົ່າ', 'ສາສະໜາ', 'ພາກວິຊາ', 'ລະດັບການສຶກສາ', 'ອາຊີບ', 'ຕໍາແໜ່ງທາງລັດ', 'ຕໍາແໜ່ງທາງພັກ', 'ຈົບຈາກ', 'ສະຖານະ', 'ເບີໂທ', 'ໜ້າທີ່'],
-      members: null,
-      keyword: ''
+      allMembers: null,
+      keyword: '',
+      selectedMajor: ''
     };
   },
-  computed: {},
-  methods: {
-    search: function search() {
+  computed: {
+    majors: function majors() {
+      var majors = [];
+      if (this.allMembers !== null) this.allMembers.forEach(function (member) {
+        return majors.push(member.major.name);
+      });
+      var uniqueMajors = majors.filter(function (value, index, self) {
+        return self.indexOf(value) === index;
+      });
+      uniqueMajors.unshift('ທັງໝົດ');
+      this.selectedMajor = uniqueMajors[0];
+      return uniqueMajors;
+    },
+    members: function members() {
       var _this = this;
 
+      var members = this.allMembers;
+      if (this.selectedMajor !== 'ທັງໝົດ') members = members.filter(function (member) {
+        return member.major.name === _this.selectedMajor;
+      });
+      return members;
+    }
+  },
+  methods: {
+    search: function search() {
+      var _this2 = this;
+
       axios.get('/api/members?search=' + this.keyword).then(function (res) {
-        _this.members = res.data;
+        _this2.allMembers = res.data;
       });
     },
     editMember: function editMember(id) {
       window.open("/edit-member/".concat(id), '_self');
-    },
-    exportPDF: function exportPDF() {}
+    }
   },
   mounted: function mounted() {
-    var _this2 = this;
+    var _this3 = this;
 
     axios.get('/api/all-members').then(function (res) {
-      _this2.members = res.data;
+      _this3.allMembers = res.data;
     });
   }
 });
@@ -39498,7 +39530,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    typeof _vm.members === null
+    typeof _vm.allMembers === null
       ? _c("h3", { staticClass: "text-center w-100 mt-3 mb-3" }, [
           _vm._v("\n        ກໍາລັງໂຫຼດ...\n    ")
         ])
@@ -39506,7 +39538,7 @@ var render = function() {
           "div",
           { staticClass: "w-100" },
           [
-            _c("div", { staticClass: "row form-group mt-2" }, [
+            _c("div", { staticClass: "row form-group mt-2 mx-0" }, [
               _c(
                 "label",
                 {
@@ -39527,7 +39559,7 @@ var render = function() {
                     }
                   ],
                   staticClass: "form-control",
-                  attrs: { type: "text" },
+                  attrs: { id: "searchbar", type: "text" },
                   domProps: { value: _vm.keyword },
                   on: {
                     keydown: function($event) {
@@ -39562,17 +39594,71 @@ var render = function() {
                 [_vm._v("ຄົ້ນຫາ")]
               ),
               _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary mt-2 ml-2 mt-md-0",
-                  attrs: {
-                    "data-toggle": "modal",
-                    "data-target": "#export-pdf-modal"
-                  }
-                },
-                [_vm._v("ສ້າງ PDF")]
-              )
+              _vm.isadmin
+                ? _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary mt-2 ml-2 mt-md-0",
+                      attrs: {
+                        "data-toggle": "modal",
+                        "data-target": "#export-pdf-modal"
+                      }
+                    },
+                    [_vm._v("ສ້າງ PDF")]
+                  )
+                : _vm._e()
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "row form-group m-0 mb-2" }, [
+              _c("div", { staticClass: "col-4 d-flex" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-form-label mr-1",
+                    attrs: { for: "major_filter" }
+                  },
+                  [_vm._v("ພາກວິຊາ:")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.selectedMajor,
+                        expression: "selectedMajor"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { name: "major_filter", id: "major_filter" },
+                    on: {
+                      change: function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.selectedMajor = $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      }
+                    }
+                  },
+                  _vm._l(_vm.majors, function(major) {
+                    return _c(
+                      "option",
+                      { key: major, domProps: { value: major } },
+                      [_vm._v(_vm._s(major))]
+                    )
+                  }),
+                  0
+                )
+              ])
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "w-100 overflow-scroll" }, [
@@ -39662,7 +39748,9 @@ var render = function() {
               )
             ]),
             _vm._v(" "),
-            _c("export-pdf", { attrs: { members: _vm.members } })
+            _vm.isadmin
+              ? _c("export-pdf", { attrs: { members: _vm.members } })
+              : _vm._e()
           ],
           1
         )

@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body p-0">
-                    <member-table />
+                    <member-table @auth isadmin @endauth />
                 </div>
             </div>
         </div>

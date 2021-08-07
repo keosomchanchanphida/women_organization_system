@@ -35,13 +35,22 @@ class ExportPDFController extends Controller
             'phone_number' => $request->phone_number,
             'duty' => $request->duty,
         ];
+        $fieldCount = 0;
+        foreach($data as $i){
+            if($i) $fieldCount++;
+        }
+        $fontSize = 12;
+        if($fieldCount > 20) $fontSize = 8;
+        else if($fieldCount > 17) $fontSize = 9;
+        else if($fieldCount > 15) $fontSize = 10;
+        else if($fieldCount > 14) $fontSize = 11;
+        $data['fontSize'] = $fontSize;
         $ids = $request->members;
-        $members = Member::where(function($query) use($ids){
+        $data['members'] = Member::where(function($query) use($ids){
             foreach($ids as $id){
                 $query->orWhere('id', '=', $id);
             }
         })->get();
-        $data['members'] = $members;
         $pdf = PDF::loadView('admin.export', $data)->setPaper('a4', 'landscape');
         $filename = Str::random(25).'.pdf';
         $pdf->save(public_path().'/storage/'.$filename);

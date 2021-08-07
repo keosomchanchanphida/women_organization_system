@@ -18,15 +18,20 @@
             font-weight: 300;
             font-style: bold;
         }
+        html{
+            font-size: {{ $fontSize ?? '8' }}px;
+        }
         *{
             font-family: 'Phetsarath OT';
             margin: 0px;
             padding: 0px;
-            font-size: .8rem;
+        }
+        *:not(html){
+            font-size: 1rem;
         }
         body{margin: 1rem;}
-        table{ border: 1px solid black; border-collapse: collapse;}
-        th, td{ border: 1px solid black;}
+        table{ border: 1px solid black; border-collapse: collapse; margin: auto; }
+        th, td{ border: 1px solid black; padding-left: .3rem; padding-right: .3rem;}
     </style>
 </head>
 <body>

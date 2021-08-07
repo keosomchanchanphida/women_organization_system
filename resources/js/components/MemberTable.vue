@@ -13,10 +13,22 @@
                 <button v-if="isadmin" data-toggle="modal" data-target="#export-pdf-modal" class="btn btn-primary mt-2 ml-2 mt-md-0">ສ້າງ PDF</button>
             </div>
             <div class="row form-group m-0 mb-2">
-                <div class="col-4 d-flex">
+                <div class="col-6 col-md-4 d-flex">
                     <label for="major_filter" class="col-form-label mr-1">ພາກວິຊາ:</label>
                     <select v-model="selectedMajor" name="major_filter" id="major_filter" class="form-control">
                         <option v-for="major in majors" :key="major" :value="major">{{ major }}</option>
+                    </select>
+                </div>
+                <div class="col-6 col-md-4 d-flex">
+                    <label for="state_position_filter" class="col-form-label mr-1">ຕໍາແໜ່ງທາງລັດ:</label>
+                    <select v-model="selectedStatePosition" name="state_position_filter" id="state_position_filter" class="form-control">
+                        <option v-for="position in statePositions" :key="position" :value="position">{{ position }}</option>
+                    </select>
+                </div>
+                <div class="col-6 col-md-4 mt-2 mt-md-0 d-flex">
+                    <label for="education_filter" class="col-form-label mr-1">ລະດັບການສຶກສາ:</label>
+                    <select v-model="selectedEducation" name="education_filter" id="education_filter" class="form-control">
+                        <option v-for="education in educations" :key="education" :value="education">{{ education }}</option>
                     </select>
                 </div>
             </div>
@@ -65,7 +77,9 @@
                 fields: ['ລະຫັດ', 'ຊື່', 'ນາມສະກຸນ', 'ວັນເດືອນປີ ເກີດ', 'ວັນເດືອນປີ ເຂົ້າເປັນສະມາຊິກ', 'ວັນເດືອນປີ ເຂົ້າເປັນສະມາຊິກຊາວໜຸ່ມ', 'ວັນເດືອນປີ ເຂົ້າເປັນສະມາຊິກກໍາມະບານ', 'ວັນເດືອນປີ ເຂົ້າເປັນສະມາຊິກພັກ', 'ບ້ານເກີດ', 'ບ້ານຢູ່', 'ຊົນເຜົ່າ', 'ສາສະໜາ', 'ພາກວິຊາ', 'ລະດັບການສຶກສາ', 'ອາຊີບ', 'ຕໍາແໜ່ງທາງລັດ', 'ຕໍາແໜ່ງທາງພັກ', 'ຈົບຈາກ', 'ສະຖານະ', 'ເບີໂທ', 'ໜ້າທີ່'],
                 allMembers: null,
                 keyword: '',
-                selectedMajor: ''
+                selectedMajor: '',
+                selectedStatePosition: '',
+                selectedEducation: ''
             }
         },
         computed:{
@@ -78,10 +92,33 @@
                 this.selectedMajor = uniqueMajors[0]
                 return uniqueMajors
             },
+            statePositions: function(){
+                let positions = []
+                if(this.allMembers !== null)
+                    this.allMembers.forEach( member => positions.push(member.statePosition) )
+                let uniquePositions = positions.filter((value, index, self) => self.indexOf(value) === index)
+                uniquePositions.unshift('ທັງໝົດ')
+                this.selectedStatePosition = uniquePositions[0]
+                return uniquePositions
+            },
+            educations: function(){
+                let educations = []
+                if(this.allMembers !== null)
+                    this.allMembers.forEach( member => educations.push(member.education.level) )
+                let uniqueEducations = educations.filter((value, index, self) => self.indexOf(value) === index)
+                uniqueEducations.unshift('ທັງໝົດ')
+                this.selectedEducation = uniqueEducations[0]
+                return uniqueEducations
+            },
             members: function(){
                 let members = this.allMembers
                 if(this.selectedMajor !== 'ທັງໝົດ')
                     members = members.filter(member => member.major.name === this.selectedMajor)
+                if(this.selectedStatePosition !== 'ທັງໝົດ')
+                    members = members.filter(member => member.statePosition === this.selectedStatePosition)
+                if(this.selectedEducation !== 'ທັງໝົດ')
+                    members = members.filter(member => member.education.level === this.selectedEducation)
+
                 return members
             }
         },

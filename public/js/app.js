@@ -2123,6 +2123,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     isadmin: Boolean
@@ -2132,7 +2144,9 @@ __webpack_require__.r(__webpack_exports__);
       fields: ['ລະຫັດ', 'ຊື່', 'ນາມສະກຸນ', 'ວັນເດືອນປີ ເກີດ', 'ວັນເດືອນປີ ເຂົ້າເປັນສະມາຊິກ', 'ວັນເດືອນປີ ເຂົ້າເປັນສະມາຊິກຊາວໜຸ່ມ', 'ວັນເດືອນປີ ເຂົ້າເປັນສະມາຊິກກໍາມະບານ', 'ວັນເດືອນປີ ເຂົ້າເປັນສະມາຊິກພັກ', 'ບ້ານເກີດ', 'ບ້ານຢູ່', 'ຊົນເຜົ່າ', 'ສາສະໜາ', 'ພາກວິຊາ', 'ລະດັບການສຶກສາ', 'ອາຊີບ', 'ຕໍາແໜ່ງທາງລັດ', 'ຕໍາແໜ່ງທາງພັກ', 'ຈົບຈາກ', 'ສະຖານະ', 'ເບີໂທ', 'ໜ້າທີ່'],
       allMembers: null,
       keyword: '',
-      selectedMajor: ''
+      selectedMajor: '',
+      selectedStatePosition: '',
+      selectedEducation: ''
     };
   },
   computed: {
@@ -2148,12 +2162,42 @@ __webpack_require__.r(__webpack_exports__);
       this.selectedMajor = uniqueMajors[0];
       return uniqueMajors;
     },
+    statePositions: function statePositions() {
+      var positions = [];
+      if (this.allMembers !== null) this.allMembers.forEach(function (member) {
+        return positions.push(member.statePosition);
+      });
+      var uniquePositions = positions.filter(function (value, index, self) {
+        return self.indexOf(value) === index;
+      });
+      uniquePositions.unshift('ທັງໝົດ');
+      this.selectedStatePosition = uniquePositions[0];
+      return uniquePositions;
+    },
+    educations: function educations() {
+      var educations = [];
+      if (this.allMembers !== null) this.allMembers.forEach(function (member) {
+        return educations.push(member.education.level);
+      });
+      var uniqueEducations = educations.filter(function (value, index, self) {
+        return self.indexOf(value) === index;
+      });
+      uniqueEducations.unshift('ທັງໝົດ');
+      this.selectedEducation = uniqueEducations[0];
+      return uniqueEducations;
+    },
     members: function members() {
       var _this = this;
 
       var members = this.allMembers;
       if (this.selectedMajor !== 'ທັງໝົດ') members = members.filter(function (member) {
         return member.major.name === _this.selectedMajor;
+      });
+      if (this.selectedStatePosition !== 'ທັງໝົດ') members = members.filter(function (member) {
+        return member.statePosition === _this.selectedStatePosition;
+      });
+      if (this.selectedEducation !== 'ທັງໝົດ') members = members.filter(function (member) {
+        return member.education.level === _this.selectedEducation;
       });
       return members;
     }
@@ -39610,7 +39654,7 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "row form-group m-0 mb-2" }, [
-              _c("div", { staticClass: "col-4 d-flex" }, [
+              _c("div", { staticClass: "col-6 col-md-4 d-flex" }, [
                 _c(
                   "label",
                   {
@@ -39654,6 +39698,109 @@ var render = function() {
                       "option",
                       { key: major, domProps: { value: major } },
                       [_vm._v(_vm._s(major))]
+                    )
+                  }),
+                  0
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-6 col-md-4 d-flex" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-form-label mr-1",
+                    attrs: { for: "state_position_filter" }
+                  },
+                  [_vm._v("ຕໍາແໜ່ງທາງລັດ:")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.selectedStatePosition,
+                        expression: "selectedStatePosition"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      name: "state_position_filter",
+                      id: "state_position_filter"
+                    },
+                    on: {
+                      change: function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.selectedStatePosition = $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      }
+                    }
+                  },
+                  _vm._l(_vm.statePositions, function(position) {
+                    return _c(
+                      "option",
+                      { key: position, domProps: { value: position } },
+                      [_vm._v(_vm._s(position))]
+                    )
+                  }),
+                  0
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-6 col-md-4 mt-2 mt-md-0 d-flex" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-form-label mr-1",
+                    attrs: { for: "education_filter" }
+                  },
+                  [_vm._v("ລະດັບການສຶກສາ:")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.selectedEducation,
+                        expression: "selectedEducation"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { name: "education_filter", id: "education_filter" },
+                    on: {
+                      change: function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.selectedEducation = $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      }
+                    }
+                  },
+                  _vm._l(_vm.educations, function(education) {
+                    return _c(
+                      "option",
+                      { key: education, domProps: { value: education } },
+                      [_vm._v(_vm._s(education))]
                     )
                   }),
                   0

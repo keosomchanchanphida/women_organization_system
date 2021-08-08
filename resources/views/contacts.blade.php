@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends(auth()->user() ? 'layouts.admin-app':'layouts.app')
 @section('title', 'ຕິດຕໍ່ສອບຖາມ')
 
 @section('banner')

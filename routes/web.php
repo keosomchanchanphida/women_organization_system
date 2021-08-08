@@ -31,6 +31,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/store-member', [MemberController::class, 'store'])->name('store-member');
     Route::get('/edit-member/{member}', [MemberController::class, 'edit'])->name('edit-member');
     Route::patch('/update-member/{member}', [MemberController::class, 'update'])->name('update-member');
+    Route::delete('/delete-member/{member}', [MemberController::class, 'destroy'])->name('delete-member');
 
     Route::get('/add-inside-activity', [ActivityController::class, 'createInsideActivity'])->name('add-inside-activity');
     Route::get('/add-outside-activity', [ActivityController::class, 'createOutsideActivity'])->name('add-outside-activity');

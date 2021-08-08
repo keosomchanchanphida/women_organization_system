@@ -10034,3 +10034,23 @@ h3 {
   max-height: 9em;
   line-height: 1.8em;
 }
+
+#sidebar {
+  transition: width 0.4s, padding 0.4s;
+  width: 50px;
+  position: fixed;
+  z-index: 1;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  padding-left: 50px;
+  padding-right: 0px;
+}
+
+#sidebar .nav-link:hover {
+  background-color: #333;
+}
+
+#main {
+  padding-left: 60px;
+}

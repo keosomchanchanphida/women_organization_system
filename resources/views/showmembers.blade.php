@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends(auth()->user() ? 'layouts.admin-app':'layouts.app')
 @section('title', 'ສະມາຊິກ')
 @section('content')
 <div class="pt-md-2 pl-md-2 pr-md-3">

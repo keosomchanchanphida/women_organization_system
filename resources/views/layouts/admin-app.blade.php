@@ -19,106 +19,61 @@
     <link href="{{ config('app.env', 'local') == 'local'? asset('css/app.css'):secure_asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
-        <div>
-            @yield('banner')
-        </div>
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="nav-link btn btn-secondary mr-2 text-white py-6px" href="{{ url('/') }}">
+    <div id="app" class="d-flex w-100">
+        <nav id="sidebar" class="col-md-2 bg-dark vh-100" onmouseenter="openSidebar();" onmouseleave="closeSidebar();">
+            <div class="" id="navbarSupportedContent">
+                @auth
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        {{ Auth::user()->name }}
+                    </a>
+                @endauth
+                <a class="nav-link text-white py-5px mt-1 mt-md-0" href="{{ url('/') }}">
                     ໜ້າຫຼັກ
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                <a class="nav-link text-white py-5px mt-1 mt-md-0" href="{{ route('inside-activities') }}">
+                    ການເຄືອນໄຫວພາຍໃນ
+                </a>
+                <a class="nav-link text-white py-5px mt-1 mt-md-0" href="{{ route('outside-activities') }}">
+                    ການເຄື່ອນໄຫວພາຍນອກ
+                </a>
+                <a class="nav-link text-white py-5px mt-1 mt-md-0" href="{{ route('show-members') }}">
+                    ສະແດງສະມາຊິກ
+                </a>
+                <a class="nav-link text-white py-5px mt-1 mt-md-0" href="/add-member">
+                    ເພີ່ມສະມາຊິກ
+                </a>
+                <a class="nav-link text-white py-5px mt-1 mt-md-0" href="{{ route('add-inside-activity') }}">
+                    ເພີ່ມການເຄືອນໄຫວພາຍໃນ
+                </a>
+                <a class="nav-link text-white py-5px mt-1 mt-md-0" href="{{ route('add-outside-activity') }}">
+                    ເພີ່ມການເຄື່ອນໄຫວພາຍນອກ
+                </a>
+                @auth
+                    <a class="nav-link text-white py-5px mt-1 mt-md-0" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-                        <div class="dropdown mt-1 mt-md-0">
-                            <button class="btn btn-secondary dropdown-toggle w-100"
-                                id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                ການເຄື່ອນໄຫວ
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="{{ route('inside-activities') }}">ການເຄືອນໄຫວພາຍໃນ</a>
-                                <a class="dropdown-item" href="{{ route('outside-activities') }}">ການເຄື່ອນໄຫວພາຍນອກ</a>
-                            </div>
-                        </div>
-                        @guest
-                        <div class="dropdown ml-2 mt-1 mt-md-0">
-                            <button class="btn btn-secondary dropdown-toggle w-100"
-                                id="showDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                ສະຖິຕິ
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="showDropdown">
-                                <a class="dropdown-item" href="{{ route('show-members') }}">ສະແດງສະມາຊິກ</a>
-                                <a class="dropdown-item" href="#">ຄວາມເປັນມາ</a>
-                            </div>
-                        </div>
-                        <a href="#" class="nav-link btn btn-secondary ml-md-2 text-white py-5px mt-1 mt-md-0">ຕິດຕໍ່ສອບຖາມ</a>
-                        @else
-                        <a href="{{ route('show-members') }}" class="nav-link btn btn-secondary ml-md-2 text-white py-5px mt-1 mt-md-0">
-                            ສະແດງສະມາຊິກ
-                        </a>
-                        @endguest
-                        @auth
-                            <a class="nav-link btn btn-secondary ml-md-2 text-white py-5px mt-1 mt-md-0" href="/add-member">
-                                ເພີ່ມສະມາຊິກ
-                            </a>
-                            <div class="dropdown mt-1 mt-md-0">
-                                <button class="ml-md-2 btn btn-secondary dropdown-toggle w-100"
-                                    id="addActivitiesDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    ເພີ່ມການເຄື່ອນໄຫວ
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="addActivitiesDropdown">
-                                    <a class="dropdown-item" href="{{ route('add-inside-activity') }}">ເພີ່ມການເຄືອນໄຫວພາຍໃນ</a>
-                                    <a class="dropdown-item" href="{{ route('add-outside-activity') }}">ເພີ່ມການເຄື່ອນໄຫວພາຍນອກ</a>
-                                </div>
-                            </div>
-                        @endauth
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('ເຂົ້າສູ່ລະບົບ') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                @endauth
             </div>
         </nav>
-        @if (session()->has('alert-message'))
-            <div class="alert position-absolute w-100 text-center {{ session()->get('alert-class') ?? 'alert-danger' }}" style="z-index: 1;">
-                {{ session()->get('alert-message') }}
+        <div class="w-100">
+            @if (session()->has('alert-message'))
+                <div class="alert position-absolute w-100 text-center {{ session()->get('alert-class') ?? 'alert-danger' }}" style="z-index: 1;">
+                    {{ session()->get('alert-message') }}
+                </div>
+            @endif
+            <div>
+                @yield('banner')
             </div>
-        @endif
-        <main class="py-4">
-            @yield('content')
-        </main>
+            <main id="main" class="py-4">
+                @yield('content')
+            </main>
+        </div>
     </div>
     <!-- Scripts -->
     <script src="{{ config('app.env', 'local') == 'local'? asset('js/app.js'):secure_asset('js/app.js') }}" defer></script>

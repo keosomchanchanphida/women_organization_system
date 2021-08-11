@@ -20,10 +20,10 @@
 </head>
 <body>
     <div id="app">
-        <div>
+        <div class="overflow-hidden">
             @yield('banner')
         </div>
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar sticky-top navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="nav-link btn btn-secondary mr-2 text-white py-6px" href="{{ url('/') }}">
                     ໜ້າຫຼັກ

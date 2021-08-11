@@ -19,37 +19,45 @@
     <link href="{{ config('app.env', 'local') == 'local'? asset('css/app.css'):secure_asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app" class="d-flex w-100">
-        <nav id="sidebar" class="col-md-2 bg-dark vh-100" onmouseenter="openSidebar();" onmouseleave="closeSidebar();">
-            <div class="" id="navbarSupportedContent">
+    <div id="app" class="">
+        <nav id="sidebar" class="col-md-2 bg-dark vh-100 d-flex" onmouseenter="openSidebar();" onmouseleave="closeSidebar();">
+            <div id="sidebar-placeholder" class="position-absolute">
+                <img src="/storage/img/home.svg" class="my-2"/><br>
+                <img src="/storage/img/activity.svg" class="my-2"/><br>
+                <img src="/storage/img/diary.svg" class="my-2"/><br>
+                <img src="/storage/img/two-users.svg" class="my-2"/><br>
+                <img src="/storage/img/add-user.svg" class="my-2"/><br>
+                <img src="/storage/img/logout.svg" class="my-2"/><br>
+            </div>
+            <div class="" style="width: 300px;" id="navbarSupportedContent">
                 @auth
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    <p id="" class="p-3 text-white">
                         {{ Auth::user()->name }}
-                    </a>
+                    </p><hr>
                 @endauth
-                <a class="nav-link text-white py-5px mt-1 mt-md-0" href="{{ url('/') }}">
+                <a class="nav-link text-white py-5px py-3" href="{{ url('/') }}">
                     ໜ້າຫຼັກ
                 </a>
-                <a class="nav-link text-white py-5px mt-1 mt-md-0" href="{{ route('inside-activities') }}">
+                <a class="nav-link text-white py-5px py-3" href="{{ route('inside-activities') }}">
                     ການເຄືອນໄຫວພາຍໃນ
                 </a>
-                <a class="nav-link text-white py-5px mt-1 mt-md-0" href="{{ route('outside-activities') }}">
-                    ການເຄື່ອນໄຫວພາຍນອກ
+                <a class="nav-link text-white py-5px py-3" href="{{ route('outside-activities') }}">
+                    <img />ການເຄື່ອນໄຫວພາຍນອກ
                 </a>
-                <a class="nav-link text-white py-5px mt-1 mt-md-0" href="{{ route('show-members') }}">
+                <a class="nav-link text-white py-5px py-3" href="{{ route('show-members') }}">
                     ສະແດງສະມາຊິກ
                 </a>
-                <a class="nav-link text-white py-5px mt-1 mt-md-0" href="/add-member">
+                <a class="nav-link text-white py-5px py-3" href="/add-member">
                     ເພີ່ມສະມາຊິກ
                 </a>
-                <a class="nav-link text-white py-5px mt-1 mt-md-0" href="{{ route('add-inside-activity') }}">
+                <a class="nav-link text-white py-5px py-3" href="{{ route('add-inside-activity') }}">
                     ເພີ່ມການເຄືອນໄຫວພາຍໃນ
                 </a>
-                <a class="nav-link text-white py-5px mt-1 mt-md-0" href="{{ route('add-outside-activity') }}">
+                <a class="nav-link text-white py-5px py-3" href="{{ route('add-outside-activity') }}">
                     ເພີ່ມການເຄື່ອນໄຫວພາຍນອກ
                 </a>
                 @auth
-                    <a class="nav-link text-white py-5px mt-1 mt-md-0" href="{{ route('logout') }}"
+                    <a class="nav-link text-white py-5px py-3" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
                         {{ __('Logout') }}
@@ -67,7 +75,7 @@
                     {{ session()->get('alert-message') }}
                 </div>
             @endif
-            <div>
+            <div class="overflow-hidden">
                 @yield('banner')
             </div>
             <main id="main" class="py-4">

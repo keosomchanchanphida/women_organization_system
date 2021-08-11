@@ -50,6 +50,10 @@
 #sidebar .nav-link:hover{
     background-color: #333;
 }
+#sidebar-placeholder{
+    margin-left: -45px;
+    transition: margin .4s;
+}
 
 #main{
     padding-left: 60px;

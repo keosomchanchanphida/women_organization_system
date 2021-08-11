@@ -1,10 +1,8 @@
-@extends('layouts.app')
+@extends(auth()->user() ? 'layouts.admin-app':'layouts.app')
 @section('title', 'ໜ້າຫຼັກ')
 
 @section('banner')
-    <br><br><br>
-    <br>
-    <br><br><br>
+    <img src="/storage/img/banner.png" class="w-100 my-md-n10" alt="">
 @endsection
 @section('content')
     <div class="container">
@@ -15,7 +13,7 @@
                         @if (count($activities) > 0)
                         @foreach($activities as $activity)
                             <div class="col-sm-6 col-md-3 p-1">
-                                <a href="#" class="text-decoration-none text-dark">
+                                <a href="{{ route('show-activity', ['activity' => $activity->id]) }}" class="text-decoration-none text-dark">
                                     <div class="card border-0">
                                         <div class="card-body">
                                             <div class="w-100 bg-dark" style="height: 70px;"></div>

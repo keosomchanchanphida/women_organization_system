@@ -174,9 +174,10 @@ class MemberController extends Controller
         else return back()->with(['alert-message' => 'ບັນທຶກຂໍ້ມູນບໍ່ສໍາເລັດ', 'alert-class' => 'alert-danger']);
     }
 
-    public function destroy($id)
+    public function destroy(Member $member)
     {
-        //
+        if($member->delete()) return redirect(route('show-members'))->with(['alert-message' => 'ລົບຂໍ້ມູນສໍາເລັດແລ້ວ', 'alert-class' => 'alert-success']);
+        else return back()->with(['alert-message' => 'ລົບຂໍ້ມູນບໍ່ສໍາເລັດ', 'alert-class' => 'alert-danger']);
     }
 
     public function apiGetAllMembers()

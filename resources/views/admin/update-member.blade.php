@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends(auth()->user() ? 'layouts.admin-app':'layouts.app')
 
 @section('content')
 <div class="container">
@@ -270,8 +270,13 @@
                                 <button type="submit" class="btn btn-success">
                                     ບັນທຶກການແກ້ໄຂ
                                 </button>
+                                <button class="btn btn-danger ml-2" onclick="submitDeleteForm(event, 'ທ່ານແນ່ໃຈບໍ່ວ່າຕ້ອງການລົບຂໍ້ມູນຂອງສະມາຊິກນີ້?', 'delete-form')">ລົບເທີມຮຽນ</button>
                             </div>
                         </div>
+                    </form>
+                    <form id="delete-form" action="{{ route('delete-member', ['member' => $member]) }}}}" class="d-none" method="POST">
+                        @csrf
+                        @method('delete')
                     </form>
                 </div>
             </div>

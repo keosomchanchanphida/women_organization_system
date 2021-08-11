@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends(auth()->user() ? 'layouts.admin-app':'layouts.app')
 @section('title')
     ເພີ່ມການເຄື່ອນໄຫວ{{ $spacific ?? '' }}
 @endsection
@@ -44,6 +44,9 @@
                                     </span>
                                 @enderror
                             </div>
+                        </div>
+                        <div class="w-100">
+                            <input-activity-image />
                         </div>
 
                         <div class="form-group row mb-0">

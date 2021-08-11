@@ -62,7 +62,10 @@ class ActivityController extends Controller
             'content_path' => "/storage/$filename",
             'type' => $request->spacific == 'ພາຍໃນ'? 'inside' : 'outside',
             'major_id' => $request->major_id
-        ])) return back()->with(['alert-message' => 'ເພີ່ມການເຄື່ອນໄຫວສໍາເລັດແລ້ວ', 'alert-class' => 'alert-success']);
+        ])){
+            //TODO: store every images and images's description
+            return back()->with(['alert-message' => 'ເພີ່ມການເຄື່ອນໄຫວສໍາເລັດແລ້ວ', 'alert-class' => 'alert-success']);
+        }
         else return back()->with(['alert-message' => 'ເພີ່ມການເຄື່ອນໄຫວບໍ່ສໍາເລັດ', 'alert-class' => 'alert-danger']);
     }
 

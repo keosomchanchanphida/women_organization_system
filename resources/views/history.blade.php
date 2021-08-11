@@ -1,10 +1,8 @@
-@extends('layouts.app')
+@extends(auth()->user() ? 'layouts.admin-app':'layouts.app')
 @section('title', 'ຄວາມເປັນມາ')
 
 @section('banner')
-    <br><br><br>
-    <br>
-    <br><br><br>
+    <img src="/storage/img/banner.png" class="w-100 my-md-n10" alt="">
 @endsection
 @section('content')
     <div class="container">

@@ -24,7 +24,7 @@ class CreateActivitiesTables extends Migration
         Schema::create('activity_images', function (Blueprint $table) {
             $table->id();
             $table->string('image_path');
-            $table->string('image_description_path');
+            $table->string('image_description_path')->nullable();
             $table->unsignedBigInteger('activity_id');
             $table->timestamps();
         });

@@ -1,6 +1,6 @@
 @extends(auth()->user() ? 'layouts.admin-app':'layouts.app')
 @section('title',)
-    ການເຄື່ອນໄຫວ{{ $spacific ?? '' }}
+    ການເຄື່ອນໄຫວ{{ $type ?? '' }}
 @endsection
 @section('content')
 <div class="container">

@@ -29,7 +29,7 @@
                 <img src="/storage/img/add-user.svg" class="my-2"/><br>
                 <img src="/storage/img/logout.svg" class="my-2"/><br>
             </div>
-            <div class="" style="width: 300px;" id="navbarSupportedContent">
+            <div class="overflow-y-scroll" style="width: 300px;" id="navbarSupportedContent">
                 @auth
                     <p id="" class="p-3 text-white">
                         {{ Auth::user()->name }}

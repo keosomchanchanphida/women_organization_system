@@ -2096,8 +2096,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['descriptions'],
+  props: ['images'],
   data: function data() {
     return {
       list: [{}]
@@ -2106,7 +2109,11 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     add: function add() {
       this.list.push({});
-    }
+    } //TODO: make image removable both when add or edit
+
+  },
+  mounted: function mounted() {
+    this.list = JSON.parse(this.images);
   }
 });
 
@@ -39797,7 +39804,33 @@ var render = function() {
             _c("div", { staticClass: "col-md-6" }, [
               _c("img", {
                 staticClass: "w-100",
-                attrs: { src: "", alt: "", id: "preview" + index }
+                attrs: {
+                  src: value.image_path ? value.image_path : "",
+                  alt: "",
+                  id: "preview" + index
+                }
+              }),
+              _vm._v(" "),
+              _c("input", {
+                attrs: {
+                  type: "hidden",
+                  name: "length[" + index + "]",
+                  value: "1"
+                }
+              }),
+              _vm._v(" "),
+              _c("input", {
+                attrs: { type: "hidden", name: "image_ids[" + index + "]" },
+                domProps: { value: value.id ? value.id : "-1" }
+              }),
+              _vm._v(" "),
+              _c("input", {
+                attrs: {
+                  id: "old_image_path" + index,
+                  type: "hidden",
+                  name: "old_image_paths[" + index + "]"
+                },
+                domProps: { value: value.image_path ? value.image_path : "" }
               }),
               _vm._v(" "),
               _c("input", {
@@ -39806,9 +39839,16 @@ var render = function() {
                   id: "images" + index,
                   type: "file",
                   accept: "image/*",
-                  name: "images[]",
+                  name: "images[" + index + "]",
                   autofocus: "",
-                  onchange: "showPreviewImage(event, 'preview" + index + "');"
+                  onchange:
+                    "showPreviewImage(event, 'preview" +
+                    index +
+                    "', 'clearImage" +
+                    index +
+                    "', 'old_image_path" +
+                    index +
+                    "');"
                 }
               }),
               _vm._v(" "),
@@ -39831,11 +39871,17 @@ var render = function() {
                       staticClass: "ml-1 btn btn-danger",
                       staticStyle: { display: "none" },
                       attrs: {
-                        id: "clearImage",
+                        id: "clearImage" + index,
                         onclick:
-                          "clearPreviewImage(event, 'images', 'preview" +
+                          "clearPreviewImage(event, 'images" +
                           index +
-                          "', 'clearImage');"
+                          "', 'preview" +
+                          index +
+                          "', 'clearImage" +
+                          index +
+                          "', 'old_image_path" +
+                          index +
+                          "');"
                       }
                     },
                     [_vm._v("ລົບຮູບພາບ")]
@@ -39857,14 +39903,31 @@ var render = function() {
             _vm._v(" "),
             _c("div", { staticClass: "col-md-6" }, [
               _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: value.description,
+                    expression: "value.description"
+                  }
+                ],
                 staticClass: "form-control",
                 attrs: {
                   id: "descriptions" + index,
                   type: "text",
-                  name: "descriptions[]",
+                  name: "descriptions[" + index + "]",
                   cols: "30",
                   rows: "3",
                   autofocus: ""
+                },
+                domProps: { value: value.description },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(value, "description", $event.target.value)
+                  }
                 }
               })
             ])

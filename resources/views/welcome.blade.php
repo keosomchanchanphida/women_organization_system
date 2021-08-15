@@ -16,7 +16,13 @@
                                 <a href="{{ route('show-activity', ['activity' => $activity->id]) }}" class="text-decoration-none text-dark">
                                     <div class="card border-0">
                                         <div class="card-body">
-                                            <div class="w-100 bg-dark" style="height: 70px;"></div>
+                                            <div class="w-100" style="">
+                                                @if (count($activity->images) > 0)
+                                                    <img class="w-100" src="{{ $activity->images->get(0)->image_path }}" alt="">
+                                                @else
+                                                    <p>ບໍ່ມີຮູບພາບປະກອບ</p>
+                                                @endif
+                                            </div>
                                             <div class="text-center">
                                                 {{ $activity->title }}
                                             </div>

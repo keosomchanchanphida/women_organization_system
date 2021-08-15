@@ -35,6 +35,11 @@ class DatabaseSeeder extends Seeder
             'email' => 'lioboy11@gmail.com',
             'password' => Hash::make('password')
         ]);
+        User::create([
+            'name' => 'Admin Keo',
+            'email' => 'fuong53@gmail.com',
+            'password' => Hash::make('12341234')
+        ]);
         $province = Province::create(['name' => 'ສະຫວັນນະເຂດ']);
         $district = District::create([
             'name' => 'ໄກສອນ ພົມວິຫານ',

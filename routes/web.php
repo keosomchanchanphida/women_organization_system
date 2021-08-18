@@ -3,6 +3,7 @@
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\DataController;
 use App\Http\Controllers\ExportPDFController;
+use App\Http\Controllers\FileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MemberController;
 use Illuminate\Support\Facades\Auth;
@@ -23,6 +24,7 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/contacts', function() { return view('contacts'); })->name('contacts');
 Route::get('/history', function() { return view('history'); })->name('history');
 Route::get('/show-members', [MemberController::class, 'index'])->name('show-members');
+Route::get('/files', [FileController::class, 'index'])->name('all-files');
 
 Auth::routes();
 Route::middleware(['auth'])->group(function () {
@@ -39,6 +41,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/edit-activity/{activity}', [ActivityController::class, 'edit'])->name('edit-activity');
     Route::patch('/update-activity/{activity}', [ActivityController::class, 'update'])->name('update-activity');
     Route::delete('/delete-activity/{activity}', [ActivityController::class, 'destroy'])->name('delete-activity');
+
+    Route::get('/add-file', [FileController::class, 'create'])->name('add-file');
+    Route::post('/store-file', [FileController::class, 'store'])->name('store-file');
+    Route::get('/edit-file/{file}', [FileController::class, 'edit'])->name('edit-file');
+    Route::patch('/update-file/{file}', [FileController::class, 'update'])->name('update-file');
+    Route::delete('/delete-file/{file}', [FileController::class, 'destroy'])->name('delete-file');
 
     //routes related to data for member
     Route::get('/add-province', [DataController::class, 'addProvinceForm'])->name('add-province-form');

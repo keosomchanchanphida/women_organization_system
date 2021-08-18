@@ -4,8 +4,10 @@ namespace App\Providers;
 
 use App\Models\Activity;
 use App\Models\ActivityImage;
+use App\Models\File;
 use App\Observers\ActivityImageObserver;
 use App\Observers\ActivityObserver;
+use App\Observers\FileObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -33,5 +35,6 @@ class EventServiceProvider extends ServiceProvider
     {
         Activity::observe(ActivityObserver::class);
         ActivityImage::observe(ActivityImageObserver::class);
+        File::observe(FileObserver::class);
     }
 }

@@ -53,6 +53,10 @@ class ActivityController extends Controller
             'type' => ['required'],
             'title' => ['required', 'max:255'],
             'major_id' => ['required']
+        ],[
+            'title.required' => 'ທ່ານຕ້ອງໃສ່ຫົວຂໍ້ກ່ອນ',
+            'title.max' => 'ຫົວຂໍ້ຕ້ອງບໍ່ເກີນ 255 ຕົວອັກສອນ',
+            'major_id' => 'ທ່ານຕ້ອງເລືອກພາກວິຊາກ່ອນ'
         ]);
         $content_path = '';
         if($request->content){
@@ -134,6 +138,10 @@ class ActivityController extends Controller
             'type' => ['required'],
             'title' => ['required', 'max:255'],
             'major_id' => ['required']
+        ],[
+            'title.required' => 'ທ່ານຕ້ອງໃສ່ຫົວຂໍ້ກ່ອນ',
+            'title.max' => 'ຫົວຂໍ້ຕ້ອງບໍ່ເກີນ 255 ຕົວອັກສອນ',
+            'major_id' => 'ທ່ານຕ້ອງເລືອກພາກວິຊາກ່ອນ'
         ]);
         $content_path = '';
         if($request->content){

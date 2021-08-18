@@ -53,14 +53,11 @@
                             </button>
                             <div class="dropdown-menu" aria-labelledby="showDropdown">
                                 <a class="dropdown-item" href="{{ route('show-members') }}">ສະແດງສະມາຊິກ</a>
+                                <a class="dropdown-item" href="{{ route('all-files') }}">ໄຟລ໌</a>
                                 <a class="dropdown-item" href="{{ route('history') }}">ຄວາມເປັນມາ</a>
                             </div>
                         </div>
                         <a href="{{ route('contacts') }}" class="nav-link btn btn-secondary ml-md-2 text-white py-5px mt-1 mt-md-0">ຕິດຕໍ່ສອບຖາມ</a>
-                        @else
-                        <a href="{{ route('show-members') }}" class="nav-link btn btn-secondary ml-md-2 text-white py-5px mt-1 mt-md-0">
-                            ສະແດງສະມາຊິກ
-                        </a>
                         @endguest
                         @auth
                             <a class="nav-link btn btn-secondary ml-md-2 text-white py-5px mt-1 mt-md-0" href="/add-member">

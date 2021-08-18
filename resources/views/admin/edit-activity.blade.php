@@ -68,8 +68,13 @@
                                 <button type="submit" class="btn btn-success">
                                     ແກ້ໄຂການເຄື່ອນໄຫວ
                                 </button>
+                                <button class="btn btn-danger ml-2" onclick="submitDeleteForm(event, 'ທ່ານແນ່ໃຈບໍ່ວ່າຕ້ອງການລົບກິດຈະກໍານີ້?', 'delete-form')">ລົບກິດຈະກໍາ</button>
                             </div>
                         </div>
+                    </form>
+                    <form id="delete-form" action="{{ route('delete-activity', ['activity' => $activity]) }}}}" class="d-none" method="POST">
+                        @csrf
+                        @method('delete')
                     </form>
                 </div>
             </div>

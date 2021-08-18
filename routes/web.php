@@ -38,6 +38,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/store-activity', [ActivityController::class, 'storeActivity'])->name('store-activity');
     Route::get('/edit-activity/{activity}', [ActivityController::class, 'edit'])->name('edit-activity');
     Route::patch('/update-activity/{activity}', [ActivityController::class, 'update'])->name('update-activity');
+    Route::delete('/delete-activity/{activity}', [ActivityController::class, 'destroy'])->name('delete-activity');
 
     //routes related to data for member
     Route::get('/add-province', [DataController::class, 'addProvinceForm'])->name('add-province-form');

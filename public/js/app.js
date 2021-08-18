@@ -2109,8 +2109,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     add: function add() {
       this.list.push({});
-    } //TODO: make image removable both when add or edit
-
+    }
   },
   mounted: function mounted() {
     this.list = JSON.parse(this.images);
@@ -39869,7 +39868,13 @@ var render = function() {
                     "label",
                     {
                       staticClass: "ml-1 btn btn-danger",
-                      staticStyle: { display: "none" },
+                      style: {
+                        display: value.image_path
+                          ? value.image_path != ""
+                            ? "block"
+                            : "none"
+                          : "none"
+                      },
                       attrs: {
                         id: "clearImage" + index,
                         onclick:

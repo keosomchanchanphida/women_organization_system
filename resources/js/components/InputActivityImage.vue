@@ -13,7 +13,7 @@
                         :name="'images['+index+']'" autofocus :onchange="`showPreviewImage(event, 'preview${index}', 'clearImage${index}', 'old_image_path${index}');`">
                     <div class="mt-1 w-100 d-flex justify-content-center">
                         <label :for="'images'+index" class="btn btn-primary">ເລືອກຮູບພາບ</label>
-                        <label :id="'clearImage'+index" class="ml-1 btn btn-danger" :onclick="`clearPreviewImage(event, 'images${index}', 'preview${index}', 'clearImage${index}', 'old_image_path${index}');`" style="display: none;">ລົບຮູບພາບ</label>
+                        <label :id="'clearImage'+index" class="ml-1 btn btn-danger" :onclick="`clearPreviewImage(event, 'images${index}', 'preview${index}', 'clearImage${index}', 'old_image_path${index}');`" :style="{ display: value.image_path? value.image_path != ''? 'block':'none':'none'}">ລົບຮູບພາບ</label>
                     </div>
                 </div>
             </div>
@@ -43,7 +43,6 @@ export default {
         add: function(){
             this.list.push({})
         }
-        //TODO: make image removable both when add or edit
     },
     mounted(){
         this.list = JSON.parse(this.images)

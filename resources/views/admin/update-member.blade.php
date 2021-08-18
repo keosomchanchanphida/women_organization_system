@@ -270,7 +270,7 @@
                                 <button type="submit" class="btn btn-success">
                                     ບັນທຶກການແກ້ໄຂ
                                 </button>
-                                <button class="btn btn-danger ml-2" onclick="submitDeleteForm(event, 'ທ່ານແນ່ໃຈບໍ່ວ່າຕ້ອງການລົບຂໍ້ມູນຂອງສະມາຊິກນີ້?', 'delete-form')">ລົບເທີມຮຽນ</button>
+                                <button class="btn btn-danger ml-2" onclick="submitDeleteForm(event, 'ທ່ານແນ່ໃຈບໍ່ວ່າຕ້ອງການລົບຂໍ້ມູນຂອງສະມາຊິກນີ້?', 'delete-form')">ລົບຂໍ້ມູນ</button>
                             </div>
                         </div>
                     </form>

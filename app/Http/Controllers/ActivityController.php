@@ -207,4 +207,11 @@ class ActivityController extends Controller
             return back()->with(['alert-message' => 'ແກ້ໄຂການເຄື່ອນໄຫວບໍ່ສໍາເລັດ', 'alert-class' => 'alert-danger']);
         }
     }
+
+    public function destroy(Activity $activity)
+    {
+        $type = $activity->type;
+        if($activity->delete()) return redirect(route("$type-activities"))->with(['alert-message' => 'ລົບຂໍ້ມູນສໍາເລັດແລ້ວ', 'alert-class' => 'alert-success']);
+        else return back()->with(['alert-message' => 'ລົບຂໍ້ມູນບໍ່ສໍາເລັດ', 'alert-class' => 'alert-danger']);
+    }
 }

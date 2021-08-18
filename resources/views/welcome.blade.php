@@ -20,15 +20,11 @@
                                                 @if (count($activity->images) > 0)
                                                     <img class="w-100" src="{{ $activity->images->get(0)->image_path }}" alt="">
                                                 @else
-                                                    <p>ບໍ່ມີຮູບພາບປະກອບ</p>
+                                                    <p class="text-center">ບໍ່ມີຮູບພາບປະກອບ</p>
                                                 @endif
                                             </div>
                                             <div class="text-center">
                                                 {{ $activity->title }}
-                                            </div>
-                                            <hr class="my-1">
-                                            <div class="limit-lines">
-                                                {{ $activity->content }}
                                             </div>
                                         </div>
                                     </div>

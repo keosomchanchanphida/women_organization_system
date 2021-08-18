@@ -52,22 +52,24 @@ class ActivityController extends Controller
         $request->validate([
             'type' => ['required'],
             'title' => ['required', 'max:255'],
-            'content' => ['required'],
             'major_id' => ['required']
         ]);
-        $filename = Str::random(15).'.txt';
-        Storage::disk('public')->put($filename, $request->content);
+        $content_path = '';
+        if($request->content){
+            $filename = Str::random(15).'.txt';
+            Storage::disk('public')->put($filename, $request->content);
+            $content_path = "/storage/$filename";
+        }
         if($activity = Activity::create([
             'title' => $request->title,
-            'content_path' => "/storage/$filename",
+            'content_path' => $content_path,
             'type' => $request->type == 'ພາຍໃນ'? 'inside' : 'outside',
             'major_id' => $request->major_id
         ])){
             $images = $request->images;
             $descriptions = $request->descriptions;
-            $size = count($images);
-            for($i=0; $i<$size; $i++){
-                if($images[$i]){
+            foreach($request->length as $i => $v){
+                if(isset($images[$i])){
                     $image_path = '/storage/'.$images[$i]->store('', 'public');
                     $description_filename = null;
                     if($descriptions[$i]){
@@ -131,17 +133,17 @@ class ActivityController extends Controller
         $request->validate([
             'type' => ['required'],
             'title' => ['required', 'max:255'],
-            'content' => ['required'],
             'major_id' => ['required']
         ]);
-        $filename = Str::random(15).'.txt';
-        Storage::disk('public')->put($filename, $request->content);
-        try {
-            unlink(public_path().$activity->content_path);
-        } catch (\Throwable $e) { }
+        $content_path = '';
+        if($request->content){
+            $filename = Str::random(15).'.txt';
+            Storage::disk('public')->put($filename, $request->content);
+            $content_path ="/storage/$filename";
+        }
         if($activity->update([
             'title' => $request->title,
-            'content_path' => "/storage/$filename",
+            'content_path' => $content_path,
             'type' => $request->type,
             'major_id' => $request->major_id
         ])){
@@ -149,32 +151,35 @@ class ActivityController extends Controller
             $ids = $request->image_ids;
             $oldImages = $request->old_image_paths;
             $descriptions = $request->descriptions;
+            if($request->length)
             foreach($request->length as $i => $v){
                 //check if the image is new or is changed
-                //TODO: trigger update even there's only description changed
-                if(isset($images[$i]) && !$oldImages[$i]){
+                if((isset($images[$i]) && !$oldImages[$i]) || isset($descriptions[$i]) ){
                     //if image is changed
                     if($image = $activity->images->find($ids[$i])){
-                        try { unlink(public_path().$image->image_path); } catch (\Throwable $e) { }
-                        try { unlink(public_path().$image->image_description_path); } catch (\Throwable $e) { }
-                        $image_path = '/storage/'.$images[$i]->store('', 'public');
-                        $description_filename = null;
-                        if($descriptions[$i]){
+                        if(isset($images[$i])){
+                            $image_path = '/storage/'.$images[$i]->store('', 'public');
+                            $image->update(['image_path' => $image_path]);
+                        }
+                        if(isset($descriptions[$i])){
+                            $description_filename = null;
                             try{
                                 $description_filename = Str::random(20).'txt';
                                 Storage::disk('public')->put($description_filename, $descriptions[$i]);
                             }catch(\Exception $e){ }
+                            $image->update([
+                                'image_description_path' => $description_filename?'/storage/'.$description_filename:null
+                            ]);
                         }
-                        $image->update([
-                            'image_path' => $image_path,
-                            'image_description_path' => $description_filename?'/storage/'.$description_filename:null
-                        ]);
                     }
                     //if image is new
                     else{
-                        $image_path = '/storage/'.$images[$i]->store('', 'public');
+                        if(isset($images[$i]))
+                            $image_path = '/storage/'.$images[$i]->store('', 'public');
+                        else $image_path = '';
                         $description_filename = null;
-                        if($descriptions[$i]){
+                        if(isset($descriptions[$i])){
+                            if($descriptions[$i])
                             try{
                                 $description_filename = Str::random(20).'txt';
                                 Storage::disk('public')->put($description_filename, $descriptions[$i]);
@@ -189,13 +194,11 @@ class ActivityController extends Controller
                 //if image being deleted
                 if(!isset($images[$i]) && !$oldImages[$i]){
                     if($image = $activity->images->find($ids[$i])){
-                        try { unlink(public_path().$image->image_path); } catch (\Throwable $e) { }
-                        try { unlink(public_path().$image->image_description_path); } catch (\Throwable $e) { }
                         $image->delete();
                     }
                 }
             }
-            return back()->with(['alert-message' => 'ແກ້ໄຂການເຄື່ອນໄຫວສໍາເລັດແລ້ວ', 'alert-class' => 'alert-success']);
+            return redirect(route('show-activity', ['activity' => $activity->id]))->with(['alert-message' => 'ແກ້ໄຂການເຄື່ອນໄຫວສໍາເລັດແລ້ວ', 'alert-class' => 'alert-success']);
         }
         else{
             try{

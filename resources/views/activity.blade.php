@@ -8,7 +8,7 @@
         <div class="card col-md-12">
             <div class="card-body">
                 <div class="row position-relative">
-                    <h3 class="text-center w-100">{{ $activity->title }}</h3>
+                    <h3 class="text-center w-100 font-32px">{{ $activity->title }}</h3>
                     @auth
                         <div class="position-absolute" style="right: 0;">
                             <a href="{{ route('edit-activity', ['activity' => $activity->id]) }}" class="btn btn-primary">ແກ້ໄຂ</a>
@@ -16,11 +16,11 @@
                     @endauth
                 </div>
                 <div>
-                    <p>{{ $activity->content }}</p>
+                    <p class="font-24px indent">{{ $activity->content }}</p>
                     @foreach ($activity->images as $image)
                         <div class="w-100">
-                            <img src="{{ $image->image_path }}" alt="" class="w-100">
-                            <p>{{ $image->description }}</p>
+                            <div class="w-100 d-flex justify-content-center"><img src="{{ $image->image_path }}" alt="" class="w-100 w-md-50"></div>
+                            <p class="font-24px indent">{{ $image->description }}</p>
                         </div>
                     @endforeach
                 </div>

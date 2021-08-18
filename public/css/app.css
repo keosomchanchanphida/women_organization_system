@@ -11807,6 +11807,18 @@ h3 {
   font-family: "Phetsarath OT";
 }
 
+.font-32px {
+  font-size: 32px !important;
+}
+
+.font-24px {
+  font-size: 24px !important;
+}
+
+.indent {
+  text-indent: 2rem !important;
+}
+
 .py-6px {
   padding-top: 6px;
   padding-bottom: 6px;
@@ -11862,4 +11874,10 @@ h3 {
 
 #main {
   padding-left: 60px;
+}
+
+@media (min-width: 768px) {
+  .w-md-50 {
+    width: 50% !important;
+  }
 }

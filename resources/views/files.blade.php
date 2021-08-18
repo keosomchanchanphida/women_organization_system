@@ -10,14 +10,14 @@
                 <div class="row justify-content-center">
                     @if (count($files) > 0)
                         @foreach($files as $file)
-                            <div class="col-sm-6 col-md-3 p-1">
+                            <div class="col-sm-6 col-md-3 p-1 position-relative">
+                                @auth
+                                    <a href="{{ route('edit-file', ['file' => $file->id]) }}" class="position-absolute btn btn-primary" style="right: 0; z-index: 1;">
+                                        ແກ້ໄຂ
+                                    </a>
+                                @endauth
                                 <a href="{{ $file->file_path }}" class="text-decoration-none text-dark">
-                                    @auth
-                                        <div class="position-absolute" style="right: 0; z-index: 1;">
-                                            <a href="{{ route('edit-file', ['file' => $file->id]) }}" class="btn btn-primary">ແກ້ໄຂ</a>
-                                        </div>
-                                    @endauth
-                                    <div class="card border-0">
+                                    <div class="card">
                                         <div class="card-body">
                                             {{ $file->name }}
                                         </div>

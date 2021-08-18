@@ -11855,7 +11855,7 @@ h3 {
   transition: width 0.4s, padding 0.4s;
   width: 50px;
   position: fixed;
-  z-index: 1;
+  z-index: 30;
   overflow: hidden;
   top: 0;
   left: 0;

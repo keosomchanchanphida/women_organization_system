@@ -42,7 +42,10 @@
                     ການເຄືອນໄຫວພາຍໃນ
                 </a>
                 <a class="nav-link text-white py-5px py-3" href="{{ route('outside-activities') }}">
-                    <img />ການເຄື່ອນໄຫວພາຍນອກ
+                    ການເຄື່ອນໄຫວພາຍນອກ
+                </a>
+                <a class="nav-link text-white py-5px py-3" href="{{ route('all-files') }}">
+                    ໄຟລ໌ທັງໝົດ
                 </a>
                 <a class="nav-link text-white py-5px py-3" href="{{ route('show-members') }}">
                     ສະແດງສະມາຊິກ
@@ -55,6 +58,9 @@
                 </a>
                 <a class="nav-link text-white py-5px py-3" href="{{ route('add-outside-activity') }}">
                     ເພີ່ມການເຄື່ອນໄຫວພາຍນອກ
+                </a>
+                <a class="nav-link text-white py-5px py-3" href="{{ route('add-file') }}">
+                    ອັບໂຫຼດໄຟລ໌
                 </a>
                 @auth
                     <a class="nav-link text-white py-5px py-3" href="{{ route('logout') }}"

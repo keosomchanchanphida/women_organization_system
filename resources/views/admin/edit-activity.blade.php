@@ -72,7 +72,7 @@
                             </div>
                         </div>
                     </form>
-                    <form id="delete-form" action="{{ route('delete-activity', ['activity' => $activity->id]) }}}}" class="d-none" method="POST">
+                    <form id="delete-form" action="{{ route('delete-activity', ['activity' => $activity->id]) }}" class="d-none" method="POST">
                         @csrf
                         @method('delete')
                     </form>

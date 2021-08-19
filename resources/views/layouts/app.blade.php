@@ -46,7 +46,7 @@
                             </div>
                         </div>
                         @guest
-                        <div class="dropdown mt-1 mt-md-0">
+                        <div class="dropdown ml-md-2 mt-1 mt-md-0">
                             <button class="btn btn-secondary dropdown-toggle w-100"
                                 id="showDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 ສະຖິຕິ

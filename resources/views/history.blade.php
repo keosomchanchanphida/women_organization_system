@@ -2,7 +2,7 @@
 @section('title', 'ຄວາມເປັນມາ')
 
 @section('banner')
-    <img src="/storage/img/banner.png" class="w-100 my-md-n10" alt="">
+    <img src="/storage/img/profiles1.jpg" class="w-100" alt="">
 @endsection
 @section('content')
     <div class="container">

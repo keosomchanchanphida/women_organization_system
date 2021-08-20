@@ -274,7 +274,7 @@
                             </div>
                         </div>
                     </form>
-                    <form id="delete-form" action="{{ route('delete-member', ['member' => $member]) }}}}" class="d-none" method="POST">
+                    <form id="delete-form" action="{{ route('delete-member', ['member' => $member]) }}" class="d-none" method="POST">
                         @csrf
                         @method('delete')
                     </form>

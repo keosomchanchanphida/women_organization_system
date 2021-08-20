@@ -46,7 +46,7 @@
                             </div>
                         </div>
                     </form>
-                    <form id="delete-form" action="{{ route('delete-file', ['file' => $file ?? ''->id]) }}}}" class="d-none" method="POST">
+                    <form id="delete-form" action="{{ route('delete-file', ['file' => $file ?? ''->id]) }}" class="d-none" method="POST">
                         @csrf
                         @method('delete')
                     </form>

@@ -9,7 +9,13 @@ class FileController extends Controller
 {
     public function index()
     {
-        return view('files', ['files' => File::orderBy('name', 'asc')->get()]);
+        $files = File::orderBy('created_at', 'desc')->get();
+        $files = $files->map(function($file){
+            $file->size = filesize(public_path().$file->file_path);
+            $file->posted_at = date('d/m/Y', strtotime($file->created_at));
+            return $file;
+        });
+        return view('files', compact('files'));
     }
 
     public function create()

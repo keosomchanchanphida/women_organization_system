@@ -42,7 +42,7 @@
                                 <button type="submit" class="btn btn-success">
                                     ບັນທຶກ
                                 </button>
-                                <button class="btn btn-danger ml-2" onclick="submitDeleteForm(event, 'ທ່ານແນ່ໃຈບໍ່ວ່າຕ້ອງການລົບກິດຈະກໍານີ້?', 'delete-form')">ລົບໄຟລ໌</button>
+                                <button class="btn btn-danger ml-2" onclick="submitDeleteForm(event, 'ທ່ານແນ່ໃຈບໍ່ວ່າຕ້ອງການລົບຂໍ້ມູນນີ້?', 'delete-form')">ລົບໄຟລ໌</button>
                             </div>
                         </div>
                     </form>

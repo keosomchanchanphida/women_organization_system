@@ -11,7 +11,16 @@ class FileController extends Controller
     {
         $files = File::orderBy('created_at', 'desc')->get();
         $files = $files->map(function($file){
-            $file->size = filesize(public_path().$file->file_path);
+            if(file_exists(public_path().$file->file_path)){
+                $size = filesize(public_path().$file->file_path);
+                if($size/1000000 >= 1)
+                    $file->size = round($size/1000000, 2).'MB';
+                else if($size/1000 >= 1)
+                    $file->size = round($size/1000, 2).'KB';
+                else
+                    $file->size = $size.'B';
+            }
+            else $file->size = '???';
             $file->posted_at = date('d/m/Y', strtotime($file->created_at));
             return $file;
         });

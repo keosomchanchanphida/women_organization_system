@@ -1,9 +1,6 @@
 <template>
     <div>
-        <h3 v-if="typeof(allMembers) === null" class="text-center w-100 mt-3 mb-3">
-            ກໍາລັງໂຫຼດ...
-        </h3>
-        <div v-else class="w-100">
+        <div class="w-100">
             <div class="row form-group mt-2 mx-0">
                 <label for="searchbar" class="col-md-3 col-form-label text-md-right">ຄົ້ນຫາ:</label>
                 <div class="col-md-6">
@@ -33,34 +30,39 @@
                 </div>
             </div>
             <div class="w-100 overflow-scroll">
-                <table class="table table-bordered">
-                    <tr>
-                        <th v-for="field in fields" :key="field" class="text-center">{{ field }}</th>
-                    </tr>
-                    <tr v-for="member in members" :key="member.id" @click="editMember(member.id)"  class="cursor-pointer">
-                        <td>{{ member.id }}</td>
-                        <td>{{ member.name }}</td>
-                        <td>{{ member.lastname }}</td>
-                        <td>{{ member.dob }}</td>
-                        <td>{{ member.djwomen }}</td>
-                        <td>{{ member.djyouth }}</td>
-                        <td>{{ member.djtrade }}</td>
-                        <td>{{ member.djpolitical }}</td>
-                        <td>{{ member.pob }}</td>
-                        <td>{{ member.pliving }}</td>
-                        <td>{{ member.tribe }}</td>
-                        <td>{{ member.religious }}</td>
-                        <td>{{ member.major }}</td>
-                        <td>{{ member.education }}</td>
-                        <td>{{ member.career }}</td>
-                        <td>{{ member.statep}}</td>
-                        <td>{{ member.politicalp}}</td>
-                        <td>{{ member.graduatedp }}</td>
-                        <td>{{ member.status }}</td>
-                        <td>{{ member.phone }}</td>
-                        <td>{{ member.duty }}</td>
-                    </tr>
-                </table>
+                <div v-if="loading" class="text-center text-success">
+                    <div class="spinner-border"><span class="sr-only"></span></div>
+                </div>
+                <div v-else>
+                    <table class="table table-bordered">
+                        <tr>
+                            <th v-for="field in fields" :key="field" class="text-center">{{ field }}</th>
+                        </tr>
+                        <tr v-for="(member, index) in members" :key="member.id" @click="editMember(member.id)"  class="cursor-pointer">
+                            <td>{{ index+1 }}</td>
+                            <td>{{ member.name }}</td>
+                            <td>{{ member.lastname }}</td>
+                            <td>{{ member.dob }}</td>
+                            <td>{{ member.djwomen }}</td>
+                            <td>{{ member.djyouth }}</td>
+                            <td>{{ member.djtrade }}</td>
+                            <td>{{ member.djpolitical }}</td>
+                            <td>{{ member.pob }}</td>
+                            <td>{{ member.pliving }}</td>
+                            <td>{{ member.tribe }}</td>
+                            <td>{{ member.religious }}</td>
+                            <td>{{ member.major }}</td>
+                            <td>{{ member.education }}</td>
+                            <td>{{ member.career }}</td>
+                            <td>{{ member.statep}}</td>
+                            <td>{{ member.politicalp}}</td>
+                            <td>{{ member.graduatedp }}</td>
+                            <td>{{ member.status }}</td>
+                            <td>{{ member.phone }}</td>
+                            <td>{{ member.duty }}</td>
+                        </tr>
+                    </table>
+                </div>
             </div>
             <export-pdf v-if="isadmin" :members="members" />
         </div>
@@ -74,12 +76,13 @@
         },
         data(){
             return {
-                fields: ['ລະຫັດ', 'ຊື່', 'ນາມສະກຸນ', 'ວັນເດືອນປີ ເກີດ', 'ວັນເດືອນປີ ເຂົ້າເປັນສະມາຊິກ', 'ວັນເດືອນປີ ເຂົ້າເປັນສະມາຊິກຊາວໜຸ່ມ', 'ວັນເດືອນປີ ເຂົ້າເປັນສະມາຊິກກໍາມະບານ', 'ວັນເດືອນປີ ເຂົ້າເປັນສະມາຊິກພັກ', 'ບ້ານເກີດ', 'ບ້ານຢູ່', 'ຊົນເຜົ່າ', 'ສາສະໜາ', 'ພາກວິຊາ', 'ລະດັບການສຶກສາ', 'ອາຊີບ', 'ຕໍາແໜ່ງທາງລັດ', 'ຕໍາແໜ່ງທາງພັກ', 'ຈົບຈາກ', 'ສະຖານະ', 'ເບີໂທ', 'ໜ້າທີ່'],
+                fields: ['ລໍາດັບ', 'ຊື່', 'ນາມສະກຸນ', 'ວັນເດືອນປີ ເກີດ', 'ວັນເດືອນປີ ເຂົ້າເປັນສະມາຊິກ', 'ວັນເດືອນປີ ເຂົ້າເປັນສະມາຊິກຊາວໜຸ່ມ', 'ວັນເດືອນປີ ເຂົ້າເປັນສະມາຊິກກໍາມະບານ', 'ວັນເດືອນປີ ເຂົ້າອົງການຈັດຕັ້ງພັກ', 'ບ້ານເກີດ', 'ບ້ານຢູ່', 'ຊົນເຜົ່າ', 'ສາສະໜາ', 'ພາກວິຊາ', 'ລະດັບການສຶກສາ', 'ອາຊີບ', 'ຕໍາແໜ່ງທາງລັດ', 'ຕໍາແໜ່ງທາງພັກ', 'ຈົບຈາກ', 'ສະຖານະ', 'ເບີໂທ', 'ໜ້າທີ່'],
                 allMembers: null,
                 keyword: '',
                 selectedMajor: '',
                 selectedStatePosition: '',
-                selectedEducation: ''
+                selectedEducation: '',
+                loading: true
             }
         },
         computed:{
@@ -124,9 +127,15 @@
         },
         methods:{
             search: function(){
+                this.loading = true
                 axios.get('/api/members?search='+this.keyword)
                     .then( res => {
-                        this.allMembers = res.data
+                        if(typeof(res.data) === 'object')
+                            this.allMembers = Object.entries(res.data).map(i => i[1])
+                        else if(typeof(res.data) === 'array')
+                            this.allMembers = res.data
+                        else this.allMembers = JSON.parse(JSON.stringify(res.data))
+                        this.loading = false
                     })
             },
             editMember: function(id){
@@ -136,7 +145,12 @@
         mounted(){
             axios.get('/api/all-members')
                 .then( res => {
-                    this.allMembers = res.data
+                    if(typeof(res.data) === 'object')
+                        this.allMembers = Object.entries(res.data).map(i => i[1])
+                    else if(typeof(res.data) === 'array')
+                        this.allMembers = res.data
+                    else this.allMembers = JSON.parse(JSON.stringify(res.data))
+                    this.loading = false
                 })
         }
     }

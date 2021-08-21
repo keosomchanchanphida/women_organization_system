@@ -41,24 +41,24 @@
                         <td>{{ member.id }}</td>
                         <td>{{ member.name }}</td>
                         <td>{{ member.lastname }}</td>
-                        <td>{{ member.date_of_birth }}</td>
-                        <td>{{ member.date_joined_women_union }}</td>
-                        <td>{{ member.date_joined_youth_union }}</td>
-                        <td>{{ member.date_joined_trade_union }}</td>
-                        <td>{{ member.date_joined_political_party }}</td>
-                        <td>{{ member.placeOfBirth }}</td>
-                        <td>{{ member.livingPlace }}</td>
-                        <td>{{ member.tribe.name }}</td>
-                        <td>{{ member.religious.name }}</td>
-                        <td>{{ member.major.name }}</td>
-                        <td>{{ member.education.level }}</td>
-                        <td>{{ member.career.career }}</td>
-                        <td>{{ member.statePosition}}</td>
-                        <td>{{ member.politicalPosition}}</td>
-                        <td>{{ member.graduatedPlace }}</td>
-                        <td>{{ member.status.status }}</td>
-                        <td>{{ member.phone_number }}</td>
-                        <td>{{ member.duty.duty }}</td>
+                        <td>{{ member.dob }}</td>
+                        <td>{{ member.djwomen }}</td>
+                        <td>{{ member.djyouth }}</td>
+                        <td>{{ member.djtrade }}</td>
+                        <td>{{ member.djpolitical }}</td>
+                        <td>{{ member.pob }}</td>
+                        <td>{{ member.pliving }}</td>
+                        <td>{{ member.tribe }}</td>
+                        <td>{{ member.religious }}</td>
+                        <td>{{ member.major }}</td>
+                        <td>{{ member.education }}</td>
+                        <td>{{ member.career }}</td>
+                        <td>{{ member.statep}}</td>
+                        <td>{{ member.politicalp}}</td>
+                        <td>{{ member.graduatedp }}</td>
+                        <td>{{ member.status }}</td>
+                        <td>{{ member.phone }}</td>
+                        <td>{{ member.duty }}</td>
                     </tr>
                 </table>
             </div>
@@ -86,7 +86,7 @@
             majors: function(){
                 let majors = []
                 if(this.allMembers !== null)
-                    this.allMembers.forEach( member => majors.push(member.major.name) )
+                    this.allMembers.forEach( member => majors.push(member.major) )
                 let uniqueMajors = majors.filter((value, index, self) => self.indexOf(value) === index)
                 uniqueMajors.unshift('ທັງໝົດ')
                 this.selectedMajor = uniqueMajors[0]
@@ -95,7 +95,7 @@
             statePositions: function(){
                 let positions = []
                 if(this.allMembers !== null)
-                    this.allMembers.forEach( member => positions.push(member.statePosition) )
+                    this.allMembers.forEach( member => positions.push(member.statep) )
                 let uniquePositions = positions.filter((value, index, self) => self.indexOf(value) === index)
                 uniquePositions.unshift('ທັງໝົດ')
                 this.selectedStatePosition = uniquePositions[0]
@@ -104,7 +104,7 @@
             educations: function(){
                 let educations = []
                 if(this.allMembers !== null)
-                    this.allMembers.forEach( member => educations.push(member.education.level) )
+                    this.allMembers.forEach( member => educations.push(member.education) )
                 let uniqueEducations = educations.filter((value, index, self) => self.indexOf(value) === index)
                 uniqueEducations.unshift('ທັງໝົດ')
                 this.selectedEducation = uniqueEducations[0]
@@ -113,11 +113,11 @@
             members: function(){
                 let members = this.allMembers
                 if(this.selectedMajor !== 'ທັງໝົດ')
-                    members = members.filter(member => member.major.name === this.selectedMajor)
+                    members = members.filter(member => member.major === this.selectedMajor)
                 if(this.selectedStatePosition !== 'ທັງໝົດ')
-                    members = members.filter(member => member.statePosition === this.selectedStatePosition)
+                    members = members.filter(member => member.statep === this.selectedStatePosition)
                 if(this.selectedEducation !== 'ທັງໝົດ')
-                    members = members.filter(member => member.education.level === this.selectedEducation)
+                    members = members.filter(member => member.education === this.selectedEducation )
 
                 return members
             }

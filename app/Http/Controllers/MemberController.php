@@ -33,16 +33,12 @@ class MemberController extends Controller
             'date_of_birth' => ['required'],
             'date_joined_women_union' => ['required'],
             'date_joined_youth_union' => ['required'],
-            'date_joined_trade_union' => ['required'],
-            'date_joined_political_party' => ['required'],
             'place_of_birth_id' => ['required'],
             'living_place_id' => ['required'],
             'tribe_id' => ['required'],
             'religious_id' => ['required'],
             'major_id' => ['required'],
-            'education_id' => ['required'],
             'career_id' => ['required'],
-            'state_position_id' => ['required'],
             'graduated_place_id' => ['required'],
             'status_id' => ['required'],
             'phone_number' => ['required', 'numeric'],
@@ -53,16 +49,12 @@ class MemberController extends Controller
             'date_of_birth.required' => 'ທ່ານຈະຕ້ອງປ້ອນວັນເດືອນປີເກີດກ່ອນ',
             'date_joined_women_union.required' => 'ທ່ານຈະຕ້ອງປ້ອນເວັນເດືອນປີເຂົ້າເປັນສະມາຊິກແມ່ຍິງກ່ອນ',
             'date_joined_youth_union.required' => 'ທ່ານຈະຕ້ອງປ້ອນວັນເດືອນປີເຂົ້າເປັນສະມາຊິກຊາວໜຸ່ມກ່ອນ',
-            'date_joined_trade_union.required' => 'ທ່ານຈະຕ້ອງປ້ອນວັນເດືອນປີເຂົ້າເປັນສະມາຊິກກໍາມະບານກ່ອນ',
-            'date_joined_political_party.required' => 'ທ່ານຈະຕ້ອງປ້ອນວັນເດືອນປີເຂົ້າເປັນສະມາຊິກພັກກ່ອນ',
             'place_of_birth_id.required' => 'ທ່ານຈະຕ້ອງປ້ອນສະຖານທີ່ເກີດໃຫ້ຄົບກ່ອນ',
             'living_place_id.required' => 'ທ່ານຈະຕ້ອງປ້ອນສະຖານທີ່ປັດຈຸບັນໃຫ້ຄົບກ່ອນ',
             'tribe_id.required' => 'ທ່ານຈະຕ້ອງປ້ອນຊົນເຜົ່າກ່ອນ',
             'religious_id.required' => 'ທ່ານຈະຕ້ອງປ້ອນສາສະໜາກ່ອນ',
             'major_id.required' => 'ທ່ານຈະຕ້ອງປ້ອນພາກວິຊາກ່ອນ',
-            'education_id.required' => 'ທ່ານຈະຕ້ອງປ້ອນລະດັບການສຶກສາກ່ອນ',
             'career_id.required' => 'ທ່ານຈະຕ້ອງປ້ອນອາຊີບກ່ອນ',
-            'state_position_id.required' => 'ທ່ານຈະຕ້ອງປ້ອນຕໍາແໜ່ງທາງລັດກ່ອນ',
             'graduated_place_id.required' => 'ທ່ານຈະຕ້ອງປ້ອນສະຖານທີ່ຈົບການສຶກສາກ່ອນ',
             'status_id.required' => 'ທ່ານຈະຕ້ອງປ້ອນສະຖານະກ່ອນ',
             'phone_number.required' => 'ທ່ານຈະຕ້ອງປ້ອນເບີໂທກ່ອນ',
@@ -112,16 +104,12 @@ class MemberController extends Controller
             'date_of_birth' => ['required'],
             'date_joined_women_union' => ['required'],
             'date_joined_youth_union' => ['required'],
-            'date_joined_trade_union' => ['required'],
-            'date_joined_political_party' => ['required'],
             'place_of_birth_id' => ['required'],
             'living_place_id' => ['required'],
             'tribe_id' => ['required'],
             'religious_id' => ['required'],
             'major_id' => ['required'],
-            'education_id' => ['required'],
             'career_id' => ['required'],
-            'state_position_id' => ['required'],
             'graduated_place_id' => ['required'],
             'status_id' => ['required'],
             'phone_number' => ['required', 'numeric'],
@@ -132,16 +120,12 @@ class MemberController extends Controller
             'date_of_birth.required' => 'ທ່ານຈະຕ້ອງປ້ອນວັນເດືອນປີເກີດກ່ອນ',
             'date_joined_women_union.required' => 'ທ່ານຈະຕ້ອງປ້ອນເວັນເດືອນປີເຂົ້າເປັນສະມາຊິກແມ່ຍິງກ່ອນ',
             'date_joined_youth_union.required' => 'ທ່ານຈະຕ້ອງປ້ອນວັນເດືອນປີເຂົ້າເປັນສະມາຊິກຊາວໜຸ່ມກ່ອນ',
-            'date_joined_trade_union.required' => 'ທ່ານຈະຕ້ອງປ້ອນວັນເດືອນປີເຂົ້າເປັນສະມາຊິກກໍາມະບານກ່ອນ',
-            'date_joined_political_party.required' => 'ທ່ານຈະຕ້ອງປ້ອນວັນເດືອນປີເຂົ້າເປັນສະມາຊິກພັກກ່ອນ',
             'place_of_birth_id.required' => 'ທ່ານຈະຕ້ອງປ້ອນສະຖານທີ່ເກີດໃຫ້ຄົບກ່ອນ',
             'living_place_id.required' => 'ທ່ານຈະຕ້ອງປ້ອນສະຖານທີ່ປັດຈຸບັນໃຫ້ຄົບກ່ອນ',
             'tribe_id.required' => 'ທ່ານຈະຕ້ອງປ້ອນຊົນເຜົ່າກ່ອນ',
             'religious_id.required' => 'ທ່ານຈະຕ້ອງປ້ອນສາສະໜາກ່ອນ',
             'major_id.required' => 'ທ່ານຈະຕ້ອງປ້ອນພາກວິຊາກ່ອນ',
-            'education_id.required' => 'ທ່ານຈະຕ້ອງປ້ອນລະດັບການສຶກສາກ່ອນ',
             'career_id.required' => 'ທ່ານຈະຕ້ອງປ້ອນອາຊີບກ່ອນ',
-            'state_position_id.required' => 'ທ່ານຈະຕ້ອງປ້ອນຕໍາແໜ່ງທາງລັດກ່ອນ',
             'graduated_place_id.required' => 'ທ່ານຈະຕ້ອງປ້ອນສະຖານທີ່ຈົບການສຶກສາກ່ອນ',
             'status_id.required' => 'ທ່ານຈະຕ້ອງປ້ອນສະຖານະກ່ອນ',
             'phone_number.required' => 'ທ່ານຈະຕ້ອງປ້ອນເບີໂທກ່ອນ',
@@ -202,26 +186,32 @@ class MemberController extends Controller
 
     private function reformat(Collection $members)
     {
-        foreach($members as $member){
-            $member->date_of_birth = date('d/m/Y', strtotime($member->date_of_birth));
-            $member->date_joined_women_union = date('d/m/Y', strtotime($member->date_joined_women_union));
-            $member->date_joined_youth_union = date('d/m/Y', strtotime($member->date_joined_youth_union));
-            $member->date_joined_trade_union = date('d/m/Y', strtotime($member->date_joined_trade_union));
-            $member->date_joined_political_party = date('d/m/Y', strtotime($member->date_joined_political_party));
-            $member->placeOfBirth = $member->placeOfBirth->name;
-            $member->livingPlace = $member->livingPlace->name;
-            $member->tribe = $member->tribe->name;
-            $member->religious = $member->religious->name;
-            $member->major = $member->major->name;
-            $member->education = $member->education->level;
-            $member->career = $member->career->career;
-            $member->statePosition = $member->statePosition? $member->statePosition->position:'';
-            $member->politicalPosition = $member->politicalPosition? $member->politicalPosition->position:'';
-            $member->graduatedPlace = $member->graduatedPlace->name;
-            $member->status = $member->status->status;
-            $member->duty = $member->duty->duty;
-        }
+        $arr = $members->map(function($member){
+            $data = array();
+            $data['id'] = $member->id;
+            $data['name'] = $member->name;
+            $data['lastname'] = $member->lastname;
+            $data['dob'] = date('d/m/Y', strtotime($member->date_of_birth));
+            $data['djwomen'] = date('d/m/Y', strtotime($member->date_joined_women_union));
+            $data['djyouth'] = date('d/m/Y', strtotime($member->date_joined_youth_union));
+            $data['djtrade'] = date('d/m/Y', strtotime($member->date_joined_trade_union));
+            $data['djpolitical'] = $member->date_joined_political_party? date('d/m/Y', strtotime($member->date_joined_political_party)):'';
+            $data['pob'] = $member->placeOfBirth->name;
+            $data['pliving'] = $member->livingPlace->name;
+            $data['tribe'] = $member->tribe->name;
+            $data['religious'] = $member->religious->name;
+            $data['major'] = $member->major->name;
+            $data['education'] = $member->education? $member->education->level:'';
+            $data['career'] = $member->career->career;
+            $data['statep'] = $member->statePosition? $member->statePosition->position:'';
+            $data['politicalp'] = $member->politicalPosition? $member->politicalPosition->position:'';
+            $data['graduatedp'] = $member->graduatedPlace->name;
+            $data['status'] = $member->status->status;
+            $data['phone'] = $member->phone_number;
+            $data['duty'] = $member->duty->duty;
+            return $data;
+        })->toArray();
 
-        return $members;
+        return $arr;
     }
 }

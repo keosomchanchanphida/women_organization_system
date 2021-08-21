@@ -6,7 +6,6 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">ແກ້ໄຂຂໍ້ມູນສະມາຊິກ</div>
-
                 <div class="card-body">
                     <form action="{{ route('update-member', ['member' => $member->id]) }}" method="POST">
                         @method('patch')
@@ -146,6 +145,7 @@
                             <label for="education_id" class="col-md-4 col-form-label text-md-right">ລະດັບການສຶກສາ:</label>
                             <div class="col-md-6">
                                 <select name="education_id" id="education_id" class="form-control @error('education_id') is-invalid @enderror">
+                                    <option value=""></option>
                                     @foreach (App\Models\Education::all() as $education)
                                         <option value="{{ $education->id }}" @if($member->education_id === $education->id) selected @endif>{{ $education->level }}</option>
                                     @endforeach
@@ -178,6 +178,7 @@
                             <label for="state_position_id" class="col-md-4 col-form-label text-md-right">ຕໍາແໜ່ງທາງລັດ:</label>
                             <div class="col-md-6">
                                 <select name="state_position_id" id="state_position_id" class="form-control @error('state_position_id') is-invalid @enderror">
+                                    <option value=""></option>
                                     @foreach (App\Models\StatePosition::all() as $statePosition)
                                         <option value="{{ $statePosition->id }}" @if($member->state_position_id === $statePosition->id) selected @endif>{{ $statePosition->position }}</option>
                                     @endforeach
@@ -194,6 +195,7 @@
                             <label for="political_position_id" class="col-md-4 col-form-label text-md-right">ຕໍາແໜ່ງທາງພັກ:</label>
                             <div class="col-md-6">
                                 <select name="political_position_id" id="political_position_id" class="form-control @error('political_position_id') is-invalid @enderror">
+                                    <option value=""></option>
                                     @foreach (App\Models\PoliticalPosition::all() as $politicalPosition)
                                         <option value="{{ $politicalPosition->id }}" @if($member->political_position_id === $politicalPosition->id) selected @endif>{{ $politicalPosition->position }}</option>
                                     @endforeach

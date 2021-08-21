@@ -315,7 +315,7 @@ class DataController extends Controller
     public function addDuty(Request $request)
     {
         $request->validate(
-            ['duty' => ['required', 'unique:duties,duty']],
+            ['duty' => ['required', 'unique:member_duties,duty']],
             ['duty.required' => 'ທ່ານຕ້ອງປ້ອນຊື່ໜ້າທີ່ກ່ອນ',
             'duty.unique' => 'ຊື່ໜ້າທີ່ຕ້ອງບໍ່ຊໍ້າກັນ']
         );

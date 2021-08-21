@@ -41,7 +41,7 @@
                     </div>
                     <div class="col-6 col-sm-4 col-md-3">
                         <input type="checkbox" v-model="date_joined_political_party" id="date_joined_political_party" value="1">
-                        <label for="date_joined_political_party" class="col-form-label">ວດປ ເຂົ້າສະມາຊິກພັກ</label>
+                        <label for="date_joined_political_party" class="col-form-label">ວດປ ເຂົ້າອົງການຈັດຕັ້ງພັກ</label>
                     </div>
                     <div class="col-6 col-sm-4 col-md-3">
                         <input type="checkbox" v-model="village_of_birth" id="village_of_birth" value="1">

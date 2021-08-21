@@ -44,7 +44,7 @@
             @if($date_joined_women_union) <th>ວັນເດືອນປີ<br>ເຂົ້າເພດຍິງ</th> @endif
             @if($date_joined_youth_union) <th>ວັນເດືອນປີ<br>ເຂົ້າຊາວໜຸ່ມ</th> @endif
             @if($date_joined_trade_union) <th>ວັນເດືອນປີ<br>ເຂົ້າກໍາມະບານ</th> @endif
-            @if($date_joined_political_party) <th>ວັນເດືອນປີ<br>ເຂົ້າສະມາຊິກພັກ</th> @endif
+            @if($date_joined_political_party) <th>ວັນເດືອນປີ<br>ເຂົ້າອົງການຈັດຕັ້ງພັກ</th> @endif
             @if($village_of_birth) <th>ບ້ານເກີດ</th> @endif
             @if($living_village) <th>ບ້ານຢູ່ປັດຈຸບັນ</th> @endif
             @if($tribe) <th>ຊົນເຜົ່າ</th> @endif

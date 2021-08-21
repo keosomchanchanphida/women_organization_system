@@ -292,7 +292,7 @@ class DataController extends Controller
     public function addStatus(Request $request)
     {
         $request->validate(
-            ['status' => ['required', 'unique:status,status']],
+            ['status' => ['required', 'unique:statuses,status']],
             ['status.required' => 'ທ່ານຕ້ອງປ້ອນຊື່ສະຖານະກ່ອນ',
             'status.unique' => 'ຊື່ສະຖານະຕ້ອງບໍ່ຊໍ້າກັນ']
         );

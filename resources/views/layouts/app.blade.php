@@ -53,7 +53,7 @@
                             </button>
                             <div class="dropdown-menu" aria-labelledby="showDropdown">
                                 <a class="dropdown-item" href="{{ route('show-members') }}">ສະແດງສະມາຊິກ</a>
-                                <a class="dropdown-item" href="{{ route('all-files') }}">ໄຟລ໌</a>
+                                <a class="dropdown-item" href="{{ route('all-files') }}">ຮ່າງຂໍ້ມູນດີເດັ່ນ3ດີ</a>
                                 <a class="dropdown-item" href="{{ route('history') }}">ຄວາມເປັນມາ</a>
                             </div>
                         </div>

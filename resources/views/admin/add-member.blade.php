@@ -13,7 +13,7 @@
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">ຊື່:</label>
                             <div class="col-md-6">
-                                <input name="name" id="name" class="form-control @error('name') is-invalid @enderror"/>
+                                <input name="name" id="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}"/>
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -24,7 +24,7 @@
                         <div class="form-group row">
                             <label for="lastname" class="col-md-4 col-form-label text-md-right">ນາມສະກຸນ:</label>
                             <div class="col-md-6">
-                                <input name="lastname" id="lastname" class="form-control @error('lastname') is-invalid @enderror"/>
+                                <input name="lastname" id="lastname" class="form-control @error('lastname') is-invalid @enderror" value="{{ old('lastname') }}"/>
                                 @error('lastname')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -35,7 +35,7 @@
                         <div class="form-group row">
                             <label for="date_of_birth" class="col-md-4 col-form-label text-md-right">ວັນເດືອນປີເກີດ:</label>
                             <div class="col-md-6">
-                                <input type="date" name="date_of_birth" id="date_of_birth" class="form-control @error('date_of_birth') is-invalid @enderror"/>
+                                <input type="date" name="date_of_birth" id="date_of_birth" class="form-control @error('date_of_birth') is-invalid @enderror" value="{{ old('date_of_birth') }}"/>
                                 @error('date_of_birth')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -46,7 +46,7 @@
                         <div class="form-group row">
                             <label for="date_joined_women_union" class="col-md-4 col-form-label text-md-right">ວັນເດືອນປີເຂົ້າເປັນ<br>ສະມາຊິກເພດຍິງ:</label>
                             <div class="col-md-6 row m-0 align-items-center">
-                                <input type="date" name="date_joined_women_union" id="date_joined_women_union" class="form-control col-12 @error('date_joined_women_union') is-invalid @enderror"/>
+                                <input type="date" name="date_joined_women_union" id="date_joined_women_union" class="form-control col-12 @error('date_joined_women_union') is-invalid @enderror" value="{{ old('date_joined_women_union') }}"/>
                                 @error('date_joined_women_union')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -57,7 +57,7 @@
                         <div class="form-group row">
                             <label for="date_joined_youth_union" class="col-md-4 col-form-label text-md-right">ວັນເດືອນປີເຂົ້າເປັນ<br>ສະມາຊິກຊາວໜຸ່ມ:</label>
                             <div class="col-md-6 row m-0 align-items-center">
-                                <input type="date" name="date_joined_youth_union" id="date_joined_youth_union" class="form-control col-12 @error('date_joined_youth_union') is-invalid @enderror"/>
+                                <input type="date" name="date_joined_youth_union" id="date_joined_youth_union" class="form-control col-12 @error('date_joined_youth_union') is-invalid @enderror" value="{{ old('date_joined_youth_union') }}"/>
                                 @error('date_joined_youth_union')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -68,7 +68,7 @@
                         <div class="form-group row">
                             <label for="date_joined_trade_union" class="col-md-4 col-form-label text-md-right">ວັນເດືອນປີເຂົ້າເປັນ<br>ສະມາຊິກກໍາມະບານ:</label>
                             <div class="col-md-6 row m-0 align-items-center">
-                                <input type="date" name="date_joined_trade_union" id="date_joined_trade_union" class="form-control col-12 @error('date_joined_trade_union') is-invalid @enderror"/>
+                                <input type="date" name="date_joined_trade_union" id="date_joined_trade_union" class="form-control col-12 @error('date_joined_trade_union') is-invalid @enderror" value="{{ old('date_joined_trade_union') }}"/>
                                 @error('date_joined_trade_union')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -79,7 +79,7 @@
                         <div class="form-group row">
                             <label for="date_joined_political_party" class="col-md-4 col-form-label text-md-right">ວັນເດືອນປີເຂົ້າເປັນ<br>ສະມາຊິກພັກ:</label>
                             <div class="col-md-6 row m-0 align-items-center">
-                                <input type="date" name="date_joined_political_party" id="date_joined_political_party" class="form-control col-12 @error('date_joined_political_party') is-invalid @enderror"/>
+                                <input type="date" name="date_joined_political_party" id="date_joined_political_party" class="form-control col-12 @error('date_joined_political_party') is-invalid @enderror" value="{{ old('date_joined_political_party') }}"/>
                                 @error('date_joined_political_party')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -145,6 +145,7 @@
                             <label for="education_id" class="col-md-4 col-form-label text-md-right">ລະດັບການສຶກສາ:</label>
                             <div class="col-md-6">
                                 <select name="education_id" id="education_id" class="form-control @error('education_id') is-invalid @enderror">
+                                    <option value="" selected></option>
                                     @foreach (App\Models\Education::all() as $education)
                                         <option value="{{ $education->id }}">{{ $education->level }}</option>
                                     @endforeach
@@ -177,6 +178,7 @@
                             <label for="state_position_id" class="col-md-4 col-form-label text-md-right">ຕໍາແໜ່ງທາງລັດ:</label>
                             <div class="col-md-6">
                                 <select name="state_position_id" id="state_position_id" class="form-control @error('state_position_id') is-invalid @enderror">
+                                    <option value="" selected></option>
                                     @foreach (App\Models\StatePosition::all() as $statePosition)
                                         <option value="{{ $statePosition->id }}">{{ $statePosition->position }}</option>
                                     @endforeach
@@ -193,6 +195,7 @@
                             <label for="political_position_id" class="col-md-4 col-form-label text-md-right">ຕໍາແໜ່ງທາງພັກ:</label>
                             <div class="col-md-6">
                                 <select name="political_position_id" id="political_position_id" class="form-control @error('political_position_id') is-invalid @enderror">
+                                    <option value="" selected></option>
                                     @foreach (App\Models\PoliticalPosition::all() as $politicalPosition)
                                         <option value="{{ $politicalPosition->id }}">{{ $politicalPosition->position }}</option>
                                     @endforeach

@@ -7,11 +7,11 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="card col-md-12">
+            <div class="card p-0 col-md-12">
+                <div class="card-header bg-success text-white text-center" style="font-size: 1.3rem;">
+                    ປະຫວັດຄວາມເປັນມາ
+                </div>
                 <div class="card-body">
-                    <h4 class="text-center">
-                        ປະຫວັດຄວາມເປັນມາ
-                    </h4>
                     <p style="text-indent: 1.5rem;">
                         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia excepturi velit, ex doloribus, iste laborum sunt pariatur quidem iure deserunt porro nemo sint, soluta nulla! Iusto nesciunt quibusdam eum tempore!
                     </p>

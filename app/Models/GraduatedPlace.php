@@ -13,7 +13,7 @@ class GraduatedPlace extends Model
 
     protected $fillable = [
         'id',
-        'place'
+        'name'
     ];
 
     public function members()

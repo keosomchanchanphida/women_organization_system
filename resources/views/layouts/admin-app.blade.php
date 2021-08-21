@@ -45,7 +45,7 @@
                     ການເຄື່ອນໄຫວພາຍນອກ
                 </a>
                 <a class="nav-link text-white py-5px py-3" href="{{ route('all-files') }}">
-                    ໄຟລ໌ທັງໝົດ
+                    ຮ່າງຂໍ້ມູນດີເດັ່ນ3ດີ
                 </a>
                 <a class="nav-link text-white py-5px py-3" href="{{ route('show-members') }}">
                     ສະແດງສະມາຊິກ
@@ -60,7 +60,7 @@
                     ເພີ່ມການເຄື່ອນໄຫວພາຍນອກ
                 </a>
                 <a class="nav-link text-white py-5px py-3" href="{{ route('add-file') }}">
-                    ອັບໂຫຼດໄຟລ໌
+                    ເພີ່ມຮ່າງຂໍ້ມູນດີເດັ່ນ3ດີ
                 </a>
                 @auth
                     <a class="nav-link text-white py-5px py-3" href="{{ route('logout') }}"

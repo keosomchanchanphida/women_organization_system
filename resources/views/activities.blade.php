@@ -5,7 +5,10 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="card col-md-12">
+        <div class="card p-0 col-md-12">
+            <div class="card-header bg-success text-white">
+                ການເຄື່ອນໄຫວ{{ $type ?? '' }}
+            </div>
             <div class="card-body">
                 <div class="row justify-content-center">
                     @if (count($activities) > 0)

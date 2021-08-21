@@ -13,7 +13,7 @@ class ExportPDFController extends Controller
     public function export(Request $request)
     {
         $data = [
-            'id' => $request->id,
+            'index' => $request->index,
             'name' => $request->name,
             'lastname' => $request->lastname,
             'date_of_birth' => $request->date_of_birth,
@@ -39,18 +39,18 @@ class ExportPDFController extends Controller
         foreach($data as $i){
             if($i) $fieldCount++;
         }
-        $fontSize = 12;
-        if($fieldCount > 20) $fontSize = 8;
-        else if($fieldCount > 17) $fontSize = 9;
-        else if($fieldCount > 15) $fontSize = 10;
-        else if($fieldCount > 14) $fontSize = 11;
+        $fontSize = 11;
+        if($fieldCount > 20) $fontSize = 7;
+        else if($fieldCount > 17) $fontSize = 8;
+        else if($fieldCount > 15) $fontSize = 9;
+        else if($fieldCount > 14) $fontSize = 10;
         $data['fontSize'] = $fontSize;
         $ids = $request->members;
         $data['members'] = Member::where(function($query) use($ids){
             foreach($ids as $id){
                 $query->orWhere('id', '=', $id);
             }
-        })->get();
+        })->orderBy('id')->get();
         $pdf = PDF::loadView('admin.export', $data)->setPaper('a4', 'landscape');
         $filename = Str::random(25).'.pdf';
         $pdf->save(public_path().'/storage/'.$filename);

@@ -1,5 +1,5 @@
 @extends(auth()->user() ? 'layouts.admin-app':'layouts.app')
-
+@section('title', 'ເພີ່ມສະມາຊິກ')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

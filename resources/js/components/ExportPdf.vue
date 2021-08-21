@@ -12,7 +12,7 @@
                 <div class="row">ຂໍ້ມູນທີ່ປິນ:</div>
                 <div class="row">
                     <div class="col-6 col-sm-4 col-md-3">
-                        <input type="checkbox" v-model="id" id="id" value="1">
+                        <input type="checkbox" v-model="index" id="id" value="1">
                         <label for="id" class="col-form-label">ລະຫັດ</label>
                     </div>
                     <div class="col-6 col-sm-4 col-md-3">
@@ -41,7 +41,7 @@
                     </div>
                     <div class="col-6 col-sm-4 col-md-3">
                         <input type="checkbox" v-model="date_joined_political_party" id="date_joined_political_party" value="1">
-                        <label for="date_joined_political_party" class="col-form-label">ວດປ ເຂົ້າສະມາຊິກພັກ</label>
+                        <label for="date_joined_political_party" class="col-form-label">ວດປ ເຂົ້າອົງການຈັດຕັ້ງພັກ</label>
                     </div>
                     <div class="col-6 col-sm-4 col-md-3">
                         <input type="checkbox" v-model="village_of_birth" id="village_of_birth" value="1">
@@ -101,13 +101,11 @@
                     <table class="table table-bordered">
                         <tr>
                             <th @click="selectAll()" class="cursor-pointer">ເລືອກທັງໝົດ</th>
-                            <th>ລະຫັດ</th>
                             <th class="col-4">ຊື່</th>
                             <th class="col-4">ນາມສະກຸນ</th>
                         </tr>
                         <tr v-for="(member, index) in members" :key="member.id">
                             <label :for="'list'+index" class="d-block w-100 h-100 m-0 cursor-pointer"><td class="d-block w-100 h-100"><input :id="'list'+index" v-model="selected[index]" type="checkbox" value="1" class="mr-1 checkable-list">ເລືອກ</td></label>
-                            <td>{{ member.id }}</td>
                             <td>{{ member.name }}</td>
                             <td>{{ member.lastname }}</td>
                         </tr>
@@ -129,7 +127,7 @@ export default {
     data(){
         return{
             selected: [],
-            id: true,
+            index: true,
             name: true,
             lastname: true,
             date_of_birth: true,
@@ -166,7 +164,7 @@ export default {
             if(this.list.length > 0)
                 axios.post('/export', {
                     members: this.list,
-                    id: this.id,
+                    index: this.index,
                     name: this.name,
                     lastname: this.lastname,
                     date_of_birth: this.date_of_birth,

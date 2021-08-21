@@ -37,14 +37,14 @@
 <body>
     <table>
         <tr>
-            @if($id) <th>ລະຫັດ</th> @endif
+            @if($index) <th>ລໍາດັບ</th> @endif
             @if($name) <th>ຊື່</th> @endif
             @if($lastname) <th>ນາມສະກຸນ</th> @endif
             @if($date_of_birth) <th>ວັນເດືອນປີ<br>ເກີດ</th> @endif
             @if($date_joined_women_union) <th>ວັນເດືອນປີ<br>ເຂົ້າເພດຍິງ</th> @endif
             @if($date_joined_youth_union) <th>ວັນເດືອນປີ<br>ເຂົ້າຊາວໜຸ່ມ</th> @endif
             @if($date_joined_trade_union) <th>ວັນເດືອນປີ<br>ເຂົ້າກໍາມະບານ</th> @endif
-            @if($date_joined_political_party) <th>ວັນເດືອນປີ<br>ເຂົ້າສະມາຊິກພັກ</th> @endif
+            @if($date_joined_political_party) <th>ວັນເດືອນປີ<br>ເຂົ້າອົງການຈັດຕັ້ງພັກ</th> @endif
             @if($village_of_birth) <th>ບ້ານເກີດ</th> @endif
             @if($living_village) <th>ບ້ານຢູ່ປັດຈຸບັນ</th> @endif
             @if($tribe) <th>ຊົນເຜົ່າ</th> @endif
@@ -59,24 +59,24 @@
             @if($phone_number) <th>ເບີໂທ</th> @endif
             @if($duty) <th>ໜ້າທີ</th> @endif
         </tr>
-        @foreach ($members as $member)
+        @foreach ($members as $key => $member)
             <tr>
-                @if($id) <td>{{ $member->id }}</td> @endif
+                @if($index) <td>{{ $key+1 }}</td> @endif
                 @if($name) <td>{{ $member->name }}</td> @endif
                 @if($lastname) <td>{{ $member->lastname }}</td> @endif
                 @if($date_of_birth) <td>{{ $member->date_of_birth }}</td> @endif
-                @if($date_joined_women_union) <td>{{ $member->date_joined_women_union }}</td> @endif
-                @if($date_joined_youth_union) <td>{{ $member->date_joined_youth_union }}</td> @endif
-                @if($date_joined_trade_union) <td>{{ $member->date_joined_trade_union }}</td> @endif
-                @if($date_joined_political_party) <td>{{ $member->date_joined_political_party }}</td> @endif
+                @if($date_joined_women_union) <td>{{ date('d/m/Y', strtotime($member->date_joined_women_union)) }}</td> @endif
+                @if($date_joined_youth_union) <td>{{ date('d/m/Y', strtotime($member->date_joined_youth_union)) }}</td> @endif
+                @if($date_joined_trade_union) <td>{{ $member->date_joined_trade_union? date('d/m/Y', strtotime($member->date_joined_trade_union)):'' }}</td> @endif
+                @if($date_joined_political_party) <td>{{ $member->date_joined_political_party? date('d/m/Y', strtotime($member->date_joined_political_party)):'' }}</td> @endif
                 @if($village_of_birth) <td>{{ $member->placeOfBirth->name }}</td> @endif
                 @if($living_village) <td>{{ $member->livingPlace->name }}</td> @endif
                 @if($tribe) <td>{{ $member->tribe->name }}</td> @endif
                 @if($religious) <td>{{ $member->religious->name }}</td> @endif
                 @if($major) <td>{{ $member->major->name }}</td> @endif
-                @if($education) <td>{{ $member->education->level }}</td> @endif
+                @if($education) <td>{{ $member->education? $member->education->level:'' }}</td> @endif
                 @if($career) <td>{{ $member->career->career }}</td> @endif
-                @if($state_position) <td>{{ $member->statePosition->position }}</td> @endif
+                @if($state_position) <td>{{ $member->statePosition? $member->statePosition->position:'' }}</td> @endif
                 @if($political_position) <td>{{ $member->politicalPosition? $member->politicalPosition->position:'' }}</td> @endif
                 @if($graduated_place) <td>{{ $member->graduatedPlace->name }}</td> @endif
                 @if($status) <td>{{ $member->status->status }}</td> @endif

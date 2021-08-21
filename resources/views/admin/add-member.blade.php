@@ -1,5 +1,5 @@
 @extends(auth()->user() ? 'layouts.admin-app':'layouts.app')
-
+@section('title', 'ເພີ່ມສະມາຊິກ')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -77,7 +77,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="date_joined_political_party" class="col-md-4 col-form-label text-md-right">ວັນເດືອນປີເຂົ້າເປັນ<br>ສະມາຊິກພັກ:</label>
+                            <label for="date_joined_political_party" class="col-md-4 col-form-label text-md-right">ວັນເດືອນປີ<br>ອົງການຈັດຕັ້ງພັກ:</label>
                             <div class="col-md-6 row m-0 align-items-center">
                                 <input type="date" name="date_joined_political_party" id="date_joined_political_party" class="form-control col-12 @error('date_joined_political_party') is-invalid @enderror" value="{{ old('date_joined_political_party') }}"/>
                                 @error('date_joined_political_party')

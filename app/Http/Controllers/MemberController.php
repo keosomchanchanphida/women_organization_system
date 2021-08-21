@@ -166,7 +166,7 @@ class MemberController extends Controller
 
     public function apiGetAllMembers()
     {
-        $members = Member::all();
+        $members = Member::orderBy('id', 'asc')->get();
         $members = $this->reformat($members);
 
         return $members;
@@ -175,7 +175,7 @@ class MemberController extends Controller
     public function searchMembers(Request $request)
     {
         $search = $request->search;
-        $members = Member::all()->filter(function($member) use($search){
+        $members = Member::orderBy('id', 'asc')->get()->filter(function($member) use($search){
             $string = $member->name.$member->lastname;
             return preg_match("/.*$search.*/i", $string);
         });

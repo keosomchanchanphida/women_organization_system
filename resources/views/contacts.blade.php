@@ -9,17 +9,21 @@
         <div class="row justify-content-center">
             <div class="card p-0 col-md-12">
                 <div class="card-header bg-success text-white text-center" style="font-size: 1.3rem;">
-                    ກ່ຽວກັບເວັບ
+                    ຕິດຕໍ່ສອບຖາມ
                 </div>
                 <div class="card-body">
-                    <p>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia excepturi velit, ex doloribus, iste laborum sunt pariatur quidem iure deserunt porro nemo sint, soluta nulla! Iusto nesciunt quibusdam eum tempore!
+                    <p style="text-indent: 1.5rem;">
+                        ຕິດຕໍ່ພົວພັນຫົວຫນ້າໜ່ວຍແມ່ຍິງ ເຕັກໂນໂລຊີຂໍ້ມູນຂ່າວສານ ໄດ້ຕາມທີ່ຢູ່ດັ່ງລຸ່ມນີ້:
                     </p>
-                    <ul>
-                        <li>Facebook: </li>
-                        <li>Whatsapp: </li>
-                        <li>ໂທ: </li>
-                    </ul>
+                    <div class="ml-md-5 mb-2">
+                        <a class="text-dark" href="https://www.facebook.com/latdavanh.naonad"><img src="/storage/img/facebook.svg" alt="facebook" style="width: 32px;"> Facebook: Latdavanh Naonady</a>
+                    </div>
+                    <div class="ml-md-5 mb-2">
+                        <a><img src="/storage/img/whatsapp.svg" alt="whatsapp" style="width: 32px;"> Whatsapp: 020 22 306 665</a>
+                    </div>
+                    <div class="ml-md-5 mb-2">
+                        <a><img src="/storage/img/phone-call.svg" alt="phone-call" style="width: 32px;"> ໂທ: 020 22 306 665</a>
+                    </div>
                 </div>
             </div>
         </div>

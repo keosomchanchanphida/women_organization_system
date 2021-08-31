@@ -222,4 +222,16 @@ class ActivityController extends Controller
         if($activity->delete()) return redirect(route("$type-activities"))->with(['alert-message' => 'ລົບຂໍ້ມູນສໍາເລັດແລ້ວ', 'alert-class' => 'alert-success']);
         else return back()->with(['alert-message' => 'ລົບຂໍ້ມູນບໍ່ສໍາເລັດ', 'alert-class' => 'alert-danger']);
     }
+
+    public function search(Request $request)
+    {
+        $search = $request->search;
+        $activities = null;
+        try{
+            $activities = Activity::where('title', 'like', "%$search%")->orderBy('title')->get();
+        }catch(\Exception){
+            $activities = collect();
+        }
+        return view('search-result-activities', compact('search', 'activities'));
+    }
 }

@@ -12,11 +12,11 @@
                     ປະຫວັດຄວາມເປັນມາ
                 </div>
                 <div class="card-body">
-                    <p style="text-indent: 1.5rem;">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia excepturi velit, ex doloribus, iste laborum sunt pariatur quidem iure deserunt porro nemo sint, soluta nulla! Iusto nesciunt quibusdam eum tempore!
+                    <p style="text-indent: 1.5rem;" class="text-break">
+                        ສະຫະພັນແມ່ຍິງ ສ້າງຕັ້ງຂື້ນໃນວັນທີ 20 ກໍລະກົດ ປີ 1955. ສະຫະພັນແມ່ຍິງແມ່ນອົງການຈັດຕັ້ງສະເພາະເພດຍິງ ເຊິ່ງເປັນຕົວແທນໃນການປົກປ້ອງສິດທິຜົນປະໂຫຍດຂອງຄວາມເປັນແມ່ ແລະ ເດັກນ້ອຍ ຄະນະສະຫະພັນແມ່ຍິງລາວ ມີພາລະໜ້າທີ່ໃນການເຕົ້າໂຮມຄວາມສາມັກຄີຂອງແມ່ຍິງລາວບັນດາເຜົ່າ, ສຶກສາອົບຮົມຍົກລະດັບຄວາມຮູ້ຄວາມສາມາດ ຢ່າງຮອບດ້ານໃຫ້ແກ່ປະເທດຊາດ, ເຊີດຊູບົດບາດຂອງແມ່ຍິງລາວໃນທົ່ວປະເທດໃຫ້ສູງຂຶ້ນຢູ່ໃນສັງຄົມລາວ ແລະ ເວທີສາກົນ.
                     </p>
-                    <p style="text-indent: 1.5rem;">
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quidem voluptatum distinctio voluptatibus aspernatur laudantium tenetur quod ea quia. Quo eligendi perspiciatis consequuntur facilis excepturi, reiciendis id, optio velit repellat ex consequatur temporibus. Debitis, consequuntur labore! Quas enim fugit velit, reiciendis aliquam maxime quibusdam officiis, autem, perspiciatis dolorum quae quisquam amet.
+                    <p style="text-indent: 1.5rem;" class="text-break">
+                        ໜ່ວຍແມ່ຍິງຄະນະເຕັກໂນໂລຊີຂໍ້ມູນຂ່າວສານແມ່ນຮາກຖານໜຶ່ງທີ່ໄດ້ດຳເນີນການເຄື່ອນໄຫວພາຍໃຕ້ການຊີ້ນຳ-ນຳພາຂອງຄະນະຮາກຖານຂອງສະຫະພັນແມ່ຍິງມະຫາວິທະຍາໄລສະຫວັນນະເຂດ, ຄະນະສະຫະພັນແມ່ຍິງ ແຂວງ. ມີບົດບາດໃນການຈັດການຈັດຕັ້ງປະຕິບັດແນວທາງນະໂຍບາຍຂອງພັກລັດ, ລະບຽບກົດໝາຍຂອງພັກລັດນອກຈາກນີ້ຍັງໄດ້ປະກອບສ່ວນເຂົ້າການປົກປັກຮັກສາ ແລະ ສ້າງສາປະເທດ. ໜ່ວຍແມ່ຍິງໃນຄະນະເຕັກໂນໂລຊີຂໍ້ມູນຂ່າວສານມີມາຊິກໜ່ວຍແມ່ຍິງທັງໝົດ 216 ຄົນ. ສະມາຊິກທີ່ເປັນອາຈານ ມີ 12ຄົນ ແລະ ສະມາຊິກທີ່ເປັນນັກສຶກສາ ມີ204 ຄົນ.
                     </p>
                 </div>
             </div>

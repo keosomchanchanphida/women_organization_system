@@ -45,6 +45,17 @@
                                 <a class="dropdown-item" href="{{ route('outside-activities') }}">ການເຄື່ອນໄຫວພາຍນອກ</a>
                             </div>
                         </div>
+                        <div class="dropdown ml-md-2 mt-1 mt-md-0 d-none d-md-block">
+                            <button class="btn btn-secondary dropdown-toggle w-100"
+                                id="showDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                ສະຖິຕິ
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="showDropdown">
+                                <a class="dropdown-item" href="{{ route('show-members') }}">ສະແດງສະມາຊິກ</a>
+                                <a class="dropdown-item" href="{{ route('all-files') }}">ຮ່າງຂໍ້ມູນດີເດັ່ນ3ດີ</a>
+                                <a class="dropdown-item" href="{{ route('positions') }}">ໂຄງຮ່າງການຈັດຕັ້ງ</a>
+                            </div>
+                        </div>
                         <a class="nav-link btn btn-secondary ml-md-2 mt-1 mt-md-0 text-white py-6px d-md-none" href="{{ route('inside-activities') }}">ການເຄືອນໄຫວພາຍໃນ</a>
                         <a class="nav-link btn btn-secondary ml-md-2 mt-1 mt-md-0 text-white py-6px d-md-none" href="{{ route('outside-activities') }}">ການເຄື່ອນໄຫວພາຍນອກ</a>
                         <a class="nav-link btn btn-secondary ml-md-2 mt-1 mt-md-0 text-white py-6px d-md-none" href="{{ route('show-members') }}">ສະແດງສະມາຊິກ</a>

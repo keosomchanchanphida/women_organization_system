@@ -2,6 +2,9 @@
 @section('title',)
     ການເຄື່ອນໄຫວ{{ $type ?? '' }}
 @endsection
+@section('banner')
+    <img src="/storage/img/profiles1.jpg" class="w-100" alt="">
+@endsection
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -13,7 +16,7 @@
                 <div class="row justify-content-center">
                     @if (count($activities) > 0)
                         @foreach($activities as $activity)
-                            <div class="col-sm-6 col-md-3 p-1">
+                            <div class="col-sm-6 @auth col-md-3 @else col-md-4 @endauth p-1">
                                 <a href="{{ route('show-activity', ['activity' => $activity->id]) }}" class="text-decoration-none text-dark">
                                     <div class="card border-0">
                                         <div class="card-body">

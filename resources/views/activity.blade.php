@@ -24,6 +24,10 @@
                         </div>
                     @endforeach
                 </div>
+                <div>
+                    <p class="font-24px indent">ປະເພດ: {{ $activity->type === 'inside' ? 'ການເຄື່ອນໄຫວພາຍໃນ' : 'ການເຄື່ອນໄຫວພາຍນອກ' }}</p>
+                    <p class="font-24px indent">ພາກວິຊາ: {{ $activity->major->name }}</p>
+                </div>
             </div>
         </div>
     </div>

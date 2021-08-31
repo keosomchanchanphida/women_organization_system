@@ -1,11 +1,11 @@
 @extends(auth()->user() ? 'layouts.admin-app':'layouts.app')
-@section('title', 'ແກ້ໄຂໄຟລ໌')
+@section('title', 'ແກ້ໄຂຮ່າງຂໍ້ມູນດີເດັ່ນ3ດີ')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header">ແກ້ໄຂໄຟລ໌</div>
+                <div class="card-header">ແກ້ໄຂຮ່າງຂໍ້ມູນດີເດັ່ນ3ດີ</div>
 
                 <div class="card-body">
                     <form action="{{ route('update-file', ['file' => $file->id]) }}" method="POST" enctype="multipart/form-data">

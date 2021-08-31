@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/contacts', function() { return view('contacts'); })->name('contacts');
 Route::get('/history', function() { return view('history'); })->name('history');
+Route::get('/positions', function() { return view('positions'); })->name('positions');
 Route::get('/show-members', [MemberController::class, 'index'])->name('show-members');
 Route::get('/files', [FileController::class, 'index'])->name('all-files');
 
@@ -83,3 +84,4 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/inside-activities', [ActivityController::class, 'insideActivities'])->name('inside-activities');
 Route::get('/outside-activities', [ActivityController::class, 'outsideActivities'])->name('outside-activities');
 Route::get('/activity/{activity}', [ActivityController::class, 'show'])->name('show-activity');
+Route::get('/search-activities', [ActivityController::class, 'search'])->name('search-activities');

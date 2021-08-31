@@ -1,6 +1,7 @@
 @extends(auth()->user() ? 'layouts.admin-app':'layouts.app')
-@section('title',)
-    ຮ່າງຂໍ້ມູນດີເດັ່ນ3ດີ
+@section('title', 'ຮ່າງຂໍ້ມູນດີເດັ່ນ3ດີ')
+@section('banner')
+    <img src="/storage/img/profiles1.jpg" class="w-100" alt="">
 @endsection
 @section('content')
 <div class="container">

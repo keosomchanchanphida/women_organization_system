@@ -45,22 +45,43 @@
                                 <a class="dropdown-item" href="{{ route('outside-activities') }}">ການເຄື່ອນໄຫວພາຍນອກ</a>
                             </div>
                         </div>
+                        <div class="dropdown ml-md-2 mt-1 mt-md-0 d-none d-md-block">
+                            <button class="btn btn-secondary dropdown-toggle w-100"
+                                id="showDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                ສະຖິຕິ
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="showDropdown">
+                                <a class="dropdown-item" href="{{ route('show-members') }}">ສະແດງສະມາຊິກ</a>
+                                <a class="dropdown-item" href="{{ route('all-files') }}">ຮ່າງຂໍ້ມູນດີເດັ່ນ3ດີ</a>
+                                <a class="dropdown-item" href="{{ route('positions') }}">ໂຄງຮ່າງການຈັດຕັ້ງ</a>
+                            </div>
+                        </div>
+                        <div class="dropdown ml-md-2 mt-1 mt-md-0 d-none d-md-block">
+                            <button class="btn btn-secondary dropdown-toggle w-100"
+                                id="showDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                ກ່ຽວກັບພວກເຮົາ
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="showDropdown">
+                                <a class="dropdown-item" href="{{ route('history') }}">ຄວາມເປັນມາ</a>
+                                <a class="dropdown-item" href="{{ route('contacts') }}">ຕິດຕໍ່ສອບຖາມ</a>
+                            </div>
+                        </div>
                         <a class="nav-link btn btn-secondary ml-md-2 mt-1 mt-md-0 text-white py-6px d-md-none" href="{{ route('inside-activities') }}">ການເຄືອນໄຫວພາຍໃນ</a>
                         <a class="nav-link btn btn-secondary ml-md-2 mt-1 mt-md-0 text-white py-6px d-md-none" href="{{ route('outside-activities') }}">ການເຄື່ອນໄຫວພາຍນອກ</a>
                         <a class="nav-link btn btn-secondary ml-md-2 mt-1 mt-md-0 text-white py-6px d-md-none" href="{{ route('show-members') }}">ສະແດງສະມາຊິກ</a>
                         <a class="nav-link btn btn-secondary ml-md-2 mt-1 mt-md-0 text-white py-6px d-md-none" href="{{ route('all-files') }}">ຮ່າງຂໍ້ມູນດີເດັ່ນ3ດີ</a>
                         <a class="nav-link btn btn-secondary ml-md-2 mt-1 mt-md-0 text-white py-6px d-md-none" href="{{ route('positions') }}">ໂຄງຮ່າງການຈັດຕັ້ງ</a>
-                        <a class="nav-link btn btn-secondary ml-md-2 mt-1 mt-md-0 text-white py-6px" href="{{ route('history') }}">ຄວາມເປັນມາ</a>
-                        <a class="nav-link btn btn-secondary ml-md-2 mt-1 mt-md-0 text-white py-6px" href="{{ route('contacts') }}">ຕິດຕໍ່ສອບຖາມ</a>
+                        <a class="nav-link btn btn-secondary ml-md-2 mt-1 mt-md-0 text-white py-6px d-md-none" href="{{ route('history') }}">ຄວາມເປັນມາ</a>
+                        <a class="nav-link btn btn-secondary ml-md-2 mt-1 mt-md-0 text-white py-6px d-md-none" href="{{ route('contacts') }}">ຕິດຕໍ່ສອບຖາມ</a>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto pt-1 pt-md-0 pl-md-2">
-                        <form action="{{ route('search-activities') }}" method="GET" class="d-flex d-md-none">
+                        <!-- Authentication Links -->
+                        <form action="{{ route('search-activities') }}" method="GET" class="d-flex">
                             <input type="text" name="search" placeholder="ຄົ້ນຫາກິດຈະກໍາ" class="form-control">
                             <button type="submit" class="btn btn-secondary ml-1 py-5px">ຄົ້ນຫາ</button>
                         </form>
-                        <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
@@ -95,27 +116,10 @@
                 {{ session()->get('alert-message') }}
             </div>
         @endif
-        <div class="d-md-flex">
-            <main class="py-4 col-md-9">
-                @yield('content')
-            </main>
-            <div class="py-4 d-none d-md-block col-md-3">
-                <div class="card">
-                    <div class="card-body px-0 list-unstyled">
-                        <div class="form-group row m-0 px-3">
-                            <form action="{{ route('search-activities') }}" method="GET" class="d-flex">
-                                <input type="text" name="search" placeholder="ຄົ້ນຫາກິດຈະກໍາ" class="form-control">
-                                <button type="submit" class="btn btn-secondary ml-1 py-6px">ຄົ້ນຫາ</button>
-                            </form>
-                        </div>
-                        <li class="border-bottom"><a href="{{ route('show-members') }}" class="d-block p-3 pl-4 text-decoration-none text-dark">ສະແດງສະມາຊິກ</a></li>
-                        <li class="border-bottom"><a href="{{ route('all-files') }}" class="d-block p-3 pl-4 text-decoration-none text-dark">ຮ່າງຂໍ້ມູນດີເດັ່ນ3ດີ</a></li>
-                        <li class=""><a href="{{ route('positions') }}" class="d-block p-3 pl-4 text-decoration-none text-dark">ໂຄງຮ່າງການຈັດຕັ້ງ</a></li>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <footer class="bg-success px-3 pt-3 pb-5 mt-3 mb-n3">
+        <main class="py-4">
+            @yield('content')
+        </main>
+        <footer class="bg-success px-3 pt-3 pb-5 mt-6 mb-n3">
             <h3 class="text-center">ຊ່ອງທາງການຕິດຕໍ່ທີມພັດທະນາ</h3>
             <ul class="offset-sm-2 offset-md-4">
                 <li>ຕິດຕໍ່</li>

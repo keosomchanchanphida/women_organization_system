@@ -32,7 +32,6 @@ class MemberController extends Controller
             'lastname' => ['required'],
             'date_of_birth' => ['required'],
             'date_joined_women_union' => ['required'],
-            'date_joined_youth_union' => ['required'],
             'place_of_birth_id' => ['required'],
             'living_place_id' => ['required'],
             'tribe_id' => ['required'],
@@ -48,7 +47,6 @@ class MemberController extends Controller
             'lastname.required' => 'ທ່ານຈະຕ້ອງປ້ອນນາມສະກຸນກ່ອນ',
             'date_of_birth.required' => 'ທ່ານຈະຕ້ອງປ້ອນວັນເດືອນປີເກີດກ່ອນ',
             'date_joined_women_union.required' => 'ທ່ານຈະຕ້ອງປ້ອນເວັນເດືອນປີເຂົ້າເປັນສະມາຊິກແມ່ຍິງກ່ອນ',
-            'date_joined_youth_union.required' => 'ທ່ານຈະຕ້ອງປ້ອນວັນເດືອນປີເຂົ້າເປັນສະມາຊິກຊາວໜຸ່ມກ່ອນ',
             'place_of_birth_id.required' => 'ທ່ານຈະຕ້ອງປ້ອນສະຖານທີ່ເກີດໃຫ້ຄົບກ່ອນ',
             'living_place_id.required' => 'ທ່ານຈະຕ້ອງປ້ອນສະຖານທີ່ປັດຈຸບັນໃຫ້ຄົບກ່ອນ',
             'tribe_id.required' => 'ທ່ານຈະຕ້ອງປ້ອນຊົນເຜົ່າກ່ອນ',
@@ -103,7 +101,6 @@ class MemberController extends Controller
             'lastname' => ['required'],
             'date_of_birth' => ['required'],
             'date_joined_women_union' => ['required'],
-            'date_joined_youth_union' => ['required'],
             'place_of_birth_id' => ['required'],
             'living_place_id' => ['required'],
             'tribe_id' => ['required'],
@@ -119,7 +116,6 @@ class MemberController extends Controller
             'lastname.required' => 'ທ່ານຈະຕ້ອງປ້ອນນາມສະກຸນກ່ອນ',
             'date_of_birth.required' => 'ທ່ານຈະຕ້ອງປ້ອນວັນເດືອນປີເກີດກ່ອນ',
             'date_joined_women_union.required' => 'ທ່ານຈະຕ້ອງປ້ອນເວັນເດືອນປີເຂົ້າເປັນສະມາຊິກແມ່ຍິງກ່ອນ',
-            'date_joined_youth_union.required' => 'ທ່ານຈະຕ້ອງປ້ອນວັນເດືອນປີເຂົ້າເປັນສະມາຊິກຊາວໜຸ່ມກ່ອນ',
             'place_of_birth_id.required' => 'ທ່ານຈະຕ້ອງປ້ອນສະຖານທີ່ເກີດໃຫ້ຄົບກ່ອນ',
             'living_place_id.required' => 'ທ່ານຈະຕ້ອງປ້ອນສະຖານທີ່ປັດຈຸບັນໃຫ້ຄົບກ່ອນ',
             'tribe_id.required' => 'ທ່ານຈະຕ້ອງປ້ອນຊົນເຜົ່າກ່ອນ',
@@ -193,9 +189,9 @@ class MemberController extends Controller
             $data['lastname'] = $member->lastname;
             $data['dob'] = date('d/m/Y', strtotime($member->date_of_birth));
             $data['djwomen'] = date('d/m/Y', strtotime($member->date_joined_women_union));
-            $data['djyouth'] = date('d/m/Y', strtotime($member->date_joined_youth_union));
-            $data['djtrade'] = date('d/m/Y', strtotime($member->date_joined_trade_union));
-            $data['djpolitical'] = $member->date_joined_political_party? date('d/m/Y', strtotime($member->date_joined_political_party)):'';
+            $data['djyouth'] = ($date = $member->date_joined_youth_union)? date('d/m/Y', strtotime($date)):'';
+            $data['djtrade'] = ($date = $member->date_joined_trade_union)? date('d/m/Y', strtotime($date)):'';
+            $data['djpolitical'] = ($date = $member->date_joined_political_party)? date('d/m/Y', strtotime($date)):'';
             $data['pob'] = $member->placeOfBirth->name;
             $data['pliving'] = $member->livingPlace->name;
             $data['tribe'] = $member->tribe->name;

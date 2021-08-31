@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="w-100 overflow-scroll">
-                <div v-if="loading" class="text-center text-success">
+                <div v-if="loading" class="text-center text-success py-5">
                     <div class="spinner-border"><span class="sr-only"></span></div>
                 </div>
                 <div v-else>

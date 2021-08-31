@@ -35,6 +35,10 @@
                         {{ Auth::user()->name }}
                     </p><hr>
                 @endauth
+                <form action="{{ route('search-activities') }}" method="GET" class="d-flex">
+                    <input type="text" name="search" placeholder="ຄົ້ນຫາກິດຈະກໍາ" class="form-control">
+                    <button type="submit" class="btn btn-secondary ml-1 py-6px">ຄົ້ນຫາ</button>
+                </form>
                 <a class="nav-link text-white py-5px py-3" href="{{ url('/') }}">
                     ໜ້າຫຼັກ
                 </a>
@@ -46,6 +50,9 @@
                 </a>
                 <a class="nav-link text-white py-5px py-3" href="{{ route('all-files') }}">
                     ຮ່າງຂໍ້ມູນດີເດັ່ນ3ດີ
+                </a>
+                <a class="nav-link text-white py-5px py-3" href="{{ route('positions') }}">
+                    ໂຄງຮ່າງການຈັດຕັ້ງ
                 </a>
                 <a class="nav-link text-white py-5px py-3" href="{{ route('show-members') }}">
                     ສະແດງສະມາຊິກ

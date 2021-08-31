@@ -1,12 +1,14 @@
-@extends(auth()->user() ? 'layouts.admin-app':'layouts.app')
+@extends(auth()->user() ? 'layouts.admin-app':'layouts.app-nosidebar')
 @section('title', 'ເຂົ້າສູ່ລະບົບ')
-
+@section('banner')
+    <img src="/storage/img/profiles1.jpg" class="w-100" alt="">
+@endsection
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('ເຂົ້າສູ່ລະບົບ') }}</div>
+                <div class="card-header bg-success text-white">{{ __('ເຂົ້າສູ່ລະບົບ') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">

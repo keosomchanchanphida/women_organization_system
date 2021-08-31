@@ -20,4 +20,9 @@ class Activity extends Model
     {
         return $this->hasMany(ActivityImage::class);
     }
+
+    public function major()
+    {
+        return $this->belongsTo(Major::class);
+    }
 }
